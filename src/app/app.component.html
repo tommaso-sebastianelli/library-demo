@@ -1,7 +1,7 @@
 <md-sidenav-container>
-  <md-sidenav>
+  <md-sidenav #sidenav opened="true">
     <!-- sidenav content -->
   </md-sidenav>
-
+<button (click)="sidenav.toggle()"></button>
   <!-- primary content -->
 </md-sidenav-container>

@@ -1,7 +1,9 @@
 <md-sidenav-container>
-  <md-sidenav #sidenav mode="side">
+  <md-toolbar color="primary">
+    <a aria-label="menu"><md-icon (click)="sidenav.toggle()">menu</md-icon></a>
+  </md-toolbar>
+  <md-sidenav #sidenav mode="over">
     <!-- sidenav content -->
   </md-sidenav>
-<button (click)="sidenav.toggle()">toggle</button>
   <!-- primary content -->
 </md-sidenav-container>

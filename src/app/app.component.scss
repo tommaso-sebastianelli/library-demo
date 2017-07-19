@@ -4,6 +4,12 @@ md-sidenav-container{
     height: 100%;
     width: 100%;
     margin: 0;
+    md-toolbar{
+        md-icon{
+            display: flex;
+            cursor: pointer;
+        }
+    }
     md-sidenav{
         width: 300px;
     }

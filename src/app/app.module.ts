@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import 'hammerjs';//md-slide-toggle, md-slider, mdTooltip
+import 'hammerjs'; // md-slide-toggle, md-slider, mdTooltip
 import { NgModule } from '@angular/core';
 
-
+// angular-material
 import {MdTabsModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdToolbarModule} from '@angular/material';
@@ -11,8 +11,9 @@ import {MdSidenavModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import { AppComponent } from './app.component';
 
-//routing section
+// angular-router
 import {RouterModule, Routes} from '@angular/router';
+
 const appRoutes: Routes = [
   { path: 'crisis-center', component: null, redirectTo: '/' }
   // { path: 'hero/:id', component: null, redirectTo: '/'},
@@ -20,7 +21,6 @@ const appRoutes: Routes = [
   // { path: '',  redirectTo: '/heroes', pathMatch: 'full'},
   // { path: '**', component: null, redirectTo: '/' }
 ];
-
 
 @NgModule({
   declarations: [

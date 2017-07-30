@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import {MdToolbarModule} from '@angular/material';
 import {MdSidenavModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+
 import { AppComponent } from './app.component';
 
 
@@ -18,7 +20,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     MdToolbarModule,
     MdSidenavModule,
-    MdIconModule
+    MdIconModule,
+    MdButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

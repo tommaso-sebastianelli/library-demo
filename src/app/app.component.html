@@ -1,11 +1,15 @@
 <md-sidenav-container>
   <md-toolbar color="primary">
     <button md-icon-button aria-label="menu"><md-icon (click)="sidenav.toggle()">menu</md-icon></button>
-    
+    <md-toolbar-row>
+
+    </md-toolbar-row>
   </md-toolbar>
   <!-- sidenav -->
-  <md-sidenav role="menu" #sidenav mode="over">
-    
+  <md-sidenav role="menu" #sidenav mode="side" opened="true">
+    <header>
+
+    </header>
   </md-sidenav>
   <!-- outlet -->
   <router-outlet></router-outlet>

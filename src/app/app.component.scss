@@ -1,3 +1,5 @@
+@import 'src/custom-theme.scss';
+
 md-sidenav-container{    
     background: lightgrey;
     position: absolute;
@@ -13,5 +15,10 @@ md-sidenav-container{
     }
     md-sidenav{
         width: 300px;
+        header{
+            height: 250px;
+            width: 100%;            
+            background-color: mat-color($candy-app-primary, darker);        
+        }
     }
 }

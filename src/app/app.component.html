@@ -1,6 +1,6 @@
 <md-sidenav-container>
   <md-toolbar color="primary">
-    <button md-icon-button aria-label="menu"><md-icon (click)="sidenav.toggle()">menu</md-icon></button>
+    <button md-icon-button aria-label="menu"><md-icon (click)="sidenav.open()">menu</md-icon></button>
     <md-toolbar-row>
 
     </md-toolbar-row>
@@ -8,7 +8,7 @@
   <!-- sidenav -->
   <md-sidenav role="menu" #sidenav mode="side" opened="true">
     <header>
-
+      <button md-icon-button aria-label="menu-close"><md-icon (click)="sidenav.close()">close</md-icon></button>
     </header>
   </md-sidenav>
   <!-- outlet -->

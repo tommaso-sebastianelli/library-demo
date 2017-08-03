@@ -14,6 +14,9 @@ import {MdSidenavModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 
+// Flex Layout
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 // App Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -27,10 +30,11 @@ import { SearchComponent } from './search/search.component';
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MdToolbarModule,
     MdSidenavModule,
     MdIconModule,

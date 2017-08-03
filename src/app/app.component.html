@@ -1,14 +1,13 @@
 <md-sidenav-container>
   <md-toolbar color="primary">
-    <button md-icon-button aria-label="menu"><md-icon (click)="sidenav.open()">menu</md-icon></button>
+    <button md-icon-button aria-label="menu" (click)="sidenav.open()" *ngIf="!sidenav.opened"><md-icon>menu</md-icon></button>
     <md-toolbar-row>
-
     </md-toolbar-row>
   </md-toolbar>
   <!-- sidenav -->
-  <md-sidenav role="menu" #sidenav mode="side" opened="true">
+  <md-sidenav role="menu" #sidenav mode="side">
     <header>
-      <button md-icon-button aria-label="menu-close"><md-icon (click)="sidenav.close()">close</md-icon></button>
+      <button md-icon-button aria-label="menu-close" (click)="sidenav.close()" *ngIf="sidenav.opened && media.isActive('lg')"><md-icon>close</md-icon></button>
     </header>
   </md-sidenav>
   <!-- outlet -->

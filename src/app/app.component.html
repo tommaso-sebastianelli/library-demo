@@ -5,9 +5,6 @@
     <label role="heading" aria-level="1" [ngClass]="(media.isActive('gt-md')) ? 'mat-display-1' : 'mat-headline'" class="title m-n">{{Title}}</label>
     </div>    
     <div class="search-area toolbar-right">
-      <!-- <md-input-container floatPlaceholder="never" class="search-input">
-        <input mdInput placeholder="">
-      </md-input-container> -->
       <button md-icon-button aria-label="search-icon"><md-icon>search</md-icon></button>
     </div>
     <md-toolbar-row *ngIf="media.isActive('gt-md')">

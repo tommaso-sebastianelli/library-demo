@@ -4,6 +4,7 @@ import {Router, RoutesRecognized} from '@angular/router';
 import {MediaChange, ObservableMedia} from '@angular/flex-layout';
 
 import {OnInit, ViewChild, Component } from '@angular/core';
+import {MdSnackBar} from '@angular/material';
 
 
 @Component({
@@ -14,7 +15,8 @@ import {OnInit, ViewChild, Component } from '@angular/core';
 export class AppComponent implements OnInit {
   Title: string;
   @ViewChild('sidenav') sidenav;
-  constructor(private router: Router, public media: ObservableMedia) {
+  constructor(private router: Router, public media: ObservableMedia, public snackBar: MdSnackBar) {    
+    this.snackBar.open("prova");
   }
 
   ngOnInit() {

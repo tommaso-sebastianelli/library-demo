@@ -13,6 +13,7 @@ import {MdToolbarModule} from '@angular/material';
 import {MdSidenavModule} from '@angular/material';
 import {MdIconModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
+import {MdInputModule} from '@angular/material';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -38,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     MdToolbarModule,
     MdSidenavModule,
     MdIconModule,
-    MdButtonModule
+    MdButtonModule,
+    MdInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

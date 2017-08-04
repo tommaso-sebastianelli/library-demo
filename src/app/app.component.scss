@@ -7,10 +7,15 @@ md-sidenav-container{
     width: 100%;
     margin: 0;
     md-toolbar{
-        
-        md-icon{
-            display: flex;
-            cursor: pointer;
+        &:first-child{
+            width:100%;
+        }
+        .title{
+            margin: 0 10px !important;
+            vertical-align: middle;
+        }
+        .toolbar-right{
+            margin-left:auto;
         }
     }
     md-sidenav{

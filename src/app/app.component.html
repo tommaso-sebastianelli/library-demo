@@ -2,7 +2,7 @@
   <md-toolbar role="toolbar" color="primary">
     <div class="toolbar-left">
       <button md-icon-button aria-label="menu" (click)="sidenav.open()" *ngIf="!sidenav.opened"><md-icon>menu</md-icon></button>    
-    <label role="heading" aria-level="1" class="title mat-display-1 m-n">{{Title}}</label>
+    <label role="heading" aria-level="1" [ngClass]="(media.isActive('gt-md')) ? 'mat-display-1' : 'mat-headline'" class="title m-n">{{Title}}</label>
     </div>    
     <div class="search-area toolbar-right">
       <!-- <md-input-container floatPlaceholder="never" class="search-input">
@@ -10,7 +10,7 @@
       </md-input-container> -->
       <button md-icon-button aria-label="search-icon"><md-icon>search</md-icon></button>
     </div>
-    <md-toolbar-row>
+    <md-toolbar-row *ngIf="media.isActive('gt-md')">
     </md-toolbar-row>
   </md-toolbar>
   <!-- sidenav -->

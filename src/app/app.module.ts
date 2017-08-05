@@ -1,7 +1,7 @@
 // Core Modules
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 
 // Angular Router
 import { RouterModule, Routes } from '@angular/router';

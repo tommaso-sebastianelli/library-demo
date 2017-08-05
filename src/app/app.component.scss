@@ -7,6 +7,9 @@ md-sidenav-container{
     width: 100%;
     margin: 0;
     md-toolbar{
+        &.raised{
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
         &:first-child{
             width:100%;
         }

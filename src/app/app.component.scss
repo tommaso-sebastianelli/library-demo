@@ -7,6 +7,7 @@ md-sidenav-container{
     width: 100%;
     margin: 0;
     md-toolbar{
+        @extend .white-text;
         &.raised{
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
@@ -24,9 +25,38 @@ md-sidenav-container{
     md-sidenav{
         width: 300px;
         header{
-            height: 175px;
+            @extend .white-text;
+            position: relative;
+            height: 150px;
             width: 100%;            
-            background-color: mat-color($candy-app-primary, darker);        
+            background-color: mat-color($candy-app-primary, darker);
+            button{
+                float: right;
+            }
+            .user-info{
+                position: absolute;
+                bottom:0;
+                width: 100%;
+                margin:8px;
+                picture{
+                    display: block;
+                    img{
+                        height:60px;
+                        width:60px;
+                    }
+                } 
+            }
+        }
+        .item-container{
+            margin: 20px 0;
+            a{
+                width: 100%;
+                padding: 5px;
+            }
         }
     }
+}
+
+.white-text{
+    color:white !important;
 }

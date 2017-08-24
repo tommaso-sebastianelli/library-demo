@@ -2,7 +2,9 @@
   <md-toolbar role="toolbar" color="primary" [ngClass]="(!media.isActive('gt-md')) ? 'raised' : ''">
     <div class="toolbar-left">
       <button md-icon-button aria-label="menu" (click)="sidenav.open()" *ngIf="!sidenav.opened"><md-icon>menu</md-icon></button>
-      <label role="heading" aria-level="1" [ngClass]="(media.isActive('gt-md')) ? 'mat-display-1' : 'mat-headline'" class="title m-n">{{Title}}</label>
+      <label role="heading" aria-level="1" [ngClass]="(media.isActive('gt-md')) ? 'mat-display-1' : 'mat-headline'" class="title m-n">
+        <span i18n="Search|search label for page header@@search-page-title" md-button routerLink="/search" routerLinkActive="active">Search</span>
+      </label>
     </div>
     <div class="toolbar-right">       
       <!-- <button md-icon-button aria-label="search-icon"><md-icon>search</md-icon></button>  -->
@@ -23,7 +25,10 @@
       </div>
     </header>
     <div class="item-container">
-    <a id="search" md-button routerLink="/search" routerLinkActive="active"><md-icon aria-labelledby="search">search</md-icon>Search</a>
+    <a md-button routerLink="/search" routerLinkActive="active">
+      <md-icon aria-labelledby="search">search</md-icon>
+      <span i18n="Search|search label for menu link@@search-page-title">Search</span>
+    </a>
     </div>
   </md-sidenav>
   <!-- outlet -->

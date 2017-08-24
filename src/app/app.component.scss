@@ -51,7 +51,12 @@ md-sidenav-container{
             margin: 20px 0;
             a{
                 width: 100%;
-                padding: 5px;
+                text-align: left;
+                padding: 10px;
+                font-size:20px;
+                md-icon{
+                    margin: 0 5px;
+                }
             }
         }
     }

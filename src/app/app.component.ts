@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { Router, RoutesRecognized } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { OnInit, AfterViewInit, ViewChild, Component, Input, Renderer2 } from '@angular/core';
+import { OnInit, AfterViewInit, ViewChild, Component, Input, Renderer2, ElementRef } from '@angular/core';
 import {MdSnackBar} from '@angular/material';
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
@@ -21,32 +21,35 @@ import {appRoutes} from './app.routes';
   //   ])
   // ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   Search: string;
   sideNavMode: string;
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(private router: Router, public media: ObservableMedia, private renderer: Renderer2, public snackbar: MdSnackBar) {
+  constructor(private router: Router, public media: ObservableMedia, private renderer: Renderer2) {
     this.sideNavMode = 'over';
   }
 
-  ngOnInit() {
+  ngOnInit() {    
+    
+  }
+
+  ngAfterViewInit() {
     if (this.media.isActive('sm')) {
       this.setSidenavMobile();
     }
-
     this.media.asObservable()
-      .filter((change: MediaChange) => change.mqAlias === 'lg' || change.mqAlias === 'xl')
-      .subscribe(() => {
-        this.setSidenavDesktop();
-      });
+    .filter((change: MediaChange) => change.mqAlias === 'lg' || change.mqAlias === 'xl')
+    .subscribe(() => {
+      this.setSidenavDesktop();
+    });
 
-    this.media.asObservable()
-      .filter((change: MediaChange) => change.mqAlias !== 'lg' && change.mqAlias !== 'xl')
-      .subscribe(() => {
-        this.setSidenavMobile();
-      });
+  this.media.asObservable()
+    .filter((change: MediaChange) => change.mqAlias !== 'lg' && change.mqAlias !== 'xl')
+    .subscribe(() => {
+      this.setSidenavMobile();
+    });
   }
 
 

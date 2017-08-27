@@ -7,10 +7,14 @@
       </label>
     </div>
     <div class="toolbar-right">       
-      <!-- <button md-icon-button aria-label="search-icon"><md-icon>search</md-icon></button>  -->
+      <!-- <button md-icon-button aria-label="search-icon" (click)="searchEnabled = !searchEnabled"><md-icon>search</md-icon></button>  -->
     </div>
-    <md-toolbar-row *ngIf="media.isActive('gt-md')">
+    <md-toolbar-row class="secondary-row" *ngIf="media.isActive('gt-md')">
     </md-toolbar-row>
+  <!-- <md-toolbar-row *ngIf="searchEnabled" class="searchbar">
+      <button md-icon-button aria-label="enter"><md-icon>search</md-icon></button>
+      <button md-icon-button aria-label="back"><md-icon>search</md-icon></button>
+  </md-toolbar-row> -->
   </md-toolbar>
   <!-- sidenav -->
   <md-sidenav role="menu" #sidenav [mode]="sideNavMode">

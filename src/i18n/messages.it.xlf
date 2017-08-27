@@ -6,6 +6,18 @@
         <source>Search</source>
         <target>Ricerca</target>
       </trans-unit>
+      <trans-unit id="card-loan-button" datatype="html">
+        <source>LOAN</source>
+        <target>PRESTITO</target>
+      </trans-unit>
+      <trans-unit id="card-author" datatype="html">
+        <source>Author</source>
+        <target>Autore</target>
+      </trans-unit>
+      <trans-unit id="card-editor" datatype="html">
+        <source>Editor</source>
+        <target>Editore</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

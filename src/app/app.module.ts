@@ -44,7 +44,7 @@ import { SearchComponent } from './search/search.component';
     MdButtonModule,
     MdInputModule,
     MdSnackBarModule,
-    MdCardModule
+    MdCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

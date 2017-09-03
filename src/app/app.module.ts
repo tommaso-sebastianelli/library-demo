@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpModule }    from '@angular/http';
 
 // Angular Router
 import { RouterModule, Routes } from '@angular/router';
@@ -20,9 +21,13 @@ import {MdCardModule} from '@angular/material';
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-// App Components
+// Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
+
+// Services
+import{BookService} from './book.service';
+
 
 
 @NgModule({
@@ -45,8 +50,9 @@ import { SearchComponent } from './search/search.component';
     MdInputModule,
     MdSnackBarModule,
     MdCardModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

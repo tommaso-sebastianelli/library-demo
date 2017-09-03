@@ -1,9 +1,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
-import { Router, RoutesRecognized } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { OnInit, AfterViewInit, ViewChild, Component, Input, Renderer2, ElementRef } from '@angular/core';
-import {MdSnackBar} from '@angular/material';
+import { OnInit, ViewChild, Component } from '@angular/core';
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
 import {appRoutes} from './app.routes';
@@ -21,21 +19,17 @@ import {appRoutes} from './app.routes';
   //   ])
   // ]
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   Search: string;
   sideNavMode: string;
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(private router: Router, public media: ObservableMedia, private renderer: Renderer2) {
+  constructor(public media: ObservableMedia) {
     this.sideNavMode = 'over';
   }
 
-  ngOnInit() {    
-    
-  }
-
-  ngAfterViewInit() {
+  ngOnInit() {
     if (this.media.isActive('sm')) {
       this.setSidenavMobile();
     }

@@ -18,6 +18,18 @@
         <source>Editor</source>
         <target>Editore</target>
       </trans-unit>
+      <trans-unit id="search-placeholder-image" datatype="html">
+        <source>a round magnifying glass icon</source>
+        <target>un'icona di una lente di ingrandimento</target>
+      </trans-unit>
+      <trans-unit id="search-placeholder-title" datatype="html">
+        <source>Find by keyword</source>
+        <target>Inserisci una parola chiave</target>
+      </trans-unit>
+      <trans-unit id="search-placeholder-subtitle" datatype="html">
+        <source>Search by name or author, over millions of books</source>
+        <target>Cerca in base a nome o autore, tra milioni di libri</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

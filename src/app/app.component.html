@@ -3,6 +3,7 @@
       <button md-icon-button aria-label="menu" (click)="sidenav.toggle()" [ngClass]="{'selected': sidenav.opened}"><md-icon>menu</md-icon></button>
       <label role="heading" aria-level="1" >
         <span i18n="Search|search label for page header@@search-page-title" md-button routerLink="/search" routerLinkActive="active">Search</span>
+        <span  i18n="Loans|loans label for page header@@loans-page-title" md-button routerLink="/search" routerLinkActive="active">Loans</span>
       </label>
     </div>
     <div class="toolbar-right">       
@@ -24,7 +25,11 @@
     <div class="item-container">
     <a md-button routerLink="/search" routerLinkActive="active">
       <md-icon aria-labelledby="search">search</md-icon>
-      <span i18n="Search|search label for menu link@@search-page-title">Search</span>
+      <span id="search" i18n="Search|search label for menu link@@search-page-title">Search</span>
+    </a>
+    <a md-button routerLink="/loans" routerLinkActive="active">
+      <md-icon aria-labelledby="loans">clock</md-icon>
+      <span id="loans" i18n="Loans|loans label for menu link@@loans-page-title">Loans</span>
     </a>
     </div>
   </md-sidenav>

@@ -3,7 +3,7 @@ export class Book {
     volumeInfo:{
         title: string;
         authors: string[];
-        publicher: string;
+        publisher: string;
         publishedDate: string;
         previewLink: string;
     }

@@ -6,6 +6,10 @@
         <source>Search</source>
         <target>Ricerca</target>
       </trans-unit>
+      <trans-unit id="loans-page-title" datatype="html">
+        <source>Loans</source>
+        <target>Prestiti</target>
+      </trans-unit>
       <trans-unit id="card-loan-button" datatype="html">
         <source>LOAN</source>
         <target>PRESTITO</target>

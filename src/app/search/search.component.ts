@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import{BookService} from '../book.service';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  search(keyword: string, limit: number): object{
+  search(keyword: string, limit: number): object {
     return;
   }
 

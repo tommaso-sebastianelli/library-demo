@@ -1,0 +1,24 @@
+<div class="placeholder">
+  <img i18n-alt="Magnifying|alt description for search placeholder image@@loans-placeholder-image" alt="a round book icon" src="assets/img/search.png">
+  <label i18n="placholder title@@loans-placeholder-title" class="mat-display-1 title">No Loans yet</label>
+  <label i18n="placeholder subtitle@@loans-placeholder-subtitle" class="mat-subheading-2 subtitle">Loan your first book on the search page</label>
+</div>
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center" class="container search">
+  <div fxFlex="0 1 15%" fxHide.sm></div>
+  <md-card fxFlex="2 0 auto">
+      <img aria-labelledby="title" src="http://image.anobii.com/anobi/image_book.php?item_id=011c78a97fe8a5ff94">
+      <div class="content" fxLayout="row" fxLayoutAlign="center center">
+          <div class="info" fxFlex="65%">
+              <md-card-title id="title" class="title">Non è un paese per vecchi</md-card-title>
+              <md-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author"><md-icon aria-label="author">person</md-icon>Cormac Mccarthy</md-card-subtitle>
+              <md-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor"><md-icon aria-label="editor">book</md-icon>Feltrinelli</md-card-subtitle>
+          </div>
+          <div class="loan-data" fxFlex="35%">
+            <md-icon aria-label="calendar">event</md-icon>
+            <!-- assignment-turned-in -->
+            <label>4 Mar</label>
+          </div>
+      </div>
+  </md-card>
+  <div fxFlex="0 1 15%" fxHide.sm></div>
+</div>

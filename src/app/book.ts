@@ -1,14 +1,14 @@
 export class Book {
     id: string;
-    volumeInfo:{
+    volumeInfo: {
         title: string;
         authors: string[];
-        publicher: string;
+        publisher: string;
         publishedDate: string;
         previewLink: string;
-    }
-    
-    constructor(){
-        
+    };
+
+    constructor() {
+
     }
 }

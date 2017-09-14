@@ -6,6 +6,10 @@
         <source>Search</source>
         <target>Ricerca</target>
       </trans-unit>
+      <trans-unit id="loans-page-title" datatype="html">
+        <source>Loans</source>
+        <target>Prestiti</target>
+      </trans-unit>
       <trans-unit id="card-loan-button" datatype="html">
         <source>LOAN</source>
         <target>PRESTITO</target>
@@ -20,7 +24,7 @@
       </trans-unit>
       <trans-unit id="search-placeholder-image" datatype="html">
         <source>a round magnifying glass icon</source>
-        <target>un'icona di una lente di ingrandimento</target>
+        <target>un'icona tonda di una lente di ingrandimento</target>
       </trans-unit>
       <trans-unit id="search-placeholder-title" datatype="html">
         <source>Find by keyword</source>
@@ -29,6 +33,18 @@
       <trans-unit id="search-placeholder-subtitle" datatype="html">
         <source>Search by name or author, over millions of books</source>
         <target>Cerca in base a nome o autore, tra milioni di libri</target>
+      </trans-unit>
+      <trans-unit id="loans-placeholder-image" datatype="html">
+        <source>a round book icon</source>
+        <target>un'icona tonda di un libro</target>
+      </trans-unit>
+      <trans-unit id="loans-placeholder-title" datatype="html">
+        <source>No Loans yet</source>
+        <target>Non hai ancora nessun prestito</target>
+      </trans-unit>
+      <trans-unit id="loans-placeholder-subtitle" datatype="html">
+        <source>Loan your first book on the search page</source>
+        <target>Chiedi il tuo primo prestito tramite la pagina di ricerca</target>
       </trans-unit>
     </body>
   </file>

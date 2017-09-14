@@ -70,3 +70,89 @@ md-sidenav-container{
 .white-text{
     color:white !important;
 }
+
+.placeholder{
+    text-align: center;
+    padding: 10vh;
+    opacity: 0.7;
+    max-width: 270px;
+    margin: auto;
+    .title, .subtitle{
+        color:grey;
+        display: block;
+        font-weight: 300;
+        margin-bottom: 10px;
+    }
+    img{
+        height: 30vw;
+        max-height: 200px;
+        min-height: 150px;
+        margin-bottom: 20px;
+    }
+    .search-area{
+        width:100%;
+    }
+}
+
+.container{
+    position: absolute;
+    width:100%;
+    padding:50px;
+    md-card{
+        position: relative;
+        padding: 0 !important;
+        height: 150px;
+        img{
+            float: left;
+            height: 100%;
+            max-width: 100px;
+            opacity: 0.85;
+        }
+        .content{
+            box-sizing: border-box;
+            padding: 15px;
+            position: relative;
+            float: left;
+            height: 100%;
+            width: -webkit-calc(100% - 100px);
+            width: -moz-calc(100% - 100px);
+            width: -o-calc(100% -100px);
+            width: calc(100% - 100px);
+            .info{
+                display: block;
+                margin-bottom: 4px;
+                .title{
+                    @extend .cut-text;
+                    font-size: 1.2em;
+                }
+                .author{
+                    @extend .cut-text;                    
+                    margin-bottom: 3px;
+                    md-icon{
+                        font-size: 18px;
+                        vertical-align: sub;
+                    }
+                }
+                .editor{
+                    @extend .cut-text;                    
+                    margin: 0;
+                    md-icon{
+                        font-size: 18px;
+                        vertical-align: sub;
+                    }
+                }
+            }
+            .actions{
+                display: block;
+                text-align: right;
+                color: grey;
+            }
+        }
+    }
+}
+
+.cut-text{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

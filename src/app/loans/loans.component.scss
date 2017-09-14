@@ -1,0 +1,20 @@
+@import 'src/custom-theme.scss';
+@import 'src/app/app.component.scss';
+
+md-card{
+    .content{
+        .loan-data{
+            text-align: center;
+            md-icon{
+                font-size: 35px;
+                display: block;
+                margin-bottom: 25px;
+                width: initial;
+            }
+            label{
+                display: block;
+            }
+        }   
+    }
+    
+}

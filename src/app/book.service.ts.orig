@@ -8,7 +8,6 @@ import { Book } from './book';
 @Injectable()
 export class BookService {
 
-<<<<<<< HEAD
   private api_url = 'https://www.googleapis.com/books/v1/volumes';
   
   constructor(private http: Http) { 
@@ -25,19 +24,6 @@ export class BookService {
 
   public get(id: string): Book{
     const url = `${this.api_url}/${id}`;
-=======
-  private api_url = 'https://www.googleapis.com/books/v1/volumes?q={}&maxResults=1';
-
-  constructor() {
-
-  }
-
-  list(keyword: string): Book[] {
-    return;
-  }
-
-  get(): Book {
->>>>>>> f511edeb70074ddd414cae744fb12e8a7a86ec4f
     return;
   }
 

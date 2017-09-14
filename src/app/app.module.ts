@@ -24,12 +24,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
+import { LoansComponent } from './loans/loans.component';
 
 // Services
 import { BookService } from './book.service';
-import { LoansComponent } from './loans/loans.component';
-
-
+import { LoansService } from './loans/loans.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,10 @@ import { LoansComponent } from './loans/loans.component';
     MdCardModule,
     HttpModule
   ],
-  providers: [BookService],
+  providers: [
+    BookService,
+    LoansService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

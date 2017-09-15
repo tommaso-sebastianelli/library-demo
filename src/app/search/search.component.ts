@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-<<<<<<< HEAD
 import{BookService} from '../book.service';
 import {Book} from '../book';
-=======
-import { BookService } from '../book.service';
->>>>>>> f511edeb70074ddd414cae744fb12e8a7a86ec4f
 
 @Component({
   selector: 'app-search',
@@ -38,13 +34,8 @@ export class SearchComponent implements OnInit {
     this.activeView = 1;
   }
 
-<<<<<<< HEAD
   switchSearch(){
     this.activeView = 0;
-=======
-  search(keyword: string, limit: number): object {
-    return;
->>>>>>> f511edeb70074ddd414cae744fb12e8a7a86ec4f
   }
 
 }

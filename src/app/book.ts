@@ -4,7 +4,7 @@ export class Book {
     authors: string[];
     publisher: string;
     publishedDate: string;
-    description: string;
+    description: string; 
     smallThumbnail: string;
     thumbnail: string;
 

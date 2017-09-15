@@ -97,11 +97,12 @@ md-sidenav-container{
 .container{
     position: absolute;
     width:100%;
-    padding:50px;
+    padding:50px 0;
     md-card{
         position: relative;
         padding: 0 !important;
         height: 150px;
+        margin-bottom: 20px;
         img{
             float: left;
             height: 100%;

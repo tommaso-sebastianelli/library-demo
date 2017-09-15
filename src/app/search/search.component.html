@@ -8,7 +8,7 @@
     </md-form-field>
 </div>
 <div *ngIf="activeView == 1" class="results">
-    <div fxLayout="row" fxLayoutGap="20px" class="search-container" fxLayoutAlign="center" fxLayoutWrap>
+    <div fxLayout="row" fxLayoutGap="20px" class="search container" fxLayoutAlign="center" fxLayoutWrap>
         <md-card *ngFor="let book of books" fxFlex="400px">
             <img aria-labelledby="title" src="http://image.anobii.com/anobi/image_book.php?item_id=011c78a97fe8a5ff94">
             <div class="content">
@@ -19,11 +19,12 @@
                 </div>
                 <div class="actions">
                     <button i18n="Loan|label for loan button@@card-loan-button" md-button>LOAN</button>
-                </div>           
+                </div>
             </div>
         </md-card>
     </div>
-    <button (click)="switchSearch()" md-fab class="fab-search">
-        <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
-    </button>
 </div>
+
+<button *ngIf="activeView == 1" (click)="switchSearch()" md-fab class="fab-search">
+    <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
+</button>

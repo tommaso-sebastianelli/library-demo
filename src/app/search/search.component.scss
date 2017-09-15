@@ -1,3 +1,14 @@
+@import '~@angular/material/theming';
 @import 'src/custom-theme.scss';
 @import 'src/app/app.component.scss';
 
+.placeholder{
+    input{
+        $config: mat-typography-config();
+        font-size: mat-font-size($config, headline);
+    }
+}
+
+.fab-search{
+    position: fixed;
+}

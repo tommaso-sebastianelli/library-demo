@@ -1,11 +1,20 @@
 @import '~@angular/material/theming';
 @import 'src/custom-theme.scss';
 @import 'src/app/app.component.scss';
+@import 'src/app/app.book.scss';
 
 .placeholder{
     input{
         $config: mat-typography-config();
         font-size: mat-font-size($config, headline);
+    }
+}
+
+.content{
+    .actions{
+        display: block;
+        text-align: right;
+        color: grey;
     }
 }
 

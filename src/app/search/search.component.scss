@@ -18,6 +18,12 @@
     }
 }
 
-.fab-search{
-    position: fixed;
+.fab-box{
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    padding: 85px 0;
+    button{
+        float: right
+    }
 }

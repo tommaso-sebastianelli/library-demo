@@ -15,7 +15,7 @@ export class Book {
         this.publisher  = obj.volumeInfo.publisher;
         this.publishedDate = obj.volumeInfo.publishedDate;
         this.description = obj.volumeInfo.description;
-        this.smallThumbnail = obj.imageLinks.smallThumbnail;
-        this.thumbnail = obj.imageLinks.thumbnail;
+        this.smallThumbnail = (obj.volumeInfo.imageLinks.smallThumbnail) ? obj.volumeInfo.imageLinks.smallThumbnail : "assets/img/book_placeholder.png";
+        this.thumbnail = (obj.volumeInfo.imageLinks.thumbnail) ? obj.volumeInfo.imageLinks.thumbnail : "assets/img/book_placeholder.png";
     }
 }

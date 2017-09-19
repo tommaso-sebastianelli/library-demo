@@ -34,5 +34,11 @@
     </div>
   </md-sidenav>
   <!-- outlet -->
-  <router-outlet></router-outlet>
+  <div fxFlexLayout="row">
+    <div fxFlex="10" fxFlex.sm="2"></div>
+    <div fxFlex="80" fxFlex.sm="96" class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="10" fxFlex.sm="2"></div>
+  </div>  
 </md-sidenav-container>

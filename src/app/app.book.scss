@@ -1,5 +1,7 @@
 @import 'src/app/app.utils.scss';
 
+$image-width: 100px;
+
 md-card{
     position: relative;
     padding: 0 !important;
@@ -8,7 +10,7 @@ md-card{
     img{
         float: left;
         height: 100%;
-        max-width: 100px;
+        width:  $image-width;
         opacity: 0.85;
     }
     .content{
@@ -17,10 +19,10 @@ md-card{
         position: relative;
         float: left;
         height: 100%;
-        width: -webkit-calc(100% - 100px);
-        width: -moz-calc(100% - 100px);
-        width: -o-calc(100% -100px);
-        width: calc(100% - 100px);
+        width: -webkit-calc(100% - #{$image-width});
+        width: -moz-calc(100% - #{$image-width});
+        width: -o-calc(100% - #{$image-width});
+        width: calc(100% - #{$image-width});
         @extend .cut-text;
         .info{
             display: block;

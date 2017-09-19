@@ -1,16 +1,16 @@
 <div *ngIf="activeView == 0" class="placeholder">
     <img i18n-alt="Magnifying|alt description for search placeholder image@@search-placeholder-image" alt="a round magnifying glass icon" src="assets/img/search.png">
-    <label i18n="placholder title@@search-placeholder-title" class="mat-display-1 title">Find by keyword</label>
+    <label i18n="placeholder title@@search-placeholder-title" class="mat-display-1 title">Find by keyword</label>
     <label i18n="placeholder subtitle@@search-placeholder-subtitle" class="mat-subheading-2 subtitle">Search by name or author, over millions of books</label>
-    <md-form-field role="search" class="search-area">            
+    <md-form-field role="search" class="search-area">
         <input #search mdInput (keydown.enter)="onEnter(search.value)" placeholder="">
         <md-icon aria-label="search icon" mdSuffix>search</md-icon>
     </md-form-field>
 </div>
 <div *ngIf="activeView == 1" class="results">
-    <div fxLayout="row" fxLayoutGap="20px" class="search container" fxLayoutAlign="center" fxLayoutWrap>
-        <md-card *ngFor="let book of books" fxFlex="400px">
-            <img aria-labelledby="title" src="http://image.anobii.com/anobi/image_book.php?item_id=011c78a97fe8a5ff94">
+    <div fxLayout="row" fxLayoutGap.xs="0" fxLayoutGap="20px" class="search container" fxLayoutAlign="center" fxLayoutWrap>
+        <md-card *ngFor="let book of books" fxFlex="400px" fxFlex.xs="100%">
+            <img aria-labelledby="title" src="assets/img/book_placeholder.png">
             <div class="content">
                 <div class="info">
                     <md-card-title id="title" class="title">Non è un paese per vecchi</md-card-title>
@@ -24,7 +24,7 @@
         </md-card>
     </div>
 </div>
-
+<!-- 
 <button *ngIf="activeView == 1" (click)="switchSearch()" md-fab class="fab-search">
     <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
-</button>
+</button> -->

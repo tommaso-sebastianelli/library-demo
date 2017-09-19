@@ -64,11 +64,9 @@ md-sidenav-container{
             }
         }
     }
-}
-
-
-.white-text{
-    color:white !important;
+    .content{
+        padding: 50px 0;
+    }
 }
 
 .placeholder{
@@ -92,10 +90,4 @@ md-sidenav-container{
     .search-area{
         width:100%;
     }
-}
-
-.container{
-    position: absolute;
-    width:100%;
-    padding:50px 0;    
 }

@@ -8,7 +8,7 @@
     </md-form-field>
 </div>
 <div *ngIf="activeView == 1" class="results">
-    <div fxLayout="row" fxLayoutGap.xs="0" fxLayoutGap="20px" class="search container" fxLayoutAlign="center" fxLayoutWrap>
+    <div fxLayout="row" fxLayoutGap.xs="0" fxLayoutGap="20px" fxLayoutAlign="center" fxLayoutWrap>
         <md-card *ngFor="let book of books" fxFlex="400px" fxFlex.xs="100%">
             <img aria-labelledby="title" src="assets/img/book_placeholder.png">
             <div class="content">
@@ -24,7 +24,3 @@
         </md-card>
     </div>
 </div>
-<!-- 
-<button *ngIf="activeView == 1" (click)="switchSearch()" md-fab class="fab-search">
-    <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
-</button> -->

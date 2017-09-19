@@ -67,11 +67,17 @@ md-sidenav-container{
     .content{
         padding: 50px 0;
     }
+    
+    .fab-box{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 50px;
+    }
 }
 
 .placeholder{
     text-align: center;
-    padding: 10vh;
     opacity: 0.7;
     max-width: 270px;
     margin: auto;

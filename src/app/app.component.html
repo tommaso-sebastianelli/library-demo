@@ -35,10 +35,16 @@
   </md-sidenav>
   <!-- outlet -->
   <div fxFlexLayout="row">
-    <div fxFlex="10" fxFlex.sm="2"></div>
-    <div fxFlex="80" fxFlex.sm="96" class="content">
-      <router-outlet></router-outlet>
-    </div>
-    <div fxFlex="10" fxFlex.sm="2"></div>
-  </div>  
+  <div fxFlex="10" fxFlex.sm="2"></div>
+  <div fxFlex="80" fxFlex.sm="96" class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div fxFlex="10" fxFlex.sm="2"></div>
+  </div>
+
+  <div class="fab-box">
+    <button (click)="switchSearch()" md-fab class="fab-search">
+      <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
+    </button>
+  </div>
 </md-sidenav-container>

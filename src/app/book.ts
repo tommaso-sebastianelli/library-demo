@@ -4,18 +4,26 @@ export class Book {
     authors: string[];
     publisher: string;
     publishedDate: string;
-    description: string; 
+    description: string;
     smallThumbnail: string;
     thumbnail: string;
 
     constructor(obj: any) {
-        this.id = obj.id;
-        this.title = obj.volumeInfo.title;
-        this.authors = obj.volumeInfo.authors;
-        this.publisher  = obj.volumeInfo.publisher;
-        this.publishedDate = obj.volumeInfo.publishedDate;
-        this.description = obj.volumeInfo.description;
-        this.smallThumbnail = (obj.volumeInfo.imageLinks.smallThumbnail) ? obj.volumeInfo.imageLinks.smallThumbnail : "assets/img/book_placeholder.png";
-        this.thumbnail = (obj.volumeInfo.imageLinks.thumbnail) ? obj.volumeInfo.imageLinks.thumbnail : "assets/img/book_placeholder.png";
+        try {
+            this.id = obj.id;
+            this.title = obj.volumeInfo.title;
+            this.authors = obj.volumeInfo.authors;
+            this.publisher = obj.volumeInfo.publisher;
+            this.publishedDate = obj.volumeInfo.publishedDate;
+            this.description = obj.volumeInfo.description;
+            this.smallThumbnail = (obj.volumeInfo.imageLinks
+                && obj.volumeInfo.imageLinks.smallThumbnail) 
+                ? obj.volumeInfo.imageLinks.smallThumbnail : 'assets/img/book_placeholder.png';
+            this.thumbnail = (obj.volumeInfo.imageLinks
+                && obj.volumeInfo.imageLinks.thumbnail) 
+                ? obj.volumeInfo.imageLinks.thumbnail : 'assets/img/book_placeholder.png';
+        } catch (e) {
+            this.id = null;
+        }
     }
 }

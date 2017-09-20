@@ -7,7 +7,7 @@
     input{
         $config: mat-typography-config();
         font-size: mat-font-size($config, headline);
-    }
+    }    
 }
 
 .content{
@@ -26,4 +26,8 @@
     button{
         float: right
     }
+}
+
+md-spinner{
+    margin:20px auto;
 }

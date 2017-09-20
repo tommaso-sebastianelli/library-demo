@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import{BookService} from '../book.service';
-import {Book} from '../book';
+import { Observable } from 'rxjs/Observable';
+
+import { BookService } from '../book.service';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-search',
@@ -11,37 +13,37 @@ import {Book} from '../book';
 })
 export class SearchComponent implements OnInit {
   title: string;
-  books: Book[];
+  books: Observable<Book[]>;
   activeView: number;
+  loading: boolean;
 
   constructor(private bookService: BookService) {
-    this.books = [];
   }
 
   ngOnInit() {
-    this.activeView = 0;
+    this.switchSearch();
+    this.loading = false;
   }
 
   onEnter(keyword: string) {
-    return this.bookService.list(keyword)
-      .then(
-      books => this.switchResults(books)
-      );
+    this.loading = true;
+    this.books = this.bookService.list(keyword);
+    this.books.subscribe(
+      x => { },
+      e => { },
+      () => {
+        this.loading = false;
+        this.switchResults();
+      }
+    );
   }
 
-  switchResults(books: object[]):void {
-    this.initBooksArray(books);
+  switchResults(): void {
     this.activeView = 1;
   }
 
   switchSearch(): void {
     this.activeView = 0;
-  }
-
-  initBooksArray(books: object[]){
-    books.forEach(b => {
-      this.books.push(new Book(b));
-    })
   }
 
 }

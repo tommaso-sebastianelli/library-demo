@@ -17,6 +17,7 @@ import { MdButtonModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdSnackBarModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -51,6 +52,7 @@ import { LoansService } from './loans/loans.service';
     MdInputModule,
     MdSnackBarModule,
     MdCardModule,
+    MdProgressSpinnerModule,
     HttpModule
   ],
   providers: [

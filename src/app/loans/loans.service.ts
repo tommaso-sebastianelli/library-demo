@@ -12,10 +12,12 @@ export class LoansService {
   constructor() { }
 
   list(): Observable<Loan[]> {
-    return Observable.from(new Array(MockLoans));
+    let mock = new Array(MockLoans);
+    let localStorage = new Array();
+    return Observable.from(mock.concat(localStorage));
   }
 
   add(): void {
-    
+        
   }
 }

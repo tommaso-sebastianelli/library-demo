@@ -4,7 +4,7 @@
     <label i18n="placeholder title@@search-placeholder-title" class="mat-display-1 title">Find by keyword</label>
     <label i18n="placeholder subtitle@@search-placeholder-subtitle" class="mat-subheading-2 subtitle">Search by name or author, over millions of books</label>
     <md-form-field *ngIf="!loading" role="search" class="search-area">
-        <input #search mdInput (keydown.enter)="onEnter(search.value)" placeholder="">
+        <input role="search" #search mdInput (keydown.enter)="onEnter(search.value)" placeholder="">
         <md-icon aria-label="search icon" mdSuffix>search</md-icon>        
     </md-form-field>
     <md-spinner *ngIf="loading" color="accent"></md-spinner>
@@ -22,7 +22,7 @@
                         <md-icon aria-label="editor">book</md-icon>{{book.publisher}}</md-card-subtitle>
                 </div>
                 <div class="actions">
-                    <button i18n="Loan|label for loan button@@card-loan-button" md-button>LOAN</button>
+                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@card-loan-button" md-button>LOAN</button>
                 </div>
             </div>
         </md-card>
@@ -30,6 +30,6 @@
 </div>
 <div *ngIf="activeView === 1" class="fab-box">
     <button (click)="switchSearch()" md-fab class="fab-search">
-        <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
+        <md-icon aria-label="search" class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
     </button>
 </div>

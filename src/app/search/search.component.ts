@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MdDialog} from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
+
+import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 
 import { BookService } from '../book.service';
 import { Book } from '../book';
@@ -8,8 +11,7 @@ import { Book } from '../book';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
   title: string;
@@ -17,7 +19,7 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService, public loanDialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -44,6 +46,13 @@ export class SearchComponent implements OnInit {
 
   switchSearch(): void {
     this.activeView = 0;
+  }
+
+  openLoanDialog(_book:Book):void{
+    this.loanDialog.open(LoanDialogComponent, {
+      width: '250px',
+      data: { book: _book}
+    });
   }
 
 }

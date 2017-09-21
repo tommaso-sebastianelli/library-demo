@@ -17,10 +17,10 @@ export class Book {
             this.publishedDate = obj.volumeInfo.publishedDate;
             this.description = obj.volumeInfo.description;
             this.smallThumbnail = (obj.volumeInfo.imageLinks
-                && obj.volumeInfo.imageLinks.smallThumbnail) 
+                && obj.volumeInfo.imageLinks.smallThumbnail)
                 ? obj.volumeInfo.imageLinks.smallThumbnail : 'assets/img/book_placeholder.png';
             this.thumbnail = (obj.volumeInfo.imageLinks
-                && obj.volumeInfo.imageLinks.thumbnail) 
+                && obj.volumeInfo.imageLinks.thumbnail)
                 ? obj.volumeInfo.imageLinks.thumbnail : 'assets/img/book_placeholder.png';
         } catch (e) {
             this.id = null;

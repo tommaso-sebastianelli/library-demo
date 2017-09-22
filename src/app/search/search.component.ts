@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit {
 
   openLoanDialog(_book:Book):void{
     this.loanDialog.open(LoanDialogComponent, {
-      width: '250px',
+      width: '500px',
       data: { book: _book}
     });
   }

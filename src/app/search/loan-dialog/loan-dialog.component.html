@@ -1,6 +1,16 @@
-<md-slider
-max="4"
-min="1"
-step="1"
-thumbLabel="true">
-</md-slider>
+<header>
+    <div class="title mat-headline">Select loan duration</div>
+    <div class="subtitle mat-subheading-2">Loan expire time depends on the confirmation time by the library</div>
+</header>
+<div class="loan-time">
+    <div class="hint mat-body-1">Duration:</div>
+    <md-slider #slider max="4" min="1" step="1" thumbLabel="false"></md-slider>
+    <md-chip-list>
+        <md-chip class="mat-body-2">{{slider.displayValue}} Weeks</md-chip>
+    </md-chip-list>
+</div>
+<!-- <label class="mat-subheading-1">until: <span>dd/mm/yyyy</span></label> -->
+<footer>
+    <button i18n="Loan|label for loan button@@card-loan-button" md-button>LOAN</button>
+    <button i18n="" md-button>CANCEL</button>
+</footer>

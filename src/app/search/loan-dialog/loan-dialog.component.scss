@@ -1,0 +1,17 @@
+header{
+    margin-bottom: 35px;
+    .subtitle{
+        color: grey;
+    }
+}
+
+.loan-time{
+    margin-bottom: 35px;
+    md-slider, md-chip-list{
+        display: inline-block;
+    }
+}
+
+footer{
+    text-align: right;
+}

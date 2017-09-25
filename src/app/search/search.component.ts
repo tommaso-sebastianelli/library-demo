@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialog} from '@angular/material';
+import { MdDialog } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -48,10 +48,10 @@ export class SearchComponent implements OnInit {
     this.activeView = 0;
   }
 
-  openLoanDialog(_book:Book):void{
+  openLoanDialog(_book: Book): void {
     this.loanDialog.open(LoanDialogComponent, {
       width: '500px',
-      data: { book: _book}
+      data: { book: _book }
     });
   }
 

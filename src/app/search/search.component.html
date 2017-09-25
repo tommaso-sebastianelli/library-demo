@@ -15,14 +15,14 @@
             <img aria-labelledby="title" src={{book.thumbnail}}>
             <div class="content">
                 <div class="info">
-                    <md-card-title id="title" class="title">{{book.title}}</md-card-title>
+                    <md-card-title id="title" class="title" title="{{book.title}}">{{book.title}}</md-card-title>
                     <md-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
-                        <md-icon aria-label="author">person</md-icon><span *ngFor="let author of book.authors">{{author}} </span></md-card-subtitle>
+                        <md-icon aria-label="author">person</md-icon><span *ngFor="let author of book.authors; let i = index">{{(i > 0) ? '- ' : ''}}{{author}} </span></md-card-subtitle>
                     <md-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
                         <md-icon aria-label="editor">book</md-icon>{{book.publisher}}</md-card-subtitle>
                 </div>
                 <div class="actions">
-                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@card-loan-button" md-button>LOAN</button>
+                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
                 </div>
             </div>
         </md-card>
@@ -30,6 +30,6 @@
 </div>
 <div *ngIf="activeView === 1" class="fab-box">
     <button (click)="switchSearch()" md-fab class="fab-search">
-        <md-icon aria-label="search" class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
+        <md-icon class="md-24" aria-label="icon-button with a magnifying lens">search</md-icon>
     </button>
 </div>

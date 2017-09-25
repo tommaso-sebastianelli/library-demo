@@ -10,8 +10,8 @@ import { MockLoans } from './mock-loans';
 @Injectable()
 export class LoansService {
 
-  constructor() { 
-    
+  constructor() {
+
   }
 
   list(): Observable<Loan[]> {
@@ -21,11 +21,11 @@ export class LoansService {
   }
 
   add(book: Book): void {
-    
+
   }
 
-  getLocalLoans():Loan[]{
-    let _local = JSON.parse(localStorage.getItem("library-demo"));
+  getLocalLoans(): Loan[] {
+    const _local = JSON.parse(localStorage.getItem('library-demo'));
     return _local.guest.loans;
   }
 }

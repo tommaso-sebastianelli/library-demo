@@ -10,7 +10,7 @@
         <source>Loans</source>
         <target>Prestiti</target>
       </trans-unit>
-      <trans-unit id="card-loan-button" datatype="html">
+      <trans-unit id="loan-button" datatype="html">
         <source>LOAN</source>
         <target>PRESTITO</target>
       </trans-unit>
@@ -45,6 +45,26 @@
       <trans-unit id="loans-placeholder-subtitle" datatype="html">
         <source>Loan your first book on the search page</source>
         <target>Chiedi il tuo primo prestito tramite la pagina di ricerca</target>
+      </trans-unit>
+      <trans-unit id="generic-cancel" datatype="html">
+        <source>CANCEL</source>
+        <target>ANNULLA</target>
+      </trans-unit>
+      <trans-unit id="duration" datatype="html">
+        <source>Duration</source>
+        <target>Durata</target>
+      </trans-unit>
+      <trans-unit id="loan-dialog-title" datatype="html">
+        <source>Set loan duration</source>
+        <target>Scegli la durata del prestito</target>
+      </trans-unit>
+      <trans-unit id="loan-dialog-subtitle" datatype="html">
+        <source>Loan expire time is calculated after the library confirms your loan</source>
+        <target>La data di fine prestito verrà calcolata non appena la biblioteca confermerà la richiesta</target>
+      </trans-unit>
+      <trans-unit id="week-plural" datatype="html">
+        <source>{slider.displayValue, plural, =1 {Week} other {Weeks}}</source>
+        <target>{slider.displayValue, plural, =1 {Settimana} other {Settimane}}</target>
       </trans-unit>
     </body>
   </file>

@@ -32,8 +32,9 @@ import { LoansComponent } from './loans/loans.component';
 import { LoanDialogComponent } from './search/loan-dialog/loan-dialog.component';
 
 // Services
-import { BookService } from './book.service';
+import { SearchService } from './search/search.service';
 import { LoansService } from './loans/loans.service';
+import { HttpThrottlerService } from './shared/http-throttler/http-throttler.service';
 
 @NgModule({
   declarations: [
@@ -64,8 +65,9 @@ import { LoansService } from './loans/loans.service';
     HttpModule
   ],
   providers: [
-    BookService,
-    LoansService
+    SearchService,
+    LoansService,
+    HttpThrottlerService
   ],
   entryComponents: [LoanDialogComponent],
   bootstrap: [AppComponent]

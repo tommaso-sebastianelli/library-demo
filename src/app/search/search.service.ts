@@ -6,10 +6,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/toPromise';
 
-import { Book } from './book';
+import { Book } from '../shared/book/book';
 
 @Injectable()
-export class BookService {
+export class SearchService {
 
   private api_url = 'https://www.googleapis.com/books/v1/volumes';
 

@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 
-import { BookService } from '../book.service';
-import { Book } from '../book';
+import { SearchService } from '../search/search.service';
+import { Book } from '../shared/book/book';
 
 @Component({
   selector: 'app-search',
@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private bookService: BookService, public loanDialog: MdDialog) {
+  constructor(private searchService: SearchService, public loanDialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
 
   onEnter(keyword: string) {
     this.loading = true;
-    this.books = this.bookService.list(keyword);
+    this.books = this.searchService.list(keyword);
     this.books.subscribe(
       x => { },
       e => { },

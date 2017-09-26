@@ -2,27 +2,30 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/delay';
 
-import { Book } from '../book';
+import { Book } from '../shared/book/book';
 import { Loan } from './loan';
 import { MockLoans } from './mock-loans';
 
+import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
+
 @Injectable()
 export class LoansService {
-private readonly throttle = 1500;
-  constructor() {    
-    sessionStorage.setItem('library-demo', JSON.stringify({guest: {loans: []}}));
+  constructor(public http_throttler: HttpThrottlerService) {
+    sessionStorage.setItem('library-demo', JSON.stringify({ guest: { loans: [] } }));
   }
 
   list(): Observable<Loan[]> {
     const mock = new Array(MockLoans);
     const localStorage = this.getLocalLoans();
-    return Observable.from(mock.concat(localStorage)).delay(this.throttle);
+    return this.http_throttler.throttle(Observable.from(mock.concat(localStorage)));
   }
 
-  add(book: Book): Observable<Loan> {
-    return ;
+  request(book: Book, days: number): Observable<Loan> {
+    return Observable.create(function(observer){
+      observer.next(new Loan(book, days));
+      setTimeout(observer.complete(),2000);      
+    });
   }
 
   getLocalLoans(): Loan[] {

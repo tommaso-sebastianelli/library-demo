@@ -1,4 +1,4 @@
-import { Book } from '../book';
+import { Book } from '../shared/book/book';
 import { Loan } from './loan';
 import { LoanStatus } from './loan-status.enum';
 
@@ -20,7 +20,8 @@ export const MockLoans: Loan[] = [
             thumbnail: 'http://books.google.com/books/content?id=DiK_UShlVCEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
         },
         from: '2017-04-14T01:00:00.000Z',
-        to: '2017-05-03T01:00:00.000Z',
+        // to: '2017-05-03T01:00:00.000Z',
+        days:28,
         status: LoanStatus.Opened
     },
     {
@@ -46,7 +47,8 @@ export const MockLoans: Loan[] = [
             thumbnail: 'http://books.google.com/books/content?id=I8xhVj9qTUQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
         },
         from: '2017-05-10T01:00:00.000Z',
-        to: '2017-06-07T01:00:00.000Z',
+        // to: '2017-06-07T01:00:00.000Z',
+        days:28,
         status: LoanStatus.Opened
     },
     {
@@ -81,7 +83,8 @@ export const MockLoans: Loan[] = [
             thumbnail: 'http://books.google.com/books/content?id=HAZwDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
         },
         from: '2017-09-01T01:00:00.000Z',
-        to: '2017-09-28T01:00:00.000Z',
+        // to: '2017-09-28T01:00:00.000Z',
+        days: 28,
         status: LoanStatus.Opened
     }
 ];

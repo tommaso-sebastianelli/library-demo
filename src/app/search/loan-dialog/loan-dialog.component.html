@@ -8,9 +8,10 @@
     <md-chip-list>
         <md-chip class="mat-body-2"><span class="week-num">{{slider.displayValue}}</span><span i18n="week@@week-plural">{slider.displayValue, plural, =1 {Week} other {Weeks}}</span></md-chip>
     </md-chip-list>
+    <md-spinner></md-spinner>
 </div>
 <!-- <label class="mat-subheading-1">until: <span>dd/mm/yyyy</span></label> -->
 <footer>
-    <button i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
-    <button i18n="Cancel@@generic-cancel" md-button>CANCEL</button>
+    <button (click)="loanBook(slider.displayValue)" i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
+    <button mat-dialog-close i18n="Cancel@@generic-cancel" md-button>CANCEL</button>
 </footer>

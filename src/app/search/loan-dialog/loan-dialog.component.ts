@@ -14,4 +14,7 @@ export class LoanDialogComponent implements OnInit {
   ngOnInit() {
   }
 
+  loanBook(weeks: number){
+    console.log("requested a " + weeks + "weeks loan.");
+  }
 }

@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   constructor(public media: ObservableMedia) {
     this.sideNavMode = 'over';
-    sessionStorage.setItem('library-demo', JSON.stringify({guest: {loans: []}}));
   }
 
   ngOnInit() {

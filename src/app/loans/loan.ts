@@ -7,7 +7,7 @@ export class Loan {
     to: string;
     status: LoanStatus;
 
-    constructor(book: Book, days: number) {
+    constructor(book: Book, start: Date, time: number) {
         this.from = undefined;
         this.book = book;
         this.to = undefined;

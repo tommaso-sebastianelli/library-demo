@@ -3,13 +3,14 @@ import { LoanStatus } from './loan-status.enum';
 
 export class Loan {
     book: Book;
-    from?: string;
+    from?: Date;
     days: number;
     status: LoanStatus;
 
     constructor(book: Book, days: number) {
+        this.from = new Date();
         this.book = book;
         this.days = days;
-        this.status = LoanStatus.Pending;
+        this.status = LoanStatus.Opened;
     }
 }

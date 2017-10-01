@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import * as moment from 'moment';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -21,15 +22,19 @@ public loading: boolean;
   ngOnInit() {
   }
 
-  loanBook(book:Book, weeks: number){
+  loanBook(book: Book, weeks: number) {
     this.loading = true;
-    return this.loansService.request(book, weeks*7).subscribe(
-      x => { },
-      e => { },
+    return this.loansService.request(this.getModel(book, weeks)).subscribe(
+      n => {
+        console.log(n)},
+      e => {},
       () => {
-        this.loading = false;
         this.dialogRef.close();
         //show snackbar message: request successful
       });
+  }
+
+  getModel(book:Book, weeks:number):Loan{
+    return new Loan(null, moment().startOf('d').toISOString(), moment().add((weeks*7)+1, 'd').startOf('d').toISOString(), book);
   }
 }

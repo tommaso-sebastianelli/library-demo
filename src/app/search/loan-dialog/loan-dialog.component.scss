@@ -19,3 +19,10 @@ header{
 footer{
     text-align: right;
 }
+
+.loading-container{
+    width:100%;
+    md-spinner{
+        margin:auto;
+    }
+}

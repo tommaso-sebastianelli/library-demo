@@ -4,6 +4,7 @@ import { LoanStatus } from './loan-status.enum';
 
 export const MockLoans: Loan[] = [
     {
+        id: '00000000000000001',
         book: {
             id: 'DiK_UShlVCEC',
             title: 'JavaScript For Dummies',
@@ -24,6 +25,7 @@ export const MockLoans: Loan[] = [
         status: LoanStatus.Opened
     },
     {
+        id: '00000000000000002',
         book: {
             id: 'I8xhVj9qTUQC',
             title: 'HTML, XHTML and CSS For Dummies',
@@ -50,6 +52,7 @@ export const MockLoans: Loan[] = [
         status: LoanStatus.Opened
     },
     {
+        id: '000000000000000003',
         book: {
             id: 'HAZwDQAAQBAJ',
             title: 'Learning Angular 2',

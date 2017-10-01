@@ -2,16 +2,20 @@
     <div class="title mat-headline" i18n="Loan dialog title@@loan-dialog-title">Set loan duration</div>
     <div class="subtitle mat-subheading-2" i18n="Loan dialog subtitle@@loan-dialog-subtitle">Loan expire time will be calculated after the library confirms your loan</div>
 </header>
-<div class="loan-time">
-    <div class="hint mat-body-1" i18n="Duration@@duration">Duration<span>:</span></div>
-    <md-slider role="slider" #slider max="4" min="1" step="1" thumbLabel="false"></md-slider>
-    <md-chip-list>
-        <md-chip class="mat-body-2"><span class="week-num">{{slider.displayValue}}</span><span i18n="week@@week-plural">{slider.displayValue, plural, =1 {Week} other {Weeks}}</span></md-chip>
-    </md-chip-list>
-    <md-spinner *ngIf="loading"></md-spinner>
+<div *ngIf="!loading">
+    <div class="loan-time">
+        <div class="hint mat-body-1" i18n="Duration@@duration">Duration<span>:</span></div>
+        <md-slider role="slider" #slider max="4" min="1" step="1" thumbLabel="false"></md-slider>
+        <md-chip-list>
+            <md-chip class="mat-body-2"><span class="week-num">{{slider.displayValue}}</span><span i18n="week@@week-plural">{slider.displayValue, plural, =1 {Week} other {Weeks}}</span></md-chip>
+        </md-chip-list>
+    </div>
+    <!-- <label class="mat-subheading-1">until: <span>dd/mm/yyyy</span></label> -->
+    <footer>
+        <button (click)="loanBook(slider.displayValue)" i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
+        <button mat-dialog-close i18n="Cancel@@generic-cancel" md-button>CANCEL</button>
+    </footer>
 </div>
-<!-- <label class="mat-subheading-1">until: <span>dd/mm/yyyy</span></label> -->
-<footer>
-    <button (click)="loanBook(slider.displayValue)" i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
-    <button mat-dialog-close i18n="Cancel@@generic-cancel" md-button>CANCEL</button>
-</footer>
+<div *ngIf="loading" class="loading-container">
+    <md-spinner></md-spinner>
+</div>

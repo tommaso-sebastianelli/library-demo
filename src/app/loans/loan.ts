@@ -1,20 +1,18 @@
 import { Book } from '../shared/book/book';
 import { LoanStatus } from './loan-status.enum';
 
-import * as moment from 'moment';
-
 export class Loan {
-    id: number;
+    id: string;
     book: Book;
     from: string;
     to: string;
     status: LoanStatus;
 
-    constructor(book: Book, days: number, start?: any) {
-        this.id = 0;
-        this.from = (start) ? moment(start).startOf('d').toISOString() : moment().startOf('d').toISOString();
+    constructor(id:string, from:string, to:string, book: Book, status?: LoanStatus ) {
+        this.id = id;
+        this.from = from;
         this.book = book;
-        this.to = moment(this.from).add(days, 'd').startOf('d').toISOString();
+        this.to = to;
         this.status = LoanStatus.Opened;
     }
 }

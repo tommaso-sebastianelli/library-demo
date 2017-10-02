@@ -1,5 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import {MdSnackBar} from '@angular/material';
 import * as moment from 'moment';
 
 import { Observable } from 'rxjs/Observable';
@@ -15,26 +16,38 @@ import {LoansService} from '../../loans/loans.service';
 })
 export class LoanDialogComponent implements OnInit {
 public loading: boolean;
+@ViewChild('snackmessage') snackbar_message;
+
   constructor(public dialogRef: MdDialogRef<LoanDialogComponent>,
-    @Inject(MD_DIALOG_DATA) public data: any,
-  public loansService:LoansService) { }
+              @Inject(MD_DIALOG_DATA) public data: any,
+              public loansService:LoansService,
+              public snackBar:MdSnackBar
+) { }
 
   ngOnInit() {
   }
 
   loanBook(book: Book, weeks: number) {
     this.loading = true;
-    return this.loansService.request(this.getModel(book, weeks)).subscribe(
+
+    let model = new Loan(
+      null,
+      moment().startOf('d').toISOString(), 
+      moment().add((weeks*7)+1, 'd').startOf('d').toISOString(), 
+      book, 
+      null);
+
+    return this.loansService.request(model).subscribe(
       n => {
         console.log(n)},
       e => {},
       () => {
         this.dialogRef.close();
-        //show snackbar message: request successful
+        this.openSnackBar();
       });
   }
 
-  getModel(book:Book, weeks:number):Loan{
-    return new Loan(null, moment().startOf('d').toISOString(), moment().add((weeks*7)+1, 'd').startOf('d').toISOString(), book);
+  openSnackBar(): void{
+    this.snackBar.open(this.snackbar_message.nativeElement.value);
   }
 }

@@ -49,7 +49,9 @@ export class LoansService {
   fakeSave(_loan: Loan): Loan {//this needs to be replaced with a real API call someday
     _loan.id = Math.random().toString().substring(2);
     _loan.status = LoanStatus.Opened;
-    this.setLocalLoans(this.getLocalLoans().push(_loan));
+    let _local_loans = this.getLocalLoans();
+    _local_loans.push(_loan);
+    this.setLocalLoans(_local_loans);
     return _loan;
   }
 }

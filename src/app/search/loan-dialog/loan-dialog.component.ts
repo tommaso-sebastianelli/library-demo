@@ -34,7 +34,7 @@ public loading: boolean;
       null,
       moment().startOf('d').toISOString(), 
       moment().add((weeks*7)+1, 'd').startOf('d').toISOString(), 
-      book, 
+      book,
       null);
 
     return this.loansService.request(model).subscribe(

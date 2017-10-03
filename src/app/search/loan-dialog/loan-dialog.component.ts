@@ -17,7 +17,7 @@ import {LoansService} from '../../loans/loans.service';
 export class LoanDialogComponent implements OnInit {
 public loading: boolean;
 @ViewChild('snackmessage') snackbar_message;
-
+@ViewChild('snackaction') snackbar_action;
   constructor(public dialogRef: MdDialogRef<LoanDialogComponent>,
               @Inject(MD_DIALOG_DATA) public data: any,
               public loansService:LoansService,
@@ -48,6 +48,6 @@ public loading: boolean;
   }
 
   openSnackBar(): void{
-    this.snackBar.open(this.snackbar_message.nativeElement.value);
+    this.snackBar.open(this.snackbar_message.nativeElement.innerText, this.snackbar_action.nativeElement.innerText, {duration: 2000});
   }
 }

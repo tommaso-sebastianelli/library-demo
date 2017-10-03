@@ -66,6 +66,14 @@
         <source>{slider.displayValue, plural, =1 {Week} other {Weeks}}</source>
         <target>{slider.displayValue, plural, =1 {Settimana} other {Settimane}}</target>
       </trans-unit>
+      <trans-unit id="loan-success-message" datatype="html">
+        <source>Book loaned!</source>
+        <target>Libro prenotato!</target>
+      </trans-unit>
+      <trans-unit id="undo" datatype="html">
+        <source>UNDO</source>
+        <target>ANNULLA</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

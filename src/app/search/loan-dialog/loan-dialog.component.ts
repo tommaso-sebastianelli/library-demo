@@ -16,6 +16,8 @@ import {LoansService} from '../../loans/loans.service';
 })
 export class LoanDialogComponent implements OnInit {
 public loading: boolean;
+public loanRequest: any;
+private readonly requestTimeout:number = 4000;
 @ViewChild('snackmessage') snackbar_message;
 @ViewChild('snackaction') snackbar_action;
   constructor(public dialogRef: MdDialogRef<LoanDialogComponent>,
@@ -27,8 +29,9 @@ public loading: boolean;
   ngOnInit() {
   }
 
-  loanBook(book: Book, weeks: number) {
-    this.loading = true;
+  loan(book: Book, weeks: number) {
+    // this.loading = true;
+    this.openSnackBar();
 
     let model = new Loan(
       null,
@@ -37,17 +40,22 @@ public loading: boolean;
       book,
       null);
 
-    return this.loansService.request(model).subscribe(
+    this.loanRequest = this.loansService.request(model)
+    .delay(this.requestTimeout)
+    .subscribe(
       n => {
         console.log(n)},
       e => {},
       () => {
         this.dialogRef.close();
-        this.openSnackBar();
       });
   }
 
+  undo():void{
+      this.loanRequest.dispose();
+  }
+
   openSnackBar(): void{
-    this.snackBar.open(this.snackbar_message.nativeElement.innerText, this.snackbar_action.nativeElement.innerText, {duration: 2000});
+    this.snackBar.open(this.snackbar_message.nativeElement.innerText, this.snackbar_action.nativeElement.innerText, {duration: this.requestTimeout});
   }
 }

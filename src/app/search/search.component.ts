@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialog } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 
@@ -30,14 +31,18 @@ export class SearchComponent implements OnInit {
   onEnter(keyword: string) {
     this.loading = true;
     this.books = this.searchService.list(keyword);
-    this.books.subscribe(
+    this.books
+    .map(b => {
+      
+    })
+    .subscribe(
       x => { },
       e => { },
       () => {
         this.loading = false;
         this.switchResults();
       }
-    );
+    )
   }
 
   switchResults(): void {

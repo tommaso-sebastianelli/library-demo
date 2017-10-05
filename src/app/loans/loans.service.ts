@@ -22,14 +22,25 @@ export class LoansService {
   list(): Observable<Loan[]> {
     const mock = new Array(MockLoans);
     const _session = this.getLocalLoans();
-    return this.http_throttler.throttle(Observable.from(mock.concat(_session)));
+    // return this.http_throttler.throttle(Observable.from(mock.concat(_session)));
+    return this.http_throttler.throttle(Observable.create(function (observer) {
+      mock.concat(_session).forEach(loan => {        
+      observer.next(loan);
+      });
+      observer.complete();
+    }));
+  }
+
+  get(id: string): Observable<Loan> {
+    this.list().subscribe((l) => {
+    });
   }
 
   request(loan: Loan): Observable<Loan> {
-    let savedLoan = this.fakeSave(loan); 
+    let savedLoan = this.fakeSave(loan);
     return Observable.create(function (observer) {
       setTimeout(() => {
-        observer.next(savedLoan); 
+        observer.next(savedLoan);
         observer.complete();
       }
         , 2000);
@@ -39,12 +50,12 @@ export class LoansService {
   getLocalLoans(): Loan[] {
     let _session = JSON.parse(sessionStorage.getItem(this.app_local_storage_name));
     return _session.guest.loans.map(o => {
-      return new Loan(o.id,o.from, o.to, o.book, o.status);
+      return new Loan(o.id, o.from, o.to, o.book, o.status);
     });
   }
 
-  setLocalLoans(loans: Loan[]): void{
-    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({guest:{loans:loans}}));
+  setLocalLoans(loans: Loan[]): void {
+    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: loans } }));
   }
 
   fakeSave(_loan: Loan): Loan {//this needs to be replaced with a real API call someday

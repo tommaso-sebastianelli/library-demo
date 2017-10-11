@@ -20,7 +20,7 @@ import { MdCardModule } from '@angular/material';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { MdDialogModule } from '@angular/material';
 import { MdSliderModule } from '@angular/material';
-import {MdChipsModule} from '@angular/material';
+import { MdChipsModule } from '@angular/material';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';

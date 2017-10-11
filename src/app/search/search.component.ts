@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     this.books = this.searchService.list(keyword);
     this.books
     .map(b => {
-      
+      //check if already loaned and extend with loaned flag.
     })
     .subscribe(
       x => { },

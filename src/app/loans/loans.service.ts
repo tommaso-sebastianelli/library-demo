@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/concatMap';
 
 import { Book } from '../shared/book/book';
 import { Loan } from './loan';
@@ -20,20 +22,12 @@ export class LoansService {
   }
 
   list(): Observable<Loan[]> {
-    const mock = new Array(MockLoans);
-    const _session = this.getLocalLoans();
-    // return this.http_throttler.throttle(Observable.from(mock.concat(_session)));
-    return this.http_throttler.throttle(Observable.create(function (observer) {
-      mock.concat(_session).forEach(loan => {        
-      observer.next(loan);
-      });
-      observer.complete();
-    }));
+    let loans = new Array().concat(new Array(MockLoans), this.getLocalLoans());
+    return this.http_throttler.throttle(Observable.from(loans));
   }
 
   get(id: string): Observable<Loan> {
-    this.list().subscribe((l) => {
-    });
+    return this.list().concatMap(loans => loans.filter(loan => loan.id === id)).first();
   }
 
   request(loan: Loan): Observable<Loan> {

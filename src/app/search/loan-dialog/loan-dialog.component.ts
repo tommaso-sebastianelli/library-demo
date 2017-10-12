@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MdDialogRef, /*MD_DIALOG_DATA*/ } from '@angular/material';
 import { MdSnackBar, MdSnackBarRef } from '@angular/material';
 import * as moment from 'moment';
 
@@ -22,7 +22,7 @@ export class LoanDialogComponent implements OnInit {
   @ViewChild('snackmessage') snackbar_message;
   @ViewChild('snackaction') snackbar_action;
   constructor(public dialogRef: MdDialogRef<LoanDialogComponent>,
-    @Inject(MD_DIALOG_DATA) public data: any,
+    // @Inject(MD_DIALOG_DATA) public data: any,
     public loansService: LoansService,
     public snackBar: MdSnackBar
   ) { }

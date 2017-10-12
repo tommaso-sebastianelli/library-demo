@@ -2,7 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoanDialogComponent } from './loan-dialog.component';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+
+import { HttpThrottlerService } from '../../shared/http-throttler/http-throttler.service';
+import { LoansService } from '../../loans/loans.service';
+
+
+class MdDialogRefMock {
+}
 
 describe('LoanDialogComponent', () => {
   let component: LoanDialogComponent;
@@ -14,7 +21,11 @@ describe('LoanDialogComponent', () => {
         MaterialModule
       ],
       declarations: [ LoanDialogComponent ],
-      providers:[]
+      providers: [
+        { provide: MdDialogRef, useClass: MdDialogRefMock },
+        LoansService,
+        HttpThrottlerService
+      ]
     })
     .compileComponents();
   }));

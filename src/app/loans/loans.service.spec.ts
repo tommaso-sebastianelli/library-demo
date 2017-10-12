@@ -17,4 +17,8 @@ describe('LoansService', () => {
   it('should be created', inject([LoansService], (service: LoansService) => {
     expect(service).toBeTruthy();
   }));
+  
+  it('should return a Loan Promise', inject([LoansService], (service: LoansService) => {
+    expect (service.get('00000000000000001').subscribe()).toBeTruthy();
+  }));
 });

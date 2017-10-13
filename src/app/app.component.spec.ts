@@ -6,7 +6,7 @@ import { LoansComponent } from './loans/loans.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { MaterialModule } from '@angular/material';
+import { MatToolbar, MatIcon, MatButton, MatSidenavContainer, MatSidenav } from '@angular/material';
 import { appRoutes } from './app.routes';
 import { ObservableMedia } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,8 +18,13 @@ describe('AppComponent', () => {
         appRoutes,
         { enableTracing: false } // <-- debugging purposes only
       ),
-        MaterialModule,
-        NoopAnimationsModule],
+        MatToolbar, 
+        MatIcon, 
+        MatButton, 
+        MatSidenavContainer, 
+        MatSidenav,
+        NoopAnimationsModule
+      ],
       declarations: [
         AppComponent,
         SearchComponent,

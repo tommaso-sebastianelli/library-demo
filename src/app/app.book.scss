@@ -3,7 +3,7 @@
 
 $image-width: 100px;
 
-md-card{
+mat-card{
     position: relative;
     padding: 0 !important;
     height: 150px;
@@ -35,7 +35,7 @@ md-card{
             .author{
                 @extend .cut-text;                    
                 margin-bottom: 3px;
-                md-icon{
+                mat-icon{
                     font-size: 18px;
                     vertical-align: sub;
                 }
@@ -43,7 +43,7 @@ md-card{
             .editor{
                 @extend .cut-text;                    
                 margin: 0;
-                md-icon{
+                mat-icon{
                     font-size: 18px;
                     vertical-align: sub;
                 }

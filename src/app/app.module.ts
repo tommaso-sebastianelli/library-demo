@@ -10,17 +10,17 @@ import { appRoutes } from './app.routes';
 
 // Angular Material
 import 'hammerjs'; // md-slide-toggle, md-slider, mdTooltip
-import { MdToolbarModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
-import { MdIconModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
-import { MdSnackBarModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdProgressSpinnerModule } from '@angular/material';
-import { MdDialogModule } from '@angular/material';
-import { MdSliderModule } from '@angular/material';
-import { MdChipsModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material';
+import { MatSidenavModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material';
+import { MatCardModule } from '@angular/material';
+import { MatProgressSpinnerModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { MatSliderModule } from '@angular/material';
+import { MatChipsModule } from '@angular/material';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -51,17 +51,17 @@ import { HttpThrottlerService } from './shared/http-throttler/http-throttler.ser
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MdToolbarModule,
-    MdSidenavModule,
-    MdIconModule,
-    MdButtonModule,
-    MdInputModule,
-    MdSnackBarModule,
-    MdCardModule,
-    MdProgressSpinnerModule,
-    MdDialogModule,
-    MdSliderModule,
-    MdChipsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatSliderModule,
+    MatChipsModule,
     HttpModule
   ],
   providers: [

@@ -2,11 +2,11 @@
 @import 'src/app/app.component.scss';
 @import 'src/app/app.book.scss';
 
-md-card{
+mat-card{
     .content{
         .loan-data{
             text-align: center;
-            md-icon{
+            mat-icon{
                 font-size: 35px;
                 display: block;
                 margin-bottom: 25px;

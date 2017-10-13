@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MdDialogRef, /*MD_DIALOG_DATA*/ } from '@angular/material';
-import { MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { MatDialogRef, /*Mat_DIALOG_DATA*/ } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 import * as moment from 'moment';
 
 import { Observable } from 'rxjs/Observable';
@@ -21,10 +21,10 @@ export class LoanDialogComponent implements OnInit {
   private readonly requestTimeout: number = 4000;
   @ViewChild('snackmessage') snackbar_message;
   @ViewChild('snackaction') snackbar_action;
-  constructor(public dialogRef: MdDialogRef<LoanDialogComponent>,
-    // @Inject(MD_DIALOG_DATA) public data: any,
+  constructor(public dialogRef: MatDialogRef<LoanDialogComponent>,
+    // @Inject(Mat_DIALOG_DATA) public data: any,
     public loansService: LoansService,
-    public snackBar: MdSnackBar
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {

@@ -5,19 +5,19 @@
 <div *ngIf="!loading">
     <div class="loan-time">
         <div class="hint mat-body-1" i18n="Duration@@duration">Duration<span>:</span></div>
-        <md-slider role="slider" #slider max="4" min="1" step="1" thumbLabel="false"></md-slider>
-        <md-chip-list>
-            <md-chip class="mat-body-2"><span class="week-num">{{slider.displayValue}}</span><span i18n="week@@week-plural">{slider.displayValue, plural, =1 {Week} other {Weeks}}</span></md-chip>
-        </md-chip-list>
+        <mat-slider role="slider" #slider max="4" min="1" step="1" thumbLabel="false"></mat-slider>
+        <mat-chip-list>
+            <mat-chip class="mat-body-2"><span class="week-num">{{slider.displayValue}}</span><span i18n="week@@week-plural">{slider.displayValue, plural, =1 {Week} other {Weeks}}</span></mat-chip>
+        </mat-chip-list>
     </div>
     <!-- <label class="mat-subheading-1">until: <span>dd/mm/yyyy</span></label> -->
     <footer>
-        <button (click)="loan(slider.displayValue)" i18n="Loan|label for loan button@@loan-button" md-button>LOAN</button>
-        <button mat-dialog-close i18n="Cancel@@generic-cancel" md-button>CANCEL</button>
+        <button (click)="loan(slider.displayValue)" i18n="Loan|label for loan button@@loan-button" mat-button>LOAN</button>
+        <button mat-dialog-close i18n="Cancel@@generic-cancel" mat-button>CANCEL</button>
     </footer>
 </div>
 <div *ngIf="loading" class="loading-container">
-    <md-spinner></md-spinner>
+    <mat-spinner></mat-spinner>
 </div>
 <span #snackmessage aria-hidden="true" hidden class="snackbar-message" i18n="loan success@loan-success-message">Book loaned!</span>
 <span #snackaction aria-hidden="true" hidden class="snackbar-action" i18n="undo@undo">UNDO</span>

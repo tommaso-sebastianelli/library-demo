@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private searchService: SearchService, public loanDialog: MdDialog) {
+  constructor(private searchService: SearchService, public loanDialog: MatDialog) {
   }
 
   ngOnInit() {

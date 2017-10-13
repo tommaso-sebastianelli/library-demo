@@ -7,7 +7,7 @@ header{
 
 .loan-time{
     margin-bottom: 35px;
-    md-slider, md-chip-list{
+    mat-slider, mat-chip-list{
         display: inline-block;
         margin-right: 10px;
     }
@@ -22,7 +22,7 @@ footer{
 
 .loading-container{
     width:100%;
-    md-spinner{
+    mat-spinner{
         margin:auto;
     }
 }

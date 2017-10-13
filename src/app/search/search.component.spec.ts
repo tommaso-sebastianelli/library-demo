@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchComponent } from './search.component';
-import { MatInput, MatIcon, MatSpinner, MatCard } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
 
 import { SearchService } from '../search/search.service';
 import { HttpModule } from '@angular/http';
@@ -15,11 +15,10 @@ describe('SearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MatInput, 
-        MatIcon, 
-        MatSpinner, 
-        MatCard, 
-        HttpModule, 
+        MatDialogModule,
+        MatInputModule,
+        MatIconModule,
+        HttpModule,
         NoopAnimationsModule
       ],
       declarations: [ SearchComponent ],

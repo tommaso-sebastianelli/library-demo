@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoansComponent } from './loans.component';
 
-import { MaterialModule } from '@angular/material';
+import { MatCardModule, MatIconModule } from '@angular/material';
 
 import { LoansService } from './loans.service';
 import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
@@ -14,7 +14,8 @@ describe('LoansComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:[
-        MaterialModule
+         MatCardModule,
+         MatIconModule
       ],
       declarations: [ LoansComponent ],
       providers: [

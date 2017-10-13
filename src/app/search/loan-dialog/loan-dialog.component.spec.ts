@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoanDialogComponent } from './loan-dialog.component';
 
-import { MatSlider, MatChip, MatDialog, MatSpinner, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSliderModule, MatDialogModule, MatDialogRef, MatChipsModule, MatSnackBarModule, MAT_DIALOG_DATA } from '@angular/material';
 
 import { HttpThrottlerService } from '../../shared/http-throttler/http-throttler.service';
 import { LoansService } from '../../loans/loans.service';
@@ -18,10 +18,10 @@ describe('LoanDialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports:[
-        MatSlider, 
-        MatChip, 
-        MatDialog, 
-        MatSpinner
+        MatSliderModule,
+        MatDialogModule,
+        MatChipsModule,
+        MatSnackBarModule
       ],
       declarations: [ LoanDialogComponent ],
       providers: [

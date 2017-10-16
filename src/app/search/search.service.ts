@@ -29,9 +29,12 @@ export class SearchService {
     //   .catch(this.handleError);
   }
 
-  public get(id: string): Book {
+  public get(id: string): Observable<Book> {
     const url = `${this.api_url}/${id}`;
-    return;
+    return this.http.get(url)
+    .map(response => response.json().items
+      .map(item => new Book(item))
+      .filter(item => item.id !== null));
   }
 
   private handleError(error: any): Promise<any> {

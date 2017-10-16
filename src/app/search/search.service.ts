@@ -11,7 +11,7 @@ import { Book } from '../shared/book/book';
 @Injectable()
 export class SearchService {
 
-  private api_url = 'https://www.googleapis.com/books/v1/volumes';
+  private readonly api_url = 'https://www.googleapis.com/books/v1/volumes';
 
   constructor(private http: Http) {
 

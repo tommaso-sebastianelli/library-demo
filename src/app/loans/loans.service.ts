@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/concatMap';
@@ -31,14 +32,8 @@ export class LoansService {
   }
 
   request(loan: Loan): Observable<Loan> {
-    let savedLoan = this.fakeSave(loan);
-    return Observable.create(function (observer) {
-      setTimeout(() => {
-        observer.next(savedLoan);
-        observer.complete();
-      }
-        , 2000);
-    });
+    let savedLoan: Loan = this.fakeSave(loan);
+    return this.http_throttler.throttle(Observable.of(savedLoan));
   }
 
   private getLocalLoans(): Loan[] {

@@ -23,7 +23,7 @@ export class LoansService {
   }
 
   list(): Observable<Loan[]> {
-    let loans: Loan[] = new Array().concat(new Array(MockLoans), this.getLocalLoans());
+    const loans: Loan[] = new Array().concat(new Array(MockLoans), this.getLocalLoans());
     return this.http_throttler.throttle(Observable.from(loans));
   }
 
@@ -32,12 +32,12 @@ export class LoansService {
   }
 
   request(loan: Loan): Observable<Loan> {
-    let savedLoan: Loan = this.fakeSave(loan);
+    const savedLoan: Loan = this.fakeSave(loan);
     return this.http_throttler.throttle(Observable.of(savedLoan));
   }
 
   private getLocalLoans(): Loan[] {
-    let _session = JSON.parse(sessionStorage.getItem(this.app_local_storage_name));
+    const _session = JSON.parse(sessionStorage.getItem(this.app_local_storage_name));
     return _session.guest.loans.map(o => {
       return new Loan(o.id, o.from, o.to, o.book, o.status);
     });
@@ -50,7 +50,7 @@ export class LoansService {
   private fakeSave(_loan: Loan): Loan {//this needs to be replaced with a real API call someday
     _loan.id = Math.random().toString().substring(2);
     _loan.status = LoanStatus.Opened;
-    let _local_loans = this.getLocalLoans();
+    const _local_loans = this.getLocalLoans();
     _local_loans.push(_loan);
     this.setLocalLoans(_local_loans);
     return _loan;

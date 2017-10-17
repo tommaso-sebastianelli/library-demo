@@ -40,16 +40,16 @@ describe('LoansService', () => {
   }));
 
   it('should return a specific Loan', inject([LoansService], (service: LoansService) => {
-    service.get('00000000000000001').subscribe(result => { expect(result.book.title).toMatch('JavaScript For Dummies') });
+    service.get('00000000000000001').subscribe(result => { expect(result.book.title).toMatch('JavaScript For Dummies'); });
   }));
 
   it('should save and return a Loan', inject([LoansService], (service: LoansService) => {
     service.request(new Loan(null, '2017-10-09T22:10:00', '2017-10-19T22:10:00', new Book({ id: 'aE672fk', title: 'dummy_book' }))).subscribe(result => {
-      expect(result).toEqual(jasmine.any(Loan));    
+      expect(result).toEqual(jasmine.any(Loan));
     });
   }));
 
   beforeEach(() => {
-    
+
   });
 });

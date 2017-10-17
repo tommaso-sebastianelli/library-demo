@@ -13,7 +13,7 @@ describe('LoansComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
          MatCardModule,
          MatIconModule
       ],

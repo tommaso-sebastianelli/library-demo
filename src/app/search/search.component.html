@@ -5,7 +5,7 @@
     <label i18n="placeholder subtitle@@search-placeholder-subtitle" class="mat-subheading-2 subtitle">Search by name or author, over millions of books</label>
     <mat-form-field *ngIf="!loading" role="search" class="search-area">
         <input role="search" #search matInput (keydown.enter)="onEnter(search.value)" placeholder="">
-        <mat-icon aria-label="search icon" matSuffix>search</mat-icon>        
+        <mat-icon aria-label="search icon" matSuffix>search</mat-icon>
     </mat-form-field>
     <mat-spinner *ngIf="loading" color="accent"></mat-spinner>
 </div>
@@ -17,7 +17,9 @@
                 <div class="info">
                     <mat-card-title id="title" class="title" title="{{book.title}}">{{book.title}}</mat-card-title>
                     <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
-                        <mat-icon aria-label="author">person</mat-icon><span *ngFor="let author of book.authors; let i = index">{{(i > 0) ? '- ' : ''}}{{author}} </span></mat-card-subtitle>
+                        <mat-icon aria-label="author">person</mat-icon>
+                        <span *ngFor="let author of book.authors; let i = index">{{(i > 0) ? '- ' : ''}}{{author}} </span>
+                    </mat-card-subtitle>
                     <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
                         <mat-icon aria-label="editor">book</mat-icon>{{book.publisher}}</mat-card-subtitle>
                 </div>

@@ -8,7 +8,7 @@ export class Loan {
     to: string;
     status: LoanStatus;
 
-    constructor(id:string, from:string, to:string, book: Book, status?: LoanStatus ) {
+    constructor(id: string, from: string, to: string, book: Book, status?: LoanStatus ) {
         this.id = id;
         this.from = from;
         this.book = book;

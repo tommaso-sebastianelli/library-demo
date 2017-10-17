@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { By } from "@angular/platform-browser";
 
 import { LoanDialogComponent } from './loan-dialog.component';
 
@@ -17,20 +19,20 @@ describe('LoanDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[
+      imports: [
         MatSliderModule,
         MatDialogModule,
         MatChipsModule,
         MatSnackBarModule
       ],
-      declarations: [ LoanDialogComponent ],
+      declarations: [LoanDialogComponent],
       providers: [
         { provide: MatDialogRef, useClass: MatDialogRefMock },
         LoansService,
         HttpThrottlerService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

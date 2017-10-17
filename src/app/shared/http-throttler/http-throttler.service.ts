@@ -7,11 +7,11 @@ import 'rxjs/add/operator/delay';
 export class HttpThrottlerService {
   constructor() { }
 
-  throttle(request:Observable<any>){
+  throttle(request: Observable<any>){
     return request.delay(this.getRandomDelay());
   }
 
-  private getRandomDelay():number{
-    return Math.floor(Math.random()*5);
+  private getRandomDelay(): number{
+    return Math.floor(Math.random() * 5);
   }
 }

@@ -31,11 +31,11 @@ export class LoanDialogComponent implements OnInit {
   }
 
   loan(book: Book, weeks: number) {
-    // this.loading = true;    
-    this.dialogRef.close()
+    // this.loading = true;
+    this.dialogRef.close();
     this.openSnackBar();
     this.timeout = setTimeout(() => {
-      let model = new Loan(
+      const model = new Loan(
         null,
         moment().startOf('d').toISOString(),
         moment().add((weeks * 7) + 1, 'd').startOf('d').toISOString(),
@@ -45,7 +45,7 @@ export class LoanDialogComponent implements OnInit {
       this.loansService.request(model)
         .subscribe(
         n => {
-          console.log(n)
+          console.log(n);
         },
         e => { },
         () => { });

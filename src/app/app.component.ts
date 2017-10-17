@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component } from '@angular/core';
-import { MatDrawer } from '@angular/material'
+import { MatDrawer } from '@angular/material';
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
 import {appRoutes} from './app.routes';

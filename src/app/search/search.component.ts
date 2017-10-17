@@ -7,7 +7,10 @@ import 'rxjs/add/operator/map';
 import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 
 import { SearchService } from '../search/search.service';
+import { LoansService } from '../loans/loans.service';
 import { Book } from '../shared/book/book';
+import { Loan } from '../loans/loan';
+
 
 @Component({
   selector: 'app-search',
@@ -20,7 +23,7 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private searchService: SearchService, public loanDialog: MatDialog) {
+  constructor(private searchService: SearchService, private loansService: LoansService, public loanDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -32,9 +35,6 @@ export class SearchComponent implements OnInit {
     this.loading = true;
     this.books = this.searchService.list(keyword);
     this.books
-      .map(b => {
-        //check if already loaned and extend with loaned flag.
-      })
       .subscribe(
       x => { },
       e => { },

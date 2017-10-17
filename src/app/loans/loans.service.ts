@@ -36,6 +36,10 @@ export class LoansService {
     return this.http_throttler.throttle(Observable.of(savedLoan));
   }
 
+  getByBook(id: string): Observable<Loan> {
+    return this.list().concatMap(x => x).filter(x => x.book.id === id);
+  }
+
   private getLocalLoans(): Loan[] {
     const _session = JSON.parse(sessionStorage.getItem(this.app_local_storage_name));
     return _session.guest.loans.map(o => {

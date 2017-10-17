@@ -6,6 +6,9 @@ import { SearchComponent } from './search.component';
 import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
 
 import { SearchService } from '../search/search.service';
+import { LoansService } from '../loans/loans.service';
+import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
+
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,7 +32,11 @@ describe('SearchComponent', () => {
         NoopAnimationsModule
       ],
       declarations: [SearchComponent],
-      providers: [SearchService]
+      providers: [
+        SearchService,
+        LoansService,
+        HttpThrottlerService
+      ]
     })
       .compileComponents();
   }));
@@ -77,4 +84,8 @@ describe('SearchComponent', () => {
   //   component.openLoanDialog(new Book({ id: '0', title: 'dummy' }));
   //   fixture.detectChanges();
   // })
+
+  it('should return an already existing loan', () => {
+    expect(component.isAlreadyLoaned('DiK_UShlVCEC')).toBeTruthy();
+  });
 });

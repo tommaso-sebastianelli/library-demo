@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/concatMap';
 
 import { Book } from '../shared/book/book';
 import { Loan } from './loan';
@@ -27,7 +27,7 @@ export class LoansService {
   }
 
   get(id: string): Observable<Loan> {
-    return this.list().map(loans => loans.filter(loan => loan.id === id)[0]).first();
+    return this.list().concatMap(loans => loans.filter(loan => loan.id === id)).first();
   }
 
   request(loan: Loan): Observable<Loan> {
@@ -37,7 +37,7 @@ export class LoansService {
   session(): Loan[] {
     return this._getLoans();
   }
-  //this methods fake a server side logic of retrieving loan data and will be replaced  with a real API call someday
+  //these methods fake a server side logic of retrieving loan data and will be replaced  with a real API call someday
 
   private _addLoan(_loan: Loan): Loan {
     _loan.id = Math.random().toString().substring(2);

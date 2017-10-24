@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { By } from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 import { LoanDialogComponent } from './loan-dialog.component';
 

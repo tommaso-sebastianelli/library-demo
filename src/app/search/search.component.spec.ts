@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
-import { By } from "@angular/platform-browser";
+import { By } from '@angular/platform-browser';
 
 import { SearchComponent } from './search.component';
 import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';

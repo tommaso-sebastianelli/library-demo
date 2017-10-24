@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/map';
 
 import { Book } from '../shared/book/book';
 import { Loan } from './loan';
@@ -19,44 +19,43 @@ export class LoansService {
   private readonly app_local_storage_name = 'library-demo';
 
   constructor(public http_throttler: HttpThrottlerService) {
-    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: [] } }));
+    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: MockLoans } }));
   }
 
   list(): Observable<Loan[]> {
-    const loans: Loan[] = new Array().concat(new Array(MockLoans), this.getLocalLoans());
-    return this.http_throttler.throttle(Observable.from(loans));
+    return this.http_throttler.throttle(Observable.from(this._getLoans()));
   }
 
   get(id: string): Observable<Loan> {
-    return this.list().concatMap(loans => loans.filter(loan => loan.id === id)).first();
+    return this.list().map(loans => loans.filter(loan => loan.id === id)[0]).first();
   }
 
   request(loan: Loan): Observable<Loan> {
-    const savedLoan: Loan = this.fakeSave(loan);
-    return this.http_throttler.throttle(Observable.of(savedLoan));
+    return this.http_throttler.throttle(Observable.of(this._addLoan(loan)));
   }
 
-  getByBook(id: string): Observable<Loan> {
-    return this.list().concatMap(x => x).filter(x => x.book.id === id);
+  session(): Loan[] {
+    return this._getLoans();
   }
+  //this methods fake a server side logic of retrieving loan data and will be replaced  with a real API call someday
 
-  private getLocalLoans(): Loan[] {
-    const _session = JSON.parse(sessionStorage.getItem(this.app_local_storage_name));
-    return _session.guest.loans.map(o => {
-      return new Loan(o.id, o.from, o.to, o.book, o.status);
-    });
-  }
-
-  private setLocalLoans(loans: Loan[]): void {
-    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: loans } }));
-  }
-
-  private fakeSave(_loan: Loan): Loan {//this needs to be replaced with a real API call someday
+  private _addLoan(_loan: Loan): Loan {
     _loan.id = Math.random().toString().substring(2);
-    _loan.status = LoanStatus.Opened;
-    const _local_loans = this.getLocalLoans();
-    _local_loans.push(_loan);
-    this.setLocalLoans(_local_loans);
+    _loan.status = LoanStatus.Pending;
+    let _loans = this._getLoans();
+    _loans.push(_loan);
+    this._setLoans(_loans);
     return _loan;
+  }
+
+  private _getLoans(): Loan[] {
+    return JSON.parse(sessionStorage.getItem(this.app_local_storage_name)).guest.loans
+      .map(o => {
+        return new Loan(o.id, o.from, o.to, o.book, o.status);
+      });
+  }
+
+  private _setLoans(loans: Loan[]): void {
+    sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: loans } }));
   }
 }

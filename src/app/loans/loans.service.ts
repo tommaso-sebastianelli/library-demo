@@ -5,6 +5,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/switchMap';
 
 import { Book } from '../shared/book/book';
 import { Loan } from './loan';
@@ -22,12 +23,14 @@ export class LoansService {
     sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: MockLoans } }));
   }
 
-  list(): Observable<Loan[]> {
-    return this.http_throttler.throttle(Observable.from(this._getLoans()));
+  list(): Observable<any> {
+    return this.http_throttler.throttle(Observable.from(this._getLoans()).concatMap(l => {
+      return Observable.of(l);
+    }));
   }
 
   get(id: string): Observable<Loan> {
-    return this.list().concatMap(loans => loans.filter(loan => loan.id === id)).first();
+    return this.list().filter(loan => loan.id === id);
   }
 
   request(loan: Loan): Observable<Loan> {

@@ -5,7 +5,7 @@ import { LoansComponent } from './loans.component';
 import { MatCardModule, MatIconModule } from '@angular/material';
 
 import { LoansService } from './loans.service';
-import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
+import { HttpMockService } from '../shared/http-mock/http-mock.service';
 
 describe('LoansComponent', () => {
   let component: LoansComponent;
@@ -14,16 +14,16 @@ describe('LoansComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-         MatCardModule,
-         MatIconModule
+        MatCardModule,
+        MatIconModule
       ],
-      declarations: [ LoansComponent ],
+      declarations: [LoansComponent],
       providers: [
         LoansService,
-        HttpThrottlerService
+        HttpMockService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

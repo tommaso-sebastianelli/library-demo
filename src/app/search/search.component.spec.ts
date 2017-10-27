@@ -7,7 +7,7 @@ import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@
 
 import { SearchService } from '../search/search.service';
 import { LoansService } from '../loans/loans.service';
-import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
+import { HttpMockService } from '../shared/http-mock/http-mock.service';
 
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,7 @@ describe('SearchComponent', () => {
       providers: [
         SearchService,
         LoansService,
-        HttpThrottlerService
+        HttpMockService
       ]
     })
       .compileComponents();

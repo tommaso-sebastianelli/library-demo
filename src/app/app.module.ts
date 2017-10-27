@@ -34,7 +34,7 @@ import { LoanDialogComponent } from './search/loan-dialog/loan-dialog.component'
 // Services
 import { SearchService } from './search/search.service';
 import { LoansService } from './loans/loans.service';
-import { HttpThrottlerService } from './shared/http-throttler/http-throttler.service';
+import { HttpMockService } from './shared/http-mock/http-mock.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,7 @@ import { HttpThrottlerService } from './shared/http-throttler/http-throttler.ser
   providers: [
     SearchService,
     LoansService,
-    HttpThrottlerService
+    HttpMockService
   ],
   entryComponents: [LoanDialogComponent],
   bootstrap: [AppComponent]

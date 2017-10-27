@@ -14,18 +14,18 @@ import { LoanStatus } from './loan-status.enum';
 
 import { MockLoans } from './mock-loans';
 
-import { HttpThrottlerService } from '../shared/http-throttler/http-throttler.service';
+import { HttpMockService } from '../shared/http-mock/http-mock.service';
 
 @Injectable()
 export class LoansService {
   private readonly app_local_storage_name = 'library-demo';
 
-  constructor(public http_throttler: HttpThrottlerService) {
+  constructor(public http_mock: HttpMockService) {
     sessionStorage.setItem(this.app_local_storage_name, JSON.stringify({ guest: { loans: MockLoans } }));
   }
 
   list(): Observable<Loan> {
-    return this.http_throttler.throttle(Observable.from(this._getLoans()).toArray());
+    return this.http_mock.throttle(Observable.from(this._getLoans()));
   }
 
   get(id: string): Observable<Loan> {
@@ -33,7 +33,7 @@ export class LoansService {
   }
 
   request(loan: Loan): Observable<Loan> {
-    return this.http_throttler.throttle(Observable.of(this._addLoan(loan)));
+    return this.http_mock.throttle(Observable.of(this._addLoan(loan)));
   }
 
   session(): Loan[] {

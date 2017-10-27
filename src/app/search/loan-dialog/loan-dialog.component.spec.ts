@@ -6,7 +6,7 @@ import { LoanDialogComponent } from './loan-dialog.component';
 
 import { MatSliderModule, MatDialogModule, MatDialogRef, MatChipsModule, MatSnackBarModule, MAT_DIALOG_DATA } from '@angular/material';
 
-import { HttpThrottlerService } from '../../shared/http-throttler/http-throttler.service';
+import { HttpMockService } from '../../shared/http-mock/http-mock.service';
 import { LoansService } from '../../loans/loans.service';
 
 
@@ -29,7 +29,7 @@ describe('LoanDialogComponent', () => {
       providers: [
         { provide: MatDialogRef, useClass: MatDialogRefMock },
         LoansService,
-        HttpThrottlerService
+        HttpMockService
       ]
     })
       .compileComponents();

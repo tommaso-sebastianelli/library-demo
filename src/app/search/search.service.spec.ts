@@ -18,7 +18,10 @@ describe('SearchService', () => {
   }));
 
   it('should return a list of books', inject([SearchService], (service: SearchService) => {
-    service.list('aaa').subscribe(result => { expect(result).toEqual(jasmine.any(Array)); });
+    service.list('aaa').subscribe(result => {
+      console.log(result);
+      expect(result).toEqual(jasmine.any(Array));
+    });
   }));
 
   it('should return one book', inject([SearchService], (service: SearchService) => {
@@ -26,6 +29,6 @@ describe('SearchService', () => {
   }));
 
   it('should return an error', inject([SearchService], (service: SearchService) => {
-    expect(service.get('not_n_id')).toThrowError;
+    expect(service.get('not_an_id')).toThrowError;
   }));
 });

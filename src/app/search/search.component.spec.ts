@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { Observable } from 'rxjs/Observable';
 
 import { SearchComponent } from './search.component';
 import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
@@ -85,7 +86,11 @@ describe('SearchComponent', () => {
   //   fixture.detectChanges();
   // })
 
-  // it('should return an already existing loan', () => {
-  //   expect(component.canLoan('DiK_UShlVCEC')).toBeFalsy();
-  // });
+  it('should return false (cannot loan)', () => {
+    expect(component.canLoan('DiK_UShlVCEC')).toBeFalsy();
+  });
+
+  it('should return true (can loan)', () => {
+    expect(component.canLoan('dummy_id')).toBeTruthy();
+  });
 });

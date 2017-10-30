@@ -60,8 +60,8 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  // canLoan(_book_id: string): boolean {
-  //   return this.loansService.session().filter(l => l.book.id === _book_id).length == 0;
-  // }
+  canLoan(_book_id: string): boolean {
+    return this.loansService.session().filter(l => l.book.id === _book_id).length == 0;
+  }
 
 }

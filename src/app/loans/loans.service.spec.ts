@@ -26,7 +26,7 @@ describe('LoansService', () => {
       noop: function () {
         return;
       }
-    }
+    };
     spyOn(spy, 'noop');
   });
 

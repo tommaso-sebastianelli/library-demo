@@ -44,7 +44,7 @@ export class LoansService {
   private _addLoan(_loan: Loan): Loan {
     _loan.id = Math.random().toString().substring(2);
     _loan.status = LoanStatus.Pending;
-    let _loans = this._getLoans();
+    const _loans = this._getLoans();
     _loans.push(_loan);
     this._setLoans(_loans);
     return _loan;

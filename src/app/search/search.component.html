@@ -24,7 +24,7 @@
                         <mat-icon aria-label="editor">book</mat-icon>{{book.publisher}}</mat-card-subtitle>
                 </div>
                 <div class="actions">
-                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@loan-button" mat-button>LOAN</button>
+                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@loan-button" mat-button *ngIf="canLoan(book.id)">LOAN</button>
                 </div>
             </div>
         </mat-card>

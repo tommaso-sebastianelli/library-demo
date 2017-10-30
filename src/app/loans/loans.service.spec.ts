@@ -70,7 +70,7 @@ describe('LoansService', () => {
     );
   }));
 
-  it('should save and return a Loan', inject([LoansService], (service: LoansService) => {
+  it('should save and return all the loans updated', inject([LoansService], (service: LoansService) => {
     service.request(new Loan(null, '2017-10-09T22:10:00', '2017-10-19T22:10:00', new Book({ id: 'aE672fk', title: 'dummy_book' }))).subscribe(result => {
       expect(result).toEqual(jasmine.any(Loan));
     });

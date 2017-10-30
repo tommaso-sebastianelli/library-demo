@@ -32,8 +32,8 @@ export class LoansService {
     return Observable.from(this._getLoans()).filter(loan => loan.id === id).first();
   }
 
-  request(loan: Loan): Observable<Loan> {
-    return this.http_mock.throttle(Observable.of(this._addLoan(loan)));
+  request(loan: Loan): Observable<Loan[]> {
+    return this.http_mock.throttle(Observable.from(this._addLoan(loan)));
   }
 
   session(): Loan[] {
@@ -41,13 +41,13 @@ export class LoansService {
   }
   //these methods fake a server side logic of retrieving loan data and will be replaced  with a real API call someday
 
-  private _addLoan(_loan: Loan): Loan {
+  private _addLoan(_loan: Loan): Loan[] {
     _loan.id = Math.random().toString().substring(2);
     _loan.status = LoanStatus.Pending;
     const _loans = this._getLoans();
     _loans.push(_loan);
     this._setLoans(_loans);
-    return _loan;
+    return this._getLoans();
   }
 
   private _getLoans(): Loan[] {

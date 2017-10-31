@@ -4,7 +4,7 @@
   <label i18n="placeholder subtitle@@loans-placeholder-subtitle" class="mat-subheading-2 subtitle">Loan your first book on the search page</label>
 </div> -->
 <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center" fxLayoutWrap>
-  <mat-card *ngFor="let loan of loans | async" fxFlexFill fxLayoutAlign="center center">
+  <mat-card *ngFor="let loan of loans | async" fxFlex="60%" fxFlex.sm="100%" fxLayoutAlign="center center">
     <img aria-labelledby="title" src="{{loan.book.thumbnail}}">
     <div class="content" fxLayout="row" fxLayoutAlign="center stretch">
       <div class="info" fxFlex="65%">
@@ -17,7 +17,7 @@
       <div class="loan-data" fxFlex="35%">
         <mat-icon aria-label="calendar">event</mat-icon>
         <!-- assignment-turned-in -->
-        <label>4 Mar</label>
+        <label>{{loan.to | date: 'MMM d'}}</label>
       </div>
     </div>
   </mat-card>

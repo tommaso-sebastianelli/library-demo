@@ -12,10 +12,10 @@ import { LoansService } from './loans.service';
   styleUrls: ['./loans.component.scss']
 })
 export class LoansComponent implements OnInit {
-  loans: Loan[];
+  loans: Observable<Loan[]>;
   constructor(private loansService: LoansService) { }
 
   ngOnInit() {
-
+    this.loans = this.loansService.list().toArray();
   }
 }

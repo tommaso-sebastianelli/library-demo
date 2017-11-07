@@ -13,7 +13,15 @@ mat-toolbar{
                 background: lightgray;
             }
         }
-        label{vertical-align: middle;}
+        label{
+            vertical-align: middle;
+        span{
+            display: none;
+            &.active{
+                display: initial;
+            }
+        }
+        }
     }
     .toolbar-right{
         margin-left:auto;

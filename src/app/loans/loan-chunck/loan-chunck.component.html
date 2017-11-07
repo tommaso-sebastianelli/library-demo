@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutGap="20px 0" fxLayoutAlign="center" fxLayoutWrap>
+  <mat-card *ngFor="let loan of loans | async" fxFlex="700px" fxFlex.sm="100%" fxFlex.xs="100%" fxLayoutAlign="center center">
+    <img aria-labelledby="title" src="{{loan.book.thumbnail}}">
+    <div class="content" fxLayout="row" fxLayoutAlign="end stretch">
+      <div class="info" fxFlex="1 1 auto" fxHide.xs="0" fxLayout="column" fxLayoutAlign="center start" >
+        <mat-card-title id="title" class="title">{{loan.book.title}}</mat-card-title>
+        <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
+          <mat-icon aria-label="author">person</mat-icon><span *ngFor="let author of loan.book.authors; let i = index">{{(i > 0) ? '- ' : ''}}{{author}} </span></mat-card-subtitle>
+        <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
+          <mat-icon aria-label="editor">book</mat-icon>{{loan.book.publisher}}</mat-card-subtitle>
+      </div>
+      <div class="loan-data" fxFlex="0 0 180px" fxFlex.xs="auto">
+        <mat-icon aria-label="calendar">event</mat-icon>
+        <!-- assignment-turned-in -->
+        <label>{{loan.to | date: 'MMM d'}}</label>
+      </div>
+    </div>
+  </mat-card>
+</div>

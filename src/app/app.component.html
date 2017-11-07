@@ -26,11 +26,11 @@
       </div>
     </header>
     <div class="item-container">
-      <a mat-button routerLink="/search" routerLinkActive="active">
+      <a mat-button routerLink="/search" routerLinkActive="active" (click)="sidenav.toggle()">
         <mat-icon aria-labelledby="search">search</mat-icon>
         <span id="search" i18n="Search|search label for menu link@@search-page-title">Search</span>
       </a>
-      <a mat-button routerLink="/loans" routerLinkActive="active">
+      <a mat-button routerLink="/loans" routerLinkActive="active" (click)="sidenav.toggle()">
         <mat-icon aria-labelledby="loans">event</mat-icon>
         <span id="loans" i18n="Loans|loans label for menu link@@loans-page-title">Loans</span>
       </a>

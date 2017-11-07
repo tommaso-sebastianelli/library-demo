@@ -17,9 +17,9 @@ describe('HttpMockService', () => {
   }));
 
   it('should return an Observable delayed between 0 and 5 secs', inject([HttpMockService], (service: HttpMockService) => {
-    let startTime = moment();
+    const startTime = moment();
     let endTime = null;
-    let obs = Observable.from("hello");
+    const obs = Observable.from('hello');
     service.throttle(obs).subscribe(n => { }, e => { }, () => {
       endTime = moment();
     });

@@ -35,13 +35,15 @@ import { LoanDialogComponent } from './search/loan-dialog/loan-dialog.component'
 import { SearchService } from './search/search.service';
 import { LoansService } from './loans/loans.service';
 import { HttpMockService } from './shared/http-mock/http-mock.service';
+import { LoanChunckComponent } from './loans/loan-chunck/loan-chunck.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     LoansComponent,
-    LoanDialogComponent
+    LoanDialogComponent,
+    LoanChunckComponent
   ],
   imports: [
     RouterModule.forRoot(

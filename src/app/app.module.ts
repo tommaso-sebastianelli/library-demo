@@ -29,8 +29,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
-import { BookcaseComponent } from './shared/bookcase/bookcase.component';
+import { BookshelveComponent } from './shared/bookshelve/bookshelve.component';
 import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
+import { BookComponent } from './shared/bookshelve/book/book.component';
 
 // Services
 import { SearchService } from './search/search.service';
@@ -39,8 +40,9 @@ import { SearchService } from './search/search.service';
   declarations: [
     AppComponent,
     SearchComponent,
-    BookcaseComponent,
+    BookshelveComponent,
     PlaceholderComponent,
+    BookComponent,
   ],
   imports: [
     RouterModule.forRoot(

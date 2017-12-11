@@ -3,7 +3,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { SearchService } from './search.service';
 import { HttpModule } from '@angular/http';
 
-import { Book } from '../shared/book/book';
+import { Book } from '../shared/bookshelf/book/book';
 
 describe('SearchService', () => {
   beforeEach(() => {

@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 
 import { SearchService } from '../search/search.service';
-import { Book } from '../shared/book/book';
+import { Book } from '../shared/bookshelf/book/book';
 
 
 @Component({

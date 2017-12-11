@@ -11,7 +11,7 @@ import { SearchService } from '../search/search.service';
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Book } from '../shared/book/book';
+import { Book } from '../shared/bookshelf/book/book';
 
 
 describe('SearchComponent', () => {

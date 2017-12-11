@@ -7,8 +7,6 @@ import { SearchComponent } from './search.component';
 import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
 
 import { SearchService } from '../search/search.service';
-import { LoansService } from '../loans/loans.service';
-import { HttpMockService } from '../shared/http-mock/http-mock.service';
 
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,9 +32,7 @@ describe('SearchComponent', () => {
       ],
       declarations: [SearchComponent],
       providers: [
-        SearchService,
-        LoansService,
-        HttpMockService
+        SearchService
       ]
     })
       .compileComponents();
@@ -79,18 +75,5 @@ describe('SearchComponent', () => {
     searchView = fixture.debugElement.query(By.css('.placeholder'));
     expect(resultView).toBeFalsy();
     expect(searchView).toBeTruthy();
-  });
-
-  // it('should open dialog', () => {
-  //   component.openLoanDialog(new Book({ id: '0', title: 'dummy' }));
-  //   fixture.detectChanges();
-  // })
-
-  it('should return false (cannot loan)', () => {
-    expect(component.canLoan('DiK_UShlVCEC')).toBeFalsy();
-  });
-
-  it('should return true (can loan)', () => {
-    expect(component.canLoan('dummy_id')).toBeTruthy();
   });
 });

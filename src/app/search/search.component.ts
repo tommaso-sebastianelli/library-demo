@@ -4,12 +4,9 @@ import { MatDialog } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { LoanDialogComponent } from './loan-dialog/loan-dialog.component';
 
 import { SearchService } from '../search/search.service';
-import { LoansService } from '../loans/loans.service';
 import { Book } from '../shared/book/book';
-import { Loan } from '../loans/loan';
 
 
 @Component({
@@ -23,7 +20,7 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private searchService: SearchService, private loansService: LoansService, public loanDialog: MatDialog) {
+  constructor(private searchService: SearchService, public loanDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -52,16 +49,4 @@ export class SearchComponent implements OnInit {
   switchSearch(): void {
     this.activeView = 0;
   }
-
-  openLoanDialog(_book: Book): void {
-    this.loanDialog.open(LoanDialogComponent, {
-      width: '500px',
-      data: { book: _book }
-    });
-  }
-
-  canLoan(_book_id: string): boolean {
-    return this.loansService.session().filter(l => l.book.id === _book_id).length == 0;
-  }
-
 }

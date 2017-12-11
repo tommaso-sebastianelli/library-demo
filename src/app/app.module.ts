@@ -28,20 +28,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { LoansComponent } from './loans/loans.component';
-import { LoanDialogComponent } from './search/loan-dialog/loan-dialog.component';
+
+import { BookcaseComponent } from './shared/bookcase/bookcase.component';
+import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 
 // Services
 import { SearchService } from './search/search.service';
-import { LoansService } from './loans/loans.service';
-import { HttpMockService } from './shared/http-mock/http-mock.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    LoansComponent,
-    LoanDialogComponent,
+    BookcaseComponent,
+    PlaceholderComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -65,11 +64,9 @@ import { HttpMockService } from './shared/http-mock/http-mock.service';
     HttpModule
   ],
   providers: [
-    SearchService,
-    LoansService,
-    HttpMockService
+    SearchService
   ],
-  entryComponents: [LoanDialogComponent],
+  entryComponents: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

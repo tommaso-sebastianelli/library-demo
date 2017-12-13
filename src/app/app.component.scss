@@ -52,9 +52,17 @@ mat-sidenav-container{
                 width: 100%;
                 picture{
                     display: block;
-                    img{
-                        height:60px;
-                        width:60px;
+                    .pic-frame{
+                        position: relative;
+                        height:100px;
+                        width:100px;
+                        margin: 20px auto;
+                        .placeholder{
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            font-size:100px;
+                        }
                     }
                 } 
             }

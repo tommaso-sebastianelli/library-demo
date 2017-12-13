@@ -9,6 +9,8 @@ import { MatToolbarModule , MatIconModule, MatButtonModule, MatSidenavModule } f
 import { appRoutes } from './app.routes';
 import { ObservableMedia } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BookshelfComponent } from './shared/bookshelf/bookshelf.component';
+import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,7 +27,9 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        SearchComponent
+        SearchComponent,
+        BookshelfComponent,
+        PlaceholderComponent
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },

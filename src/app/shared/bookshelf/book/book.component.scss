@@ -1,4 +1,26 @@
-div:first-child{
-    height:100px;
-    background: grey;
+mat-card{
+    height: 115px;
+    padding: 18px !important;
+    .image-box{
+        position: relative;
+        .image-frame{
+            position: absolute;
+            height:100%;
+            width: 100%;
+            border-radius: 100%;
+            overflow: hidden;
+            background: lightgray;
+            .placeholder{
+                position: absolute;
+                width: 39%;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                left: 0;
+                right: 0;
+                opacity: 0.5;
+            }
+        }
+    }
+    .info-box{}
 }

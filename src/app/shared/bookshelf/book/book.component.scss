@@ -1,18 +1,22 @@
+@import '../../../app.utils.scss';
+
 mat-card{
-    height: 115px;
+    height: 165px;
     padding: 18px !important;
     .image-box{
         position: relative;
+        min-width:75px;
+        margin: auto;
         .image-frame{
-            position: absolute;
-            height:100%;
-            width: 100%;
+            position: relative;
+            padding-top: 90%;
+            width: 90%;
             border-radius: 100%;
             overflow: hidden;
             background: lightgray;
-            .placeholder{
+            margin: auto;
+            .placeholder, .cover{
                 position: absolute;
-                width: 39%;
                 top: 0;
                 bottom: 0;
                 margin: auto;
@@ -22,5 +26,23 @@ mat-card{
             }
         }
     }
-    .info-box{}
+    .content{
+        @extend .cut-text;
+        .info{
+            @extend .cut-text;
+            padding: 8px 20px;
+            .title,.author,.editor{
+                @extend .cut-text;
+                .icon{
+                    margin-right: 5px;
+                } 
+                span{
+                    vertical-align: super;
+                }
+            }
+        }
+        .options{
+            text-align: right;              
+        }
+    }
 }

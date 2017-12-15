@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material';
 import { MatChipsModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -65,7 +66,8 @@ import { SearchService } from './search/search.service';
     MatSliderModule,
     MatChipsModule,
     HttpModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule
   ],
   providers: [
     SearchService

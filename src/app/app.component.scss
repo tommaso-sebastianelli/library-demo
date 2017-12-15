@@ -1,4 +1,6 @@
 @import '../../src/custom-theme.scss';
+@import '../assets/sass/spacing.scss';
+
 
 mat-toolbar{
     position: relative;
@@ -38,7 +40,7 @@ mat-sidenav-container{
     
     mat-sidenav{
         width: 300px;
-        padding: 0 10px;
+        @extend .p-xs;
         overflow: hidden;
         border-right: solid 1px lightgray;
         header{
@@ -46,7 +48,7 @@ mat-sidenav-container{
             width: 100%;
             border-bottom: solid 1px lightgray;
             text-align: center;
-            padding: 40px 0;
+            padding: $lg 0;
             button{
                 float: right;
             }
@@ -58,7 +60,7 @@ mat-sidenav-container{
                         position: relative;
                         height:100px;
                         width:100px;
-                        margin: 20px auto;
+                        margin: $sm auto;
                         .placeholder{
                             position: absolute;
                             top:0;
@@ -71,19 +73,23 @@ mat-sidenav-container{
             }
         }
         .item-container{
-            margin: 20px 0;
-            a{
+            margin: $md 0;
+            .item{
                 width: 100%;
                 text-align: left;
-                padding: 10px;
+                padding: $sm;
                 font-size:20px;
-                mat-icon{
-                    margin: 0 5px;
+                .icon{
+                    margin: 0 $xs;
+                    vertical-align: middle;
+                }
+                span{
+                    vertical-align: initial;
                 }
             }
         }
     }
     .content{
-        padding: 50px 0;
+        padding: $lg 0;
     }
 }

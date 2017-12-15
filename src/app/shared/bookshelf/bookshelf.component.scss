@@ -1,5 +1,13 @@
 @import '~@angular/material/theming';
 @import 'src/custom-theme.scss';
 
+@import '../../../assets/sass/spacing.scss';
+
 .bookshelf-container{
+    @media (max-width: 540px) {        
+        app-book{
+            margin-right: 0;
+            margin-bottom:1px;
+        }
+    }
 }

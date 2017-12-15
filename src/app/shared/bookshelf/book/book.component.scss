@@ -1,8 +1,10 @@
-@import '../../../app.utils.scss';
+@import '../../../../assets/sass/utils.scss';
+@import '../../../../assets/sass/spacing.scss';
+
 
 mat-card{
     height: 165px;
-    padding: 18px !important;
+    @extend .p-sm;
     .image-box{
         position: relative;
         min-width:75px;

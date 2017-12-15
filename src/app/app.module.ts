@@ -71,4 +71,4 @@ import { SearchService } from './search/search.service';
   entryComponents: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 

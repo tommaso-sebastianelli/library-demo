@@ -3,7 +3,10 @@
 
 @import '../../../assets/sass/spacing.scss';
 
-.bookshelf-container{
+.paginator{
+    margin-bottom: $lg;
+}
+.container{
     @media (max-width: 540px) {        
         app-book{
             margin-right: 0;

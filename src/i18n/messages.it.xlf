@@ -74,6 +74,10 @@
         <source>UNDO</source>
         <target>ANNULLA</target>
       </trans-unit>
+      <trans-unit id="search-history" datatype="html">
+        <source>Recent searches:</source>
+        <target>Ricerche recenti:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -6,14 +6,6 @@
         <source>Search</source>
         <target>Ricerca</target>
       </trans-unit>
-      <trans-unit id="loans-page-title" datatype="html">
-        <source>Loans</source>
-        <target>Prestiti</target>
-      </trans-unit>
-      <trans-unit id="loan-button" datatype="html">
-        <source>LOAN</source>
-        <target>PRESTITO</target>
-      </trans-unit>
       <trans-unit id="card-author" datatype="html">
         <source>Author</source>
         <target>Autore</target>
@@ -33,18 +25,6 @@
       <trans-unit id="search-placeholder-subtitle" datatype="html">
         <source>Search by name or author, over millions of books</source>
         <target>Cerca in base a nome o autore, tra milioni di libri</target>
-      </trans-unit>
-      <trans-unit id="loans-placeholder-image" datatype="html">
-        <source>a round book icon</source>
-        <target>un'icona tonda di un libro</target>
-      </trans-unit>
-      <trans-unit id="loans-placeholder-title" datatype="html">
-        <source>No Loans yet</source>
-        <target>Non hai ancora nessun prestito</target>
-      </trans-unit>
-      <trans-unit id="loans-placeholder-subtitle" datatype="html">
-        <source>Loan your first book on the search page</source>
-        <target>Chiedi il tuo primo prestito tramite la pagina di ricerca</target>
       </trans-unit>
       <trans-unit id="generic-cancel" datatype="html">
         <source>CANCEL</source>
@@ -73,6 +53,26 @@
       <trans-unit id="search-history" datatype="html">
         <source>Recent searches:</source>
         <target>Ricerche recenti:</target>
+      </trans-unit>
+      <trans-unit id="search-dialog-title-search" datatype="html">
+        <source>Title</source>
+        <target>Titol</target>
+      </trans-unit>
+      <trans-unit id="search-dialog-author-search" datatype="html">
+        <source>Author</source>
+        <target>Autore</target>
+      </trans-unit>
+      <trans-unit id="search-dialog-publisher-search" datatype="html">
+        <source>Publisher</source>
+        <target>Editore</target>
+      </trans-unit>
+      <trans-unit id="search-dialog-search-button" datatype="html">
+        <source>Search</source>
+        <target>Ricerca</target>
+      </trans-unit>
+      <trans-unit id="search-dialog-close-button" datatype="html">
+        <source>Close</source>
+        <target>Chiudi</target>
       </trans-unit>
     </body>
   </file>

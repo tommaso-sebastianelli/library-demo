@@ -27,9 +27,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.switchSearch();
     this.loading = false;
-    setTimeout(() => {
-      this.openDialog();
-    }, 0);
   }
 
   onEnter(keyword: string) {
@@ -56,7 +53,6 @@ export class SearchComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.searchDialog.open(SearchDialogComponent, {
-      width: '250px',
       data: { }
     });
 

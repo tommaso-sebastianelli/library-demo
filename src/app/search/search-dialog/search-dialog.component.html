@@ -1,11 +1,15 @@
-<div matDialogTitle><label i18n="search dialog title@@search-dialog-title" class="mat-body-1">Search</label></div>
-<div matDialogContent>
+<div matDialogTitle i18n="search dialog title@@search-dialog-title" class="mat-body-1">Search</div>
+<mat-dialog-content>
   <mat-form-field>
-    <input matInput placeholder="Simple placeholder">
+    <input matInput i18n-placeholder="book title search placeholder@@search-dialog-title-search" placeholder="Title">
   </mat-form-field>
-  <mat-form-field></mat-form-field>
-  <mat-form-field></mat-form-field>
-</div>
-<div matDialogActions>
-  <button mat-button matDialogClose>close</button>
-</div>
+  <mat-form-field>
+    <input matInput i18n-placeholder="book author search placeholder@@search-dialog-author-search" placeholder="Author">
+  </mat-form-field><mat-form-field>
+    <input matInput i18n-placeholder="book title search placeholder@@search-dialog-publisher-search" placeholder="Publisher">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button matDialogClose color="primary" i18n-title="search-dialog-search-button@@search-dialog-search-button" title="editor">SEARCH</button>
+  <button mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button" title="editor">CLOSE</button>
+</mat-dialog-actions>

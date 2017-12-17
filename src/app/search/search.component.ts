@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatPseudoCheckbox, MatCard } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 
 import { SearchService } from '../search/search.service';
 import { Book } from '../shared/bookshelf/book/book';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 
 
 @Component({
@@ -20,12 +21,15 @@ export class SearchComponent implements OnInit {
   activeView: number;
   loading: boolean;
 
-  constructor(private searchService: SearchService, public loanDialog: MatDialog) {
+  constructor(private searchService: SearchService, public searchDialog: MatDialog) {
   }
 
   ngOnInit() {
     this.switchSearch();
     this.loading = false;
+    setTimeout(() => {
+      this.openDialog();
+    }, 0);
   }
 
   onEnter(keyword: string) {
@@ -48,5 +52,16 @@ export class SearchComponent implements OnInit {
 
   switchSearch(): void {
     this.activeView = 0;
+  }
+
+  openDialog(): void {
+    let dialogRef = this.searchDialog.open(SearchDialogComponent, {
+      width: '250px',
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
   }
 }

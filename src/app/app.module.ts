@@ -23,6 +23,7 @@ import { MatSliderModule } from '@angular/material';
 import { MatChipsModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
+// import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -30,7 +31,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-
+import { SearchDialogComponent } from './search/search-dialog/search-dialog.component';
 import { BookshelfComponent } from './shared/bookshelf/bookshelf.component';
 import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 import { BookComponent } from './shared/bookshelf/book/book.component';
@@ -45,6 +46,7 @@ import { SearchService } from './search/search.service';
     BookshelfComponent,
     PlaceholderComponent,
     BookComponent,
+    SearchDialogComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -72,7 +74,7 @@ import { SearchService } from './search/search.service';
   providers: [
     SearchService
   ],
-  entryComponents: [],
+  entryComponents: [SearchDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { } 

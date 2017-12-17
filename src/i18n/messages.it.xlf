@@ -54,13 +54,9 @@
         <source>Duration</source>
         <target>Durata</target>
       </trans-unit>
-      <trans-unit id="loan-dialog-title" datatype="html">
-        <source>Set loan duration</source>
-        <target>Scegli la durata del prestito</target>
-      </trans-unit>
-      <trans-unit id="loan-dialog-subtitle" datatype="html">
-        <source>Loan expire time is calculated after the library confirms your loan</source>
-        <target>La data di fine prestito verrà calcolata non appena la biblioteca confermerà la richiesta</target>
+      <trans-unit id="search-dialog-title" datatypng e="html">
+        <source>Search</source>
+        <target>Ricerca</target>
       </trans-unit>
       <trans-unit id="week-plural" datatype="html">
         <source>{slider.displayValue, plural, =1 {Week} other {Weeks}}</source>

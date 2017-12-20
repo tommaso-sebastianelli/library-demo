@@ -71,7 +71,7 @@ import { SearchService } from './search/search.service';
     HttpModule,
     MatPaginatorModule,
     MatMenuModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [
     SearchService

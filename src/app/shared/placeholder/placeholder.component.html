@@ -1,10 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="content">
     <div class="row">
-        <mat-icon class="icon">{{icon}}</mat-icon>
+        <mat-icon aria-labelledby="title" class="icon">{{icon}}</mat-icon>
     </div>
     <div class="row">
-        <!-- <label i18n="placeholder title@@search-placeholder-title" class="mat-display-2 title">Find by keyword</label> -->
-        <label class="mat-display-2 title">{{title}}</label>
+        <label id="title" class="mat-display-2 title">{{title}}</label>
     </div>
     <div class="row">
         <label class="mat-title  subtitle">{{subtitle}}</label>

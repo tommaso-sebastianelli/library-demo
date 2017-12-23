@@ -37,23 +37,24 @@ import { BookshelfComponent } from './shared/bookshelf/bookshelf.component';
 import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 import { BookComponent } from './shared/bookshelf/book/book.component';
 import { LoginComponent } from './shared/login/login.component';
+import { LibraryComponent } from './library/library.component';
 
 // Services
 import { SearchService } from './search/search.service';
 
 //auth
 import { SocialLoginModule, AuthServiceConfig } from "angular4-oauth-login/src";
-import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-oauth-login/src";
+import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "angular4-oauth-login/src";
  
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("Google-OAuth-Client-Id", 'email picture')
+    provider: new GoogleLoginProvider("274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com", 'https://www.googleapis.com/auth/books')
   },
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("Facebook-App-Id")
-  }
+  // {
+  //   id: FacebookLoginProvider.PROVIDER_ID,
+  //   provider: new FacebookLoginProvider("Facebook-App-Id")
+  // }
 ]);
 
 export function provideConfig() {
@@ -68,7 +69,8 @@ export function provideConfig() {
     PlaceholderComponent,
     BookComponent,
     SearchDialogComponent,
-    LoginComponent
+    LoginComponent,
+    LibraryComponent
   ],
   imports: [
     RouterModule.forRoot(

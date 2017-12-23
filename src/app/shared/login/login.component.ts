@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "angular4-oauth-login/src";
-import { FacebookLoginProvider, GoogleLoginProvider, SocialUser } from "angular4-oauth-login/src";
+import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "angular4-oauth-login/src";
 
 @Component({
   selector: 'app-login',
@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
  
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
+  // signInWithFB(): void {
+  //   this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  // }
 }

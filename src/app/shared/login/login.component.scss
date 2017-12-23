@@ -1,0 +1,27 @@
+@import '../../../assets/sass/spacing.scss';
+.login-card{
+    max-width: 400px;
+    margin: auto;
+    .login-card-header{
+        margin-bottom: $xs;
+        .title{
+            position: relative;
+            left:-16px;
+        }
+    }    
+    .login-card-content{
+        
+    }
+    
+    .login-card-actions{
+        text-align: right;
+        .image-box{
+            display: inline-block;
+            img{
+                width:20px;
+                height:20px;
+                vertical-align: sub;
+            }
+        }
+    }
+}

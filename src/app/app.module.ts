@@ -22,7 +22,7 @@ import { MatDialogModule } from '@angular/material';
 import { MatSliderModule } from '@angular/material';
 import { MatChipsModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
@@ -36,9 +36,29 @@ import { SearchDialogComponent } from './search/search-dialog/search-dialog.comp
 import { BookshelfComponent } from './shared/bookshelf/bookshelf.component';
 import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
 import { BookComponent } from './shared/bookshelf/book/book.component';
+import { LoginComponent } from './shared/login/login.component';
 
 // Services
 import { SearchService } from './search/search.service';
+
+//auth
+import { SocialLoginModule, AuthServiceConfig } from "angular4-oauth-login/src";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-oauth-login/src";
+ 
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("Google-OAuth-Client-Id", 'email picture')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -48,6 +68,7 @@ import { SearchService } from './search/search.service';
     PlaceholderComponent,
     BookComponent,
     SearchDialogComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -71,9 +92,13 @@ import { SearchService } from './search/search.service';
     HttpModule,
     MatPaginatorModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule
   ],
-  providers: [
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  },
     SearchService
   ],
   entryComponents: [SearchDialogComponent],

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       if(this.user && this.user.authToken){
         this.tokenService.save(this.user.id, this.user.authToken.id_token);
       }
-      console.log(this.user);
+      // console.log(this.user);
     });
   }
 

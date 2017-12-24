@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from "angular4-oauth-login/src";
+import { TokenService } from '../token.service';
+
 import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "angular4-oauth-login/src";
 
 @Component({
@@ -11,14 +13,16 @@ import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "angu
 export class LoginComponent implements OnInit {
 
   private user: SocialUser;
-  private loggedIn: boolean;
  
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private tokenService: TokenService) { }
  
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      this.loggedIn = (user != null);
+      if(this.user && this.user.authToken){
+        this.tokenService.save(this.user.id, this.user.authToken.id_token);
+      }
+      console.log(this.user);
     });
   }
 

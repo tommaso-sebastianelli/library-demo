@@ -41,6 +41,7 @@ import { LibraryComponent } from './library/library.component';
 
 // Services
 import { SearchService } from './search/search.service';
+import { TokenService } from './shared/token.service';
 
 //auth
 import { SocialLoginModule, AuthServiceConfig } from "angular4-oauth-login/src";
@@ -101,7 +102,8 @@ export function provideConfig() {
     provide: AuthServiceConfig,
     useFactory: provideConfig
   },
-    SearchService
+    SearchService,
+    TokenService
   ],
   entryComponents: [SearchDialogComponent],
   bootstrap: [AppComponent]

@@ -1,5 +1,9 @@
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/filter';
+import { AuthService } from "angularx-social-login-master";
+import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "angularx-social-login-master";
+import { TokenService } from './shared/auth/token.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component } from '@angular/core';
 import { MatDrawer } from '@angular/material';
@@ -21,12 +25,15 @@ import {appRoutes} from './app.routes';
   // ]
 })
 export class AppComponent implements OnInit {
-  Search: string;
+  user: SocialUser;
+  authClaim: Observable<boolean>;
+
   sideNavMode: string;
+
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(public media: ObservableMedia) {
+  constructor(public media: ObservableMedia, private authService: AuthService, private tokenService: TokenService) {
     this.sideNavMode = 'over';
   }
 
@@ -40,21 +47,30 @@ export class AppComponent implements OnInit {
       this.setSidenavDesktop();
     });
 
-  this.media.asObservable()
-    .filter((change: MediaChange) => change.mqAlias !== 'lg' && change.mqAlias !== 'xl')
-    .subscribe(() => {
-      this.setSidenavMobile();
-    });
-  }
+    this.media.asObservable()
+      .filter((change: MediaChange) => change.mqAlias !== 'lg' && change.mqAlias !== 'xl')
+      .subscribe(() => {
+        this.setSidenavMobile();
+      });
 
+    this.authService.authState.subscribe((user) => {
+      this.user = user;      
+      console.log("user: " + this.user);
+      });
 
-  setSidenavMobile() {
-    this.sidenav.close();
-    this.sideNavMode = 'over';
-  }
+      this.authClaim = this.tokenService.anyToken;
+      this.tokenService.anyToken.subscribe(anyToken => {        
+        console.log("userHasToken: " + anyToken);
+      });
+    };
 
-  setSidenavDesktop() {
-    this.sidenav.open();
-    this.sideNavMode = 'side';
+    private setSidenavMobile() {
+      this.sidenav.close();
+      this.sideNavMode = 'over';
+    }
+  
+    private setSidenavDesktop() {
+      this.sidenav.open();
+      this.sideNavMode = 'side';
+    }
   }
-}

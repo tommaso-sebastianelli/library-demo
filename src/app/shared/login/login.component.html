@@ -1,19 +1,14 @@
 
 <mat-card class="login-card">
     <mat-card-header class="login-card-header">
-        <md-card-title class="title">Log In</md-card-title>        
+        <md-card-title i18n="title of login card@@login-card-title" class="title">Log In</md-card-title>        
     </mat-card-header>
     <mat-card-content class="login-card-content">
-        <p>
+        <p i18n="description of login card@@login-card-content">
           Authenticate with google in order to view your bookshelves and manage your books.
         </p>
     </mat-card-content>
     <mat-card-actions class="login-card-actions">
-        <button mat-button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()">
-            <div md-card-avatar class="image-box">
-                <img src="assets/img/google.png">
-            </div>
-              Sign in with Google
-        </button>
+        <app-google-sign-up-button></app-google-sign-up-button>
     </mat-card-actions>
 </mat-card>

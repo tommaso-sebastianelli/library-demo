@@ -38,19 +38,25 @@ import { PlaceholderComponent } from './shared/placeholder/placeholder.component
 import { BookComponent } from './shared/bookshelf/book/book.component';
 import { LoginComponent } from './shared/login/login.component';
 import { LibraryComponent } from './library/library.component';
+import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
 
 // Services
 import { SearchService } from './search/search.service';
-import { TokenService } from './shared/token.service';
+import { TokenService } from './shared/auth/token.service';
 
 //auth
-import { SocialLoginModule, AuthServiceConfig } from "angular4-oauth-login/src";
-import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "angular4-oauth-login/src";
- 
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login-master";
+import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "angularx-social-login-master";
+import { LoginOpt } from 'angularx-social-login-master/src/auth.service';
+
+const googleLoginOptions:LoginOpt = {
+scope: 'https://www.googleapis.com/auth/books'
+};
+
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com", 'https://www.googleapis.com/auth/books')
+    provider: new GoogleLoginProvider("274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com", googleLoginOptions)
   },
   // {
   //   id: FacebookLoginProvider.PROVIDER_ID,
@@ -71,7 +77,8 @@ export function provideConfig() {
     BookComponent,
     SearchDialogComponent,
     LoginComponent,
-    LibraryComponent
+    LibraryComponent,
+    GoogleSignUpButtonComponent
   ],
   imports: [
     RouterModule.forRoot(

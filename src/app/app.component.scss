@@ -56,11 +56,22 @@ mat-sidenav-container{
                 width: 100%;
                 picture{
                     display: block;
+                    margin-bottom: $sm;
                     .pic-frame{
                         position: relative;
-                        height:100px;
-                        width:100px;
+                        height:95px;
+                        width:95px;
                         margin: $sm auto;
+                        border-radius: 100%;
+                        overflow: hidden;
+                        background: map-get($mat-grey, 200);
+                        img{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                        }
                         .placeholder{
                             position: absolute;
                             top:0;

@@ -2,6 +2,21 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
+    <!-->GENERALS<-->
+      <trans-unit id="generic-cancel" datatype="html">
+        <source>CANCEL</source>
+        <target>ANNULLA</target>
+      </trans-unit>
+      <trans-unit id="undo" datatype="html">
+        <source>UNDO</source>
+        <target>ANNULLA</target>
+      </trans-unit>
+      <trans-unit id="guest" datatype="html">
+        <source>Guest</source>
+        <target>Ospite</target>
+      </trans-unit>
+
+        <!-->BOOK CARD<-->
       <trans-unit id="search-page-title" datatype="html">
         <source>Search</source>
         <target>Ricerca</target>
@@ -14,10 +29,8 @@
         <source>Editor</source>
         <target>Editore</target>
       </trans-unit>
-      <trans-unit id="search-placeholder-image" datatype="html">
-        <source>a round magnifying glass icon</source>
-        <target>un'icona tonda di una lente di ingrandimento</target>
-      </trans-unit>
+
+      <!-->SEARCH PAGE<-->
       <trans-unit id="search-placeholder-title" datatype="html">
         <source>Find by keyword</source>
         <target>Inserisci una parola chiave</target>
@@ -26,34 +39,16 @@
         <source>Search by name or author, over millions of books</source>
         <target>Cerca in base a nome o autore, tra milioni di libri</target>
       </trans-unit>
-      <trans-unit id="generic-cancel" datatype="html">
-        <source>CANCEL</source>
-        <target>ANNULLA</target>
-      </trans-unit>
-      <trans-unit id="duration" datatype="html">
-        <source>Duration</source>
-        <target>Durata</target>
-      </trans-unit>
       <trans-unit id="search-dialog-title" datatypng e="html">
         <source>Search</source>
         <target>Ricerca</target>
-      </trans-unit>
-      <trans-unit id="week-plural" datatype="html">
-        <source>{slider.displayValue, plural, =1 {Week} other {Weeks}}</source>
-        <target>{slider.displayValue, plural, =1 {Settimana} other {Settimane}}</target>
-      </trans-unit>
-      <trans-unit id="loan-success-message" datatype="html">
-        <source>Book loaned!</source>
-        <target>Libro prenotato!</target>
-      </trans-unit>
-      <trans-unit id="undo" datatype="html">
-        <source>UNDO</source>
-        <target>ANNULLA</target>
       </trans-unit>
       <trans-unit id="search-history" datatype="html">
         <source>Recent searches:</source>
         <target>Ricerche recenti:</target>
       </trans-unit>
+
+      <!-->SEARCH PAGE DIALOG<-->
       <trans-unit id="search-dialog-title-search" datatype="html">
         <source>Title</source>
         <target>Titol</target>
@@ -74,6 +69,21 @@
         <source>Close</source>
         <target>Chiudi</target>
       </trans-unit>
+
+      <!-->LOGIN CARD<-->
+      <trans-unit id="login-card-title" datatype="html">
+        <source>Log In</source>
+        <target>Accedi</target>
+      </trans-unit>
+      <trans-unit id="login-card-content" datatype="html">
+        <source>Authenticate with google in order to view your bookshelves and manage your books.</source>
+        <target>Accedi con google per visualizzare le tue liste e gestire i tuoi libri.</target>
+      </trans-unit>
+      <trans-unit id="login-card-button" datatype="html">
+        <source>Sign in with Google</source>
+        <target>Accedi con Google</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

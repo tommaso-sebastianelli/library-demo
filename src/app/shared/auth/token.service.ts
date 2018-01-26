@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from "angularx-social-login-master";
+import { AuthService } from "../../../assets/libs/angularx-social-login-master";
 import { Observable } from 'rxjs';
 import { isNullOrUndefined } from 'util';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

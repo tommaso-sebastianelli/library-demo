@@ -45,9 +45,9 @@ import { SearchService } from './search/search.service';
 import { TokenService } from './shared/auth/token.service';
 
 //auth
-import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login-master";
-import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "angularx-social-login-master";
-import { LoginOpt } from 'angularx-social-login-master/src/auth.service';
+import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
+import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "../assets/libs/angularx-social-login-master";
+import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
 const googleLoginOptions:LoginOpt = {
 scope: 'https://www.googleapis.com/auth/books'

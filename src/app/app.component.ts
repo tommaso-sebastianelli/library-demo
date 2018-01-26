@@ -1,8 +1,8 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/filter';
-import { AuthService } from "angularx-social-login-master";
-import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "angularx-social-login-master";
+import { AuthService } from "../assets/libs/angularx-social-login-master";
+import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "../assets/libs/angularx-social-login-master";
 import { TokenService } from './shared/auth/token.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component } from '@angular/core';

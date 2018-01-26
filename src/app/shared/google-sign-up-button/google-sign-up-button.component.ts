@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "angularx-social-login-master";
-import { GoogleLoginProvider, SocialUser } from "angularx-social-login-master";
+import { AuthService } from "../../../assets/libs/angularx-social-login-master";
+import { GoogleLoginProvider, SocialUser } from "../../../assets/libs/angularx-social-login-master";
 
 @Component({
   selector: 'app-google-sign-up-button',

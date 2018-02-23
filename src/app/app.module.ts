@@ -41,16 +41,16 @@ import { LibraryComponent } from './library/library.component';
 import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
 
 // Services
-import { SearchService } from './search/search.service';
 import { TokenService } from './shared/auth/token.service';
+import { ApiService } from './shared/api.service';
 
 //auth
 import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
 import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "../assets/libs/angularx-social-login-master";
 import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
-const googleLoginOptions:LoginOpt = {
-scope: 'https://www.googleapis.com/auth/books'
+const googleLoginOptions: LoginOpt = {
+  scope: 'https://www.googleapis.com/auth/books'
 };
 
 let config = new AuthServiceConfig([
@@ -109,8 +109,8 @@ export function provideConfig() {
     provide: AuthServiceConfig,
     useFactory: provideConfig
   },
-    SearchService,
-    TokenService
+    TokenService,
+    ApiService
   ],
   entryComponents: [SearchDialogComponent],
   bootstrap: [AppComponent]

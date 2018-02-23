@@ -79,5 +79,8 @@ export class FacebookLoginProvider extends BaseLoginProvider {
       });
     });
   }
+revokeAuth(): Promise<any> {
+    return;
+  }
 
 }

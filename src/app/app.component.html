@@ -17,27 +17,34 @@
       <div class="user-info">
         <picture aria-label="profile pic">
           <div class="pic-frame">
-            <img *ngIf="authClaim || !user.photoUrl | async else guestplaceholder" [src]="user.photoUrl">
+            <img *ngIf="tokenService.authClaim || !user.photoUrl | async else guestplaceholder" [src]="user.photoUrl">
             <ng-template #guestplaceholder>
               <img src="assets/img/avatar.png">
                 <!-- <img src="assets/img/account.png"> -->
             </ng-template>
-            <!-- <img *ngIf="authClaim | async" [src]="user.photoUrl"> -->
-            <!-- <mat-icon *ngIf="!authClaim | async" class="placeholder">account_circle</mat-icon> -->
+            <!-- <img *ngIf="tokenService.authClaim | async" [src]="user.photoUrl"> -->
+            <!-- <mat-icon *ngIf="!tokenService.authClaim | async" class="placeholder">account_circle</mat-icon> -->
           </div>
         </picture>
-        <div class="mat-subheading-2">
-          <span *ngIf="authClaim | async else guestname">{{user.firstName}}</span>
+        <div class="firstname mat-subheading-2">
+          <span *ngIf="tokenService.authClaim | async else guestname">{{user.firstName}}</span>
           <ng-template #guestname>
               <span i18n="guest name@@guest">Guest</span>
           </ng-template>
         </div>
-        <div *ngIf="authClaim | async" class="mat-body-1">{{user.email}}</div>
+        <div *ngIf="tokenService.authClaim | async" class="mat-body-1">{{user.email}}</div>
       </div>
       <div class="action">
           <!-- <button mat-raised-button color="primary" i18n="log in@@sign-in">Sign In</button> -->
           <!-- <button mat-raised-button i18n="log out@@sign-out">Sign Out</button> -->
-          <app-google-sign-up-button></app-google-sign-up-button>
+          <div *ngIf="tokenService.authClaim | async else signout">
+              <button mat-button color="accent" i18n="signout button@@signout" (click)="logout()">
+                  <mat-icon>exit_to_app</mat-icon>
+                Sign out</button>
+          </div>
+          <ng-template #signout>
+              <app-google-sign-up-button></app-google-sign-up-button>  
+          </ng-template>
       </div>
     </header>
     <div class="item-container">

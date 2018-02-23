@@ -1,18 +1,22 @@
 <form #searchDialogForm="ngForm">
-<div matDialogTitle i18n="search dialog title@@search-dialog-title" class="mat-body-1">Search</div>
-<mat-dialog-content class="m-b-sm">
-  <mat-form-field>
-    <input name="title" #title="ngModel" ngModel class="form-control" matInput i18n-placeholder="book title search placeholder@@search-dialog-title-search" placeholder="Title">
-  </mat-form-field>
-  <mat-form-field>
-    <input name="author" #author="ngModel" ngModel class="form-control" matInput i18n-placeholder="book author search placeholder@@search-dialog-author-search" placeholder="Author">
-  </mat-form-field>
-  <mat-form-field>
-    <input name="publisher" #publisher="ngModel" ngModel class="form-control" matInput i18n-placeholder="book title search placeholder@@search-dialog-publisher-search" placeholder="Publisher">
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button [disabled]="!title.value && !author.value && !publisher.value" mat-button matDialogClose color="primary" i18n-title="search-dialog-search-button@@search-dialog-search-button" title="editor">{{'search' | uppercase}}</button>
-  <button mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button" title="editor">{{'close' | uppercase}}</button>
-</mat-dialog-actions>
+  <div matDialogTitle i18n="search dialog title@@search-dialog-title" class="mat-body-1">Search</div>
+  <mat-dialog-content class="m-b-sm">
+    <mat-form-field>
+      <input name="title" #title="ngModel" ngModel class="form-control" matInput i18n-placeholder="book title search placeholder@@search-dialog-title-search"
+        placeholder="Title">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="author" #author="ngModel" ngModel class="form-control" matInput i18n-placeholder="book author search placeholder@@search-dialog-author-search"
+        placeholder="Author">
+    </mat-form-field>
+    <mat-form-field>
+      <input name="publisher" #publisher="ngModel" ngModel class="form-control" matInput i18n-placeholder="book title search placeholder@@search-dialog-publisher-search"
+        placeholder="Publisher">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matDialogClose [disabled]="!title.value && !author.value && !publisher.value" mat-button color="primary" (click)="data.onSearch(title.value, author.value, publisher.value)"
+      i18n-title="search-dialog-search-button@@search-dialog-search-button" title="editor">{{'search' | uppercase}}</button>
+    <button mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button" title="editor">{{'close' | uppercase}}</button>
+  </mat-dialog-actions>
 </form>

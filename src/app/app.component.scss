@@ -49,11 +49,12 @@ mat-sidenav-container{
             border-bottom: solid 1px lightgray;
             text-align: center;
             padding: $lg 0;
-            button{
-                float: right;
-            }
+            // button{
+            //     float: right;
+            // }
             .user-info{
                 width: 100%;
+                margin-bottom: $sm;
                 picture{
                     display: block;
                     margin-bottom: $sm;
@@ -80,7 +81,13 @@ mat-sidenav-container{
                             opacity: 0.8;
                         }
                     }
-                } 
+                }
+                .firstname{
+                    margin-bottom: $xs;
+                }
+            }
+            .action{
+                text-align: center;
             }
         }
         .item-container{

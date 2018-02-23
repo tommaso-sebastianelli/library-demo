@@ -110,4 +110,25 @@ export class AuthService {
     });
   }
 
+  revokeAuth(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (!this._user) {
+        reject(AuthService.ERR_NOT_LOGGED_IN);
+      } else {
+        let providerId = this._user.provider;
+        let providerObject = this.providers.get(providerId);
+        if (providerObject) {
+          providerObject.revokeAuth().then(() => {
+            resolve();
+
+            this._user = null;
+            this._authState.next(null);
+          });
+        } else {
+          reject(AuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
+        }
+      }
+    });
+  }
+
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-search-dialog',
@@ -6,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-dialog.component.scss']
 })
 export class SearchDialogComponent implements OnInit {
-  constructor() { }
+  @ViewChild('searchDialogForm') form;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
   }

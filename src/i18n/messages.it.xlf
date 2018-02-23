@@ -15,6 +15,10 @@
         <source>Guest</source>
         <target>Ospite</target>
       </trans-unit>
+      <trans-unit id="signout" datatype="html">
+        <source>Signout</source>
+        <target>Disconnetti</target>
+      </trans-unit>
 
         <!-->BOOK CARD<-->
       <trans-unit id="search-page-title" datatype="html">

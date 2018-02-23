@@ -26,14 +26,13 @@ import {appRoutes} from './app.routes';
 })
 export class AppComponent implements OnInit {
   user: SocialUser;
-  authClaim: Observable<boolean>;
 
   sideNavMode: string;
 
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(public media: ObservableMedia, private authService: AuthService, private tokenService: TokenService) {
+  constructor(public media: ObservableMedia, private authService: AuthService, public tokenService: TokenService) {
     this.sideNavMode = 'over';
   }
 
@@ -58,11 +57,15 @@ export class AppComponent implements OnInit {
       console.log("user: " + this.user);
       });
 
-      this.authClaim = this.tokenService.anyToken;
-      this.tokenService.anyToken.subscribe(anyToken => {        
-        console.log("userHasToken: " + anyToken);
-      });
+    //log purpose only
+    this.tokenService.authClaim.subscribe(anyToken => {        
+      console.log("userHasToken: " + anyToken);
+    });
     };
+
+    logout(): void {
+      this.authService.revokeAuth();
+    }
 
     private setSidenavMobile() {
       this.sidenav.close();

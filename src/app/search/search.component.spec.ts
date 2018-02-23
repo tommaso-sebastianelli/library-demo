@@ -9,8 +9,6 @@ import { BookshelfComponent } from '../shared/bookshelf/bookshelf.component';
 
 import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
 
-import { SearchService } from '../search/search.service';
-
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -39,7 +37,6 @@ describe('SearchComponent', () => {
         BookshelfComponent
       ],
       providers: [
-        SearchService
       ]
     })
       .compileComponents();

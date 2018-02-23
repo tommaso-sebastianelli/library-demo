@@ -26,7 +26,7 @@ public _anyToken :BehaviorSubject<boolean>  = new BehaviorSubject(false);
     });
   }
 
-  get anyToken(): Observable<boolean>{
+  get authClaim(): Observable<boolean>{
     return this._anyToken.asObservable();
   }
 

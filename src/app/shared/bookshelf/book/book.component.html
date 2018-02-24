@@ -1,37 +1,39 @@
-<mat-card fxFlexLayout="row">
+<mat-card fxLayout="row">
     <div fxFlex="30%" class="image-box" fxHide.xs>
         <div class="image-frame">
-            <img class="placeholder" src="/assets/img/book_placeholder.png"/>
-            <img class="cover" aria-labelledby="title" src=""/>
+            <img class="placeholder" src="/assets/img/book_placeholder.png" />
+            <img class="cover" aria-labelledby="title" src="" />
         </div>
     </div>
     <div fxFlex="1 1 auto" class="content">
-        <div fxFlexLayout="row">
+        <div fxLayout="row">
             <div fxFlex="auto" class="info">
-                    <mat-card-title id="title" class="title"><!-- <mat-card-title id="title" class="title" title="{{book.title}}"> -->                        
-                        <!-- {{book.title}} -->
-                        Title
-                    </mat-card-title>
-                    <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
-                        <mat-icon class="icon" aria-label="author">person</mat-icon>
-                        <span><!-- <span *ngFor="let author of book.authors; let i = index"> -->
-                            <!-- {{(i > 0) ? '- ' : ''}}{{author}}  -->
-                            Author1, Author2, Author3
-                        </span>
-                    </mat-card-subtitle>
-                    <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
-                        <mat-icon class="icon" aria-label="editor">home</mat-icon>
-                        <!-- {{book.publisher}} -->
-                        <span>Publisher</span>
-                    </mat-card-subtitle>
+                <mat-card-title id="title" class="title">
+                    <!-- <mat-card-title id="title" class="title" title="{{book.title}}"> -->
+                    <!-- {{book.title}} -->
+                    Title
+                </mat-card-title>
+                <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
+                    <mat-icon class="icon" aria-label="author">person</mat-icon>
+                    <span>
+                        <!-- <span *ngFor="let author of book.authors; let i = index"> -->
+                        <!-- {{(i > 0) ? '- ' : ''}}{{author}}  -->
+                        Author1, Author2, Author3
+                    </span>
+                </mat-card-subtitle>
+                <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
+                    <mat-icon class="icon" aria-label="editor">home</mat-icon>
+                    <!-- {{book.publisher}} -->
+                    <span>Publisher</span>
+                </mat-card-subtitle>
             </div>
             <div fxFlex="45px" class="options button-row">
-                    <mat-menu #bookMenu="matMenu" xPosition="before">
-                            <button mat-menu-item> noop </button>
-                          </mat-menu>
-                    <button mat-icon-button [matMenuTriggerFor]="bookMenu">
-                        <mat-icon class="md-24" aria-label="Example icon-button with a heart icon">more_vert</mat-icon>
-                    </button>
+                <mat-menu #bookMenu="matMenu" xPosition="before">
+                    <button mat-menu-item> noop </button>
+                </mat-menu>
+                <button mat-icon-button [matMenuTriggerFor]="bookMenu">
+                    <mat-icon class="md-24" aria-label="Example icon-button with a heart icon">more_vert</mat-icon>
+                </button>
             </div>
         </div>
     </div>

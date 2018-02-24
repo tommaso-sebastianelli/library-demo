@@ -1,54 +1,15 @@
-<!-- <div *ngIf="activeView == 0" class="placeholder">
-    <img i18n-alt="Magnifying|alt description for search placeholder image@@search-placeholder-image" alt="a round magnifying glass icon"
-        src="assets/img/search.png">
-    <label i18n="placeholder title@@search-placeholder-title" class="mat-display-1 title">Find by keyword</label>
-    <label i18n="placeholder subtitle@@search-placeholder-subtitle" class="mat-subheading-2 subtitle">Search by name or author, over millions of books</label>
-    <mat-form-field *ngIf="!loading" role="search" class="search-area">
-        <input role="search" #search matInput (keydown.enter)="onEnter(search.value)" placeholder="">
-        <mat-icon aria-label="search icon" matSuffix>search</mat-icon>
-    </mat-form-field>
-    <mat-spinner *ngIf="loading" color="accent"></mat-spinner>
-</div>
-<div *ngIf="activeView == 1" class="results">
-    <div fxLayout="row" fxLayoutGap.xs="0" fxLayoutGap="20px" fxLayoutAlign="center" fxLayoutWrap>
-        <mat-card *ngFor="let book of books | async" fxFlex="400px" fxFlex.xs="100%">
-            <img aria-labelledby="title" src={{book.thumbnail}}>
-            <div class="content">
-                <div class="info">
-                    <mat-card-title id="title" class="title" title="{{book.title}}">{{book.title}}</mat-card-title>
-                    <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
-                        <mat-icon aria-label="author">person</mat-icon>
-                        <span *ngFor="let author of book.authors; let i = index">{{(i > 0) ? '- ' : ''}}{{author}} </span>
-                    </mat-card-subtitle>
-                    <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
-                        <mat-icon aria-label="editor">book</mat-icon>{{book.publisher}}</mat-card-subtitle>
-                </div>
-                <div class="actions">
-                    <button (click)="openLoanDialog(book)" i18n="Loan|label for loan button@@loan-button" mat-button *ngIf="canLoan(book.id)">LOAN</button>
-                </div>
-            </div>
-        </mat-card>
-    </div>
-</div>
-<div *ngIf="activeView === 1" class="fab-box">
-    <button (click)="switchSearch()" mat-fab class="fab-search">
-        <mat-icon class="mat-24" aria-label="icon-button with a magnifying lens">search</mat-icon>
-    </button>
-</div> -->
-<ng-template #placeholder>
-    <app-placeholder icon="search" i18n-title="placeholder title@@search-placeholder-title" title="Find by Keyword" i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle"
-        subtitle="Search by name or author, over millions of books">
-    </app-placeholder>
-</ng-template>
+<app-placeholder *ngIf="!initView" icon="search" i18n-title="placeholder title@@search-placeholder-title" title="Find by Keyword"
+    i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle" subtitle="Search by name or author, over millions of books">
+</app-placeholder>
 <!-- <div class="search-history m-b-lg">
     <label i18n="recent searches@@search-history" class="mat-body-1">Recent searches:</label>
     <mat-chip-list class="search-list">
         <mat-chip class="search">Papadum</mat-chip>
     </mat-chip-list>
 </div> -->
-<app-bookshelf *ngIf="books| async else placeholder" (onPagerChange)="getBooks($event)"></app-bookshelf>
+<app-bookshelf *ngIf="initView" (onPagerChange)="getBooks($event)"></app-bookshelf>
 <div class="row fab">
-    <button mat-fab color="accent" class="fab-search" (click)="openDialog()">
+    <button mat-fab color="accent" class="fab-search" (click)="openDialog()" [ngClass]="{'sticky': initView}" [@sticktorightbottomcorner]="animations.fab">
         <mat-icon class="md-24" aria-label="">search</mat-icon>
     </button>
 </div>

@@ -18,13 +18,13 @@
     width: 100%;
     text-align: center;
     .fab-search{
-        &.sticky{
-            position: fixed;
-            bottom: 6vh;
-            right:10vw;
-            .mat-button-wrapper{
-                padding: 0 !important;
-            }
-        }    
+        position: fixed;
+        // &.sticky{
+        //     bottom: 10vh;
+        //     right:10vw;
+        //     .mat-button-wrapper{
+        //         padding: 0 !important;
+        //     }
+        // }    
     }
 }

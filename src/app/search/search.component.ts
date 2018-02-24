@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { ApiService } from '../shared/api.service';
 
+import { Animations } from '../app.animations';
 
 import { Book } from '../shared/bookshelf/book/book';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
@@ -29,18 +30,23 @@ class SearchParams {
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  animations: Animations
 })
 export class SearchComponent implements OnInit {
-  title: string;
   books: Observable<Book[]>;
-  activeView: number;
   loading: boolean;
   dialogRef: MatDialogRef<SearchDialogComponent>;
   searchParams: SearchParams;
+  initView: boolean;
+  animations: any;
 
   constructor(private api: ApiService, public searchDialog: MatDialog) {
     this.searchParams = new SearchParams();
+    this.initView = false;
+    this.animations = {
+      fab: 'inactive'
+    };
   }
 
   ngOnInit() {
@@ -63,14 +69,22 @@ export class SearchComponent implements OnInit {
   }
 
   private getBooks = (pagerStatus: PageEvent) => {
+    this.animations.fab = 'active';
     // this.loading = true;
-    this.books = this.api.list(this.searchParams.title, this.searchParams.author, this.searchParams.publisher, pagerStatus.pageIndex * pagerStatus.pageSize, pagerStatus.pageSize);
+    this.books = this.api.list(
+      this.searchParams.title,
+      this.searchParams.author,
+      this.searchParams.publisher,
+      pagerStatus.pageIndex * pagerStatus.pageSize,
+      pagerStatus.pageSize
+    );
     this.books
       .subscribe(
         x => { },
         e => { },
         () => {
           // this.loading = false;
+          this.initView = true;
         }
       );
   }

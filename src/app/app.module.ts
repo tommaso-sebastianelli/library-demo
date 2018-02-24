@@ -43,6 +43,7 @@ import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/goog
 // Services
 import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api.service';
+import { LoadingService } from './shared/loading.service';
 
 //auth
 import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
@@ -110,7 +111,8 @@ export function provideConfig() {
     useFactory: provideConfig
   },
     TokenService,
-    ApiService
+    ApiService,
+    LoadingService
   ],
   entryComponents: [SearchDialogComponent],
   bootstrap: [AppComponent]

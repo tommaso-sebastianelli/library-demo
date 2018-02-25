@@ -29,6 +29,16 @@ import { FormsModule } from '@angular/forms';
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+// Services
+import { TokenService } from './shared/auth/token.service';
+import { ApiService } from './shared/api.service';
+import { LoadingService } from './shared/loading/loading.service';
+
+//auth
+import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
+import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "../assets/libs/angularx-social-login-master";
+import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
+
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -39,16 +49,8 @@ import { BookComponent } from './shared/bookshelf/book/book.component';
 import { LoginComponent } from './shared/login/login.component';
 import { LibraryComponent } from './library/library.component';
 import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
+import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
 
-// Services
-import { TokenService } from './shared/auth/token.service';
-import { ApiService } from './shared/api.service';
-import { LoadingService } from './shared/loading.service';
-
-//auth
-import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
-import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "../assets/libs/angularx-social-login-master";
-import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
 const googleLoginOptions: LoginOpt = {
   scope: 'https://www.googleapis.com/auth/books'
@@ -79,7 +81,8 @@ export function provideConfig() {
     SearchDialogComponent,
     LoginComponent,
     LibraryComponent,
-    GoogleSignUpButtonComponent
+    GoogleSignUpButtonComponent,
+    LoadingDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -114,7 +117,7 @@ export function provideConfig() {
     ApiService,
     LoadingService
   ],
-  entryComponents: [SearchDialogComponent],
+  entryComponents: [SearchDialogComponent, LoadingDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { } 

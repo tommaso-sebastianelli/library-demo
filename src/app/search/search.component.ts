@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { ApiService } from '../shared/api.service';
+import { LoadingService } from '../shared/loading/loading.service';
 
 import { Animations } from '../app.animations';
 
@@ -35,13 +36,12 @@ class SearchParams {
 })
 export class SearchComponent implements OnInit {
   books: Observable<Book[]>;
-  loading: boolean;
   dialogRef: MatDialogRef<SearchDialogComponent>;
   searchParams: SearchParams;
   initView: boolean;
   animations: any;
 
-  constructor(private api: ApiService, public searchDialog: MatDialog) {
+  constructor(private api: ApiService, private loading: LoadingService, public searchDialog: MatDialog) {
     this.searchParams = new SearchParams();
     this.initView = false;
     this.animations = {
@@ -51,7 +51,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.books = Observable.of(null);
-    // this.loading = false;
   }
 
   openDialog(): void {
@@ -69,8 +68,7 @@ export class SearchComponent implements OnInit {
   }
 
   private getBooks = (pagerStatus: PageEvent) => {
-    this.animations.fab = 'active';
-    // this.loading = true;
+    this.loading.wait();
     this.books = this.api.list(
       this.searchParams.title,
       this.searchParams.author,
@@ -81,9 +79,12 @@ export class SearchComponent implements OnInit {
     this.books
       .subscribe(
         x => { },
-        e => { },
+        e => {
+          this.loading.done();
+        },
         () => {
-          // this.loading = false;
+          this.animations.fab = 'active';
+          this.loading.done();
           this.initView = true;
         }
       );

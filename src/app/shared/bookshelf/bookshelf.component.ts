@@ -1,5 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PageEvent } from '@angular/material';
+import { Book } from './book/book';
+import { Observable } from 'rxjs/Observable';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-bookshelf',
@@ -10,7 +13,13 @@ export class BookshelfComponent implements OnInit {
   length: number;
   pageSize: number;
   pageSizeOptions: number[];
-  constructor() { }
+  @Input() books: Observable<Book[]>;
+
+  constructor() {
+    this.books.subscribe((res) => {
+      console.log(res);
+    });
+  }
 
   ngOnInit() {
     this.length = 100;

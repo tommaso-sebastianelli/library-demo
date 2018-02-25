@@ -4,34 +4,23 @@ import { MatDialogModule, MatDialog, MatDialogRef, MatDialogConfig } from '@angu
 import { LoadingDialogComponent } from "../loading/loading-dialog/loading-dialog.component";
 
 class DIALOG_CONFIG extends MatDialogConfig {
-  constructor(_message: string) {
+  constructor() {
     super();
-    this.data.message = _message;
+    this.disableClose = true;
   }
-}
-
-class Loader {
-  dialogRef: MatDialogRef<any>;
-  message: string;
-
-  constructor(private dialog: MatDialog, message?: string) { }
-
-  public wait() {
-    this.dialogRef = this.dialog.open(LoadingDialogComponent, new DIALOG_CONFIG(this.message));
-  };
-  public done() {
-    this.dialogRef.close();
-  };
-
 }
 
 @Injectable()
 export class LoadingService {
+  private dialogRef: MatDialogRef<any>;
 
   constructor(private dialog: MatDialog) { }
 
-  public create(message?: string) {
-    return new Loader(this.dialog);
-  }
+  public wait() {
+    this.dialogRef = this.dialog.open(LoadingDialogComponent, new DIALOG_CONFIG());
+  };
+  public done() {
+    this.dialogRef.close();
+  };
 
 }

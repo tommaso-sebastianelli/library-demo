@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
+// import { MAT_DIALOG_DATA } from '@angular/material';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
@@ -8,9 +9,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrls: ['./loading-dialog.component.scss']
 })
 export class LoadingDialogComponent implements OnInit {
-  constructor() { }
+  constructor(/*@Inject(MAT_DIALOG_DATA) public data: any*/) { }
 
   ngOnInit() {
+
   }
 
 }

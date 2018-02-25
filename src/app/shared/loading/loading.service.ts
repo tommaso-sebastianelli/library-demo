@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { MatDialogModule, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 
 import { LoadingDialogComponent } from "../loading/loading-dialog/loading-dialog.component";
 
-class DIALOG_CONFIG {
-  data: any;
+class DIALOG_CONFIG extends MatDialogConfig {
   constructor(_message: string) {
+    super();
     this.data.message = _message;
   }
 }

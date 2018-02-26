@@ -12,4 +12,4 @@
         <mat-chip class="search">Papadum</mat-chip>
     </mat-chip-list>
 </div> -->
-<app-bookshelf *ngIf="initView" (onPagerChange)="getBooks($event)"></app-bookshelf>
+<app-bookshelf *ngIf="initView" (onPagerChange)="getBooks($event)" [asyncBooks]="books"></app-bookshelf>

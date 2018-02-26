@@ -59,7 +59,7 @@ mat-sidenav-container{
                     display: block;
                     margin-bottom: $sm;
                     .pic-frame{
-                        position: relative;
+                        position: sticky;
                         height:95px;
                         width:95px;
                         margin: $sm auto;

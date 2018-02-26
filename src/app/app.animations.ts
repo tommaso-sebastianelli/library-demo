@@ -1,6 +1,6 @@
 //animations for the application
 
-import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 
 export const Animations = [
     trigger('slamtocorner', [
@@ -18,24 +18,39 @@ export const Animations = [
         ])
         )])
     ]),
-    trigger('emerge', [
-        state('void', style({
-            position: 'relative',
-            top: '100%',
-            opacity: 0
-        })),
-        transition('void => *', [animate('225ms 400ms ease-out', keyframes([
-            style({ position: 'relative', top: '*', opacity: 1.0 })
-        ])
-        )])
-    ]),
+    // trigger('emerge', [
+    //     state('void', style({
+    //         position: 'relative',
+    //         top: '100%',
+    //         opacity: 0
+    //     })),
+    //     transition('void => *', [animate('225ms 225ms ease-out', keyframes([
+    //         style({ position: 'relative', top: '*', opacity: 1.0 })
+    //     ])
+    //     )])
+    // ]),
     trigger('popout', [
         state('void', style({
             transform: 'scale(0.7)'
         })),
-        transition('void => *', [animate('125ms 650ms ease-out', keyframes([
+        transition('void => *', [animate('100ms 550ms ease-out', keyframes([
             style({ transform: 'scale(1.0)' })
         ])
         )])
     ]),
+    trigger('emerge', [
+        transition('* => *', [ // each time the binding value changes
+            query(':leave', [
+                stagger(100, [
+                    animate('0.5s', style({ opacity: 0 }))
+                ])
+            ]),
+            query(':enter', [
+                style({ opacity: 0 }),
+                stagger(100, [
+                    animate('0.5s', style({ opacity: 1 }))
+                ])
+            ])
+        ])
+    ])
 ];

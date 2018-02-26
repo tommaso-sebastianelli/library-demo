@@ -13,12 +13,10 @@ export class BookshelfComponent implements OnInit {
   length: number;
   pageSize: number;
   pageSizeOptions: number[];
-  @Input() books: Observable<Book[]>;
+  // @Input() books: Observable<Book[]>;
 
   constructor() {
-    this.books.subscribe((res) => {
-      console.log(res);
-    });
+
   }
 
   ngOnInit() {

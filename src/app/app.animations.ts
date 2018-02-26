@@ -7,12 +7,14 @@ export const Animations = [
         state('active', style({
             position: 'fixed',
             bottom: '10vh',
-            right: '10vw'
+            right: '10vw',
+            transform: 'scale(1)'
         })),
         transition('* => active', [animate('225ms ease-out', keyframes([
-            style({ transform: 'scale(1)', bottom: '*', right: '*', offset: 0 }),
-            style({ transform: 'scale(0.5)', bottom: '*', right: '*', offset: 0.5 }),
-            style({ transform: 'scale(1)', bottom: '10vh', right: '10vw', offset: 1.0 })
+            style({ transform: 'scale(0.5)', bottom: '*', right: '*', offset: 0 }),
+            style({ transform: 'scale(0.5) translateY(25vh) translateX(2vw)', bottom: '*', right: '*', offset: 0.3 }),
+            style({ transform: 'scale(0.5) translateY(50vh) translateX(5vw)', bottom: '*', right: '*', offset: 0.7 }),
+            style({ transform: 'scale(1)  translateY(0) translateX(0)', bottom: '10vh', right: '10vw', offset: 1 })
         ])
         )])
     ]),

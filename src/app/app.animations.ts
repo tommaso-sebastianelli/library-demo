@@ -18,17 +18,21 @@ export const Animations = [
         ])
         )])
     ]),
-    // trigger('emerge', [
-    //     state('void', style({
-    //         position: 'relative',
-    //         top: '100%',
-    //         opacity: 0
-    //     })),
-    //     transition('void => *', [animate('225ms 225ms ease-out', keyframes([
-    //         style({ position: 'relative', top: '*', opacity: 1.0 })
-    //     ])
-    //     )])
-    // ]),
+    trigger('emerge', [
+        state('void', style({
+            position: 'relative',
+            top: '100%',
+            opacity: 0
+        })),
+        transition('void => *', [animate('225ms {{offset}}ms ease-out', keyframes([
+            style({ position: 'relative', top: '*', opacity: 1.0 })
+        ]),
+        )], { params: { offset: 225 } }),
+        transition('* => void', [animate('725ms ease-out', keyframes([
+            style({ position: 'relative', top: '100%', opacity: 0 })
+        ]),
+        )])
+    ]),
     trigger('popout', [
         state('void', style({
             transform: 'scale(0.7)'
@@ -38,19 +42,19 @@ export const Animations = [
         ])
         )])
     ]),
-    trigger('emerge', [
-        transition('* => *', [ // each time the binding value changes
-            query(':leave', [
-                stagger(100, [
-                    animate('0.5s', style({ opacity: 0 }))
-                ])
-            ]),
-            query(':enter', [
-                style({ opacity: 0 }),
-                stagger(100, [
-                    animate('0.5s', style({ opacity: 1 }))
-                ])
-            ])
-        ])
-    ])
+    // trigger('emerge', [
+    //     transition('* => *', [ // each time the binding value changes
+    //         query(':leave', [
+    //             stagger(100, [
+    //                 animate('0.5s', style({ opacity: 0 }))
+    //             ])
+    //         ]),
+    //         query(':enter', [
+    //             style({ opacity: 0 }),
+    //             stagger(100, [
+    //                 animate('0.5s', style({ opacity: 1 }))
+    //             ])
+    //         ])
+    //     ])
+    // ])
 ];

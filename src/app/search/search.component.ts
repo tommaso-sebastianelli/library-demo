@@ -35,22 +35,20 @@ class SearchParams {
   animations: Animations
 })
 export class SearchComponent implements OnInit {
-  books: Observable<Book[]>;
+  books: Book[];
   dialogRef: MatDialogRef<SearchDialogComponent>;
   searchParams: SearchParams;
-  initView: boolean;
   animations: any;
 
   constructor(private api: ApiService, private loading: LoadingService, public searchDialog: MatDialog) {
     this.searchParams = new SearchParams();
-    this.initView = false;
+    this.books = [];
     this.animations = {
       fab: 'inactive'
     };
   }
 
   ngOnInit() {
-    this.books = Observable.of(null);
   }
 
   openDialog(): void {
@@ -69,24 +67,18 @@ export class SearchComponent implements OnInit {
 
   private getBooks = (pagerStatus: PageEvent) => {
     this.loading.wait();
-    this.books = this.api.list(
+    this.api.list(
       this.searchParams.title,
       this.searchParams.author,
       this.searchParams.publisher,
       pagerStatus.pageIndex * pagerStatus.pageSize,
       pagerStatus.pageSize
+    ).subscribe(result => {
+      this.books = result;
+      this.animations.fab = 'active';
+      this.loading.done();
+      this.books = result;
+    }
     );
-    this.books
-      .subscribe(
-        x => { },
-        e => {
-          this.loading.done();
-        },
-        () => {
-          this.animations.fab = 'active';
-          this.loading.done();
-          this.initView = true;
-        }
-      );
   }
 }

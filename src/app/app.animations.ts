@@ -28,8 +28,8 @@ export const Animations = [
             style({ position: 'relative', top: '0px', opacity: 1.0 })
         ]),
         )], { params: { delay: 0 } }),
-        transition('* => void', [animate('50ms ease-out', keyframes([
-            style({ position: 'relative', top: '300px', opacity: 0 })
+        transition('* => void', [animate('50ms ease-in', keyframes([
+            style({ position: 'relative', top: '100px', opacity: 0 })
         ]),
         )])
     ]),

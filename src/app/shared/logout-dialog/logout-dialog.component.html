@@ -1,0 +1,14 @@
+<div matDialogTitle i18n="logout dialog title@@logout-title">Confirm</div>
+<mat-dialog-content>
+  <p class="mat-body-1">The following account will be disconnected:</p>
+  <div class="account-info">
+    <div class="avatar-box">
+      <img class="avatar" [src]="data.photoUrl">
+    </div>
+    <span class="email mat-body-1">{{data.email}}</span>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="logout(this)" i18n="logout dialog confirm@@signout">Signout</button>
+  <button mat-button mat-dialog-close i18n="logout dialog cancel@@generic-cancel">Cancel</button>
+</mat-dialog-actions>

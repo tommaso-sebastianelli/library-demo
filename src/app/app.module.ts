@@ -50,6 +50,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { LibraryComponent } from './library/library.component';
 import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
 import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
+import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 
 
 const googleLoginOptions: LoginOpt = {
@@ -82,7 +83,8 @@ export function provideConfig() {
     LoginComponent,
     LibraryComponent,
     GoogleSignUpButtonComponent,
-    LoadingDialogComponent
+    LoadingDialogComponent,
+    LogoutDialogComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -117,7 +119,11 @@ export function provideConfig() {
     ApiService,
     LoadingService
   ],
-  entryComponents: [SearchDialogComponent, LoadingDialogComponent],
+  entryComponents: [
+    SearchDialogComponent,
+    LoadingDialogComponent,
+    LogoutDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { } 

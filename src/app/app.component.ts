@@ -7,14 +7,18 @@ import { TokenService } from './shared/auth/token.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component } from '@angular/core';
 import { MatDrawer } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
+import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
+
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
-import {appRoutes} from './app.routes';
+import { appRoutes } from './app.routes';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-   styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss']
   // animations: [
   //   trigger('searchInput', [
   //     state('inactive', style({
@@ -32,7 +36,7 @@ export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(public media: ObservableMedia, private authService: AuthService, public tokenService: TokenService) {
+  constructor(public media: ObservableMedia, private authService: AuthService, public tokenService: TokenService, public dialog: MatDialog) {
     this.sideNavMode = 'over';
   }
 
@@ -41,10 +45,10 @@ export class AppComponent implements OnInit {
       this.setSidenavMobile();
     }
     this.media.asObservable()
-    .filter((change: MediaChange) => change.mqAlias === 'lg' || change.mqAlias === 'xl')
-    .subscribe(() => {
-      this.setSidenavDesktop();
-    });
+      .filter((change: MediaChange) => change.mqAlias === 'lg' || change.mqAlias === 'xl')
+      .subscribe(() => {
+        this.setSidenavDesktop();
+      });
 
     this.media.asObservable()
       .filter((change: MediaChange) => change.mqAlias !== 'lg' && change.mqAlias !== 'xl')
@@ -53,27 +57,30 @@ export class AppComponent implements OnInit {
       });
 
     this.authService.authState.subscribe((user) => {
-      this.user = user;      
+      this.user = user;
       console.log("user: " + this.user);
-      });
+    });
 
     //log purpose only
-    this.tokenService.authClaim.subscribe(anyToken => {        
+    this.tokenService.authClaim.subscribe(anyToken => {
       console.log("userHasToken: " + anyToken);
     });
-    };
+  };
 
-    logout(): void {
-      this.authService.revokeAuth();
-    }
-
-    private setSidenavMobile() {
-      this.sidenav.close();
-      this.sideNavMode = 'over';
-    }
-  
-    private setSidenavDesktop() {
-      this.sidenav.open();
-      this.sideNavMode = 'side';
-    }
+  openLogoutModal() {
+    let dialogRef = this.dialog.open(LogoutDialogComponent, {
+      width: '450px',
+      data: this.user
+    });
   }
+
+  private setSidenavMobile() {
+    this.sidenav.close();
+    this.sideNavMode = 'over';
+  }
+
+  private setSidenavDesktop() {
+    this.sidenav.open();
+    this.sideNavMode = 'side';
+  }
+}

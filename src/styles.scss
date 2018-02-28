@@ -6,4 +6,7 @@ body{
     }
 
     mat-icon{ margin: auto;}
+    
+    //fix for centering mat-dialog with custom width
+    mat-dialog-container{margin: auto;}
 }

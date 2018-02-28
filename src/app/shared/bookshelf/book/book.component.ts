@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Book } from './book';
 
 import { Animations } from '../../../app.animations';
 
@@ -10,6 +11,7 @@ import { Animations } from '../../../app.animations';
   animations: Animations
 })
 export class BookComponent implements OnInit {
+  @Input() data: Book;
   animations: any;
   constructor() {
     this.animations = {}

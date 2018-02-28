@@ -1,7 +1,7 @@
 <div class="paginator m-b-lg">
-    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent($event)">
-    </mat-paginator>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent($event)">
+  </mat-paginator>
 </div>
 <div class="container" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap *ngIf="books.length">
-    <app-book *ngFor="let book of books; let i = index;" fxFlex="450px" fxFlex.xs="100%" class="m-r-sm m-b-sm" [@emerge]="{value: ':enter', params:{offset: 85*(i+1)}}"></app-book>
+  <app-book *ngFor="let book of books; let i = index;" fxFlex="450px" fxFlex.xs="100%" class="m-r-sm m-b-sm" [@appear]="{value: ':enter', params:{delay: 225+(50*(i+1))}}"></app-book>
 </div>

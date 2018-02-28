@@ -10,26 +10,26 @@ export const Animations = [
             right: '10vw',
             transform: 'scale(1)'
         })),
-        transition('* => active', [animate('225ms ease-out', keyframes([
+        transition('* => active', [animate('225ms {{delay}}ms ease-out', keyframes([
             style({ transform: 'scale(0.5)', bottom: '*', right: '*', offset: 0 }),
             style({ transform: 'scale(0.5) translateY(25vh) translateX(2vw)', bottom: '*', right: '*', offset: 0.3 }),
             style({ transform: 'scale(0.5) translateY(50vh) translateX(5vw)', bottom: '*', right: '*', offset: 0.7 }),
             style({ transform: 'scale(1)  translateY(0) translateX(0)', bottom: '10vh', right: '10vw', offset: 1 })
         ])
-        )])
+        )], { params: { delay: 0 } })
     ]),
-    trigger('emerge', [
+    trigger('appear', [
         state('void', style({
             position: 'relative',
-            top: '100%',
+            top: '300px',
             opacity: 0
         })),
-        transition('void => *', [animate('225ms {{offset}}ms ease-out', keyframes([
-            style({ position: 'relative', top: '*', opacity: 1.0 })
+        transition('void => *', [animate('225ms {{delay}}ms ease-out', keyframes([
+            style({ position: 'relative', top: '0px', opacity: 1.0 })
         ]),
-        )], { params: { offset: 225 } }),
-        transition('* => void', [animate('725ms ease-out', keyframes([
-            style({ position: 'relative', top: '100%', opacity: 0 })
+        )], { params: { delay: 0 } }),
+        transition('* => void', [animate('50ms ease-out', keyframes([
+            style({ position: 'relative', top: '300px', opacity: 0 })
         ]),
         )])
     ]),
@@ -37,24 +37,9 @@ export const Animations = [
         state('void', style({
             transform: 'scale(0.7)'
         })),
-        transition('void => *', [animate('100ms 550ms ease-out', keyframes([
+        transition('void => *', [animate('100ms {{delay}}ms ease-out', keyframes([
             style({ transform: 'scale(1.0)' })
         ])
-        )])
-    ]),
-    // trigger('emerge', [
-    //     transition('* => *', [ // each time the binding value changes
-    //         query(':leave', [
-    //             stagger(100, [
-    //                 animate('0.5s', style({ opacity: 0 }))
-    //             ])
-    //         ]),
-    //         query(':enter', [
-    //             style({ opacity: 0 }),
-    //             stagger(100, [
-    //                 animate('0.5s', style({ opacity: 1 }))
-    //             ])
-    //         ])
-    //     ])
-    // ])
+        )], { params: { delay: 0 } })
+    ])
 ];

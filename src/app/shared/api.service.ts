@@ -7,6 +7,7 @@ import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/toPromise';
 
 import { Book } from '../shared/bookshelf/book/book';
+import { isNullOrUndefined } from 'util';
 
 @Injectable()
 export class ApiService {
@@ -16,9 +17,18 @@ export class ApiService {
 
   }
   public list(title?: string, author?: string, publisher?: string, offset?: number, limit?: number): Observable<Book[]> {
-    const url = `${this.api_url}?q=+intitle:{${title}}+inauthor:{${author}}+inpublisher:{${publisher}}&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&projection=lite`;
+    let url = `${this.api_url}?q=`;
+    if (title)
+      url = url.concat(`+intitle:{${title}}`);
+    if (author)
+      url = url.concat(`+inauthor:{${author}}`);
+    if (publisher)
+      url = url.concat(`+inpublisher:{${publisher}}`);
+
+    url = url.concat(`&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&orderBy=relevance&projection=lite`);
     return this.http.get(url)
-      .map(response => response.json().items
+      .map(response => (response.json().items) ? response.json().items : [])
+      .map(response => response
         .map(item => new Book(item))
         .filter(item => item.id !== null));
     // return this.http.get(url)
@@ -40,5 +50,11 @@ export class ApiService {
     return Promise.reject(error.message || error);
   }
 
+  // private handleParam(param: string): string {
+  //   if (isNullOrUndefined(param))
+  //     return;
+  //   else
+  //     return param.replace(/\s{2,}/g, '+');
+  // }
 }
 

@@ -11,7 +11,7 @@ import { Animations } from '../../../app.animations';
   animations: Animations
 })
 export class BookComponent implements OnInit {
-  @Input() data: Book;
+  @Input() book: Book;
   animations: any;
   constructor() {
     this.animations = {}

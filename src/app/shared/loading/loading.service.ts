@@ -12,7 +12,7 @@ class DIALOG_CONFIG extends MatDialogConfig {
 
 @Injectable()
 export class LoadingService {
-  private dialogRef: MatDialogRef<any>;
+  private dialogRef: MatDialogRef<LoadingDialogComponent>;
 
   constructor(private dialog: MatDialog) { }
 
@@ -20,7 +20,7 @@ export class LoadingService {
     this.dialogRef = this.dialog.open(LoadingDialogComponent, new DIALOG_CONFIG());
   };
   public done() {
-    this.dialogRef.close();
+    this.dialog.closeAll();//FIXME: dialogRef.close() should be used, but somehow it's not working
   };
 
 }

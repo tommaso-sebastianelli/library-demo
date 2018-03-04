@@ -59,6 +59,7 @@ export class SearchComponent implements OnInit {
           this.searchParams.title = title;
           this.searchParams.author = author;
           this.searchParams.publisher = publisher;
+          this.dialogRef.close();
           this.getBooks(new PageEvent());
         }
       }

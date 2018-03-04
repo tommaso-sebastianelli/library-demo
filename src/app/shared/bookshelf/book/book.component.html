@@ -1,30 +1,30 @@
 <mat-card fxLayout="row">
-    <div fxFlex="30%" class="image-box" fxHide.xs>
+    <div fxFlex="0 0 30%" class="image-box" fxHide.xs>
         <div class="image-frame" [@popout]>
-            <img class="placeholder" src="/assets/img/book_placeholder.png" />
+            <img *ngIf="book.thumbnail" class="placeholder" [src]="book.thumbnail" />
+            <img *ngIf="!book.thumbnail" class="placeholder" src="/assets/img/book_placeholder.png" />
             <img class="cover" aria-labelledby="title" src="" />
         </div>
     </div>
     <div fxFlex="1 1 auto" class="content">
         <div fxLayout="row">
             <div fxFlex="auto" class="info">
-                <mat-card-title id="title" class="title">
+                <mat-card-title id="title" class="title" [title]="book.title">
                     <!-- <mat-card-title id="title" class="title" title="{{book.title}}"> -->
                     <!-- {{book.title}} -->
-                    Title
+                    {{book.title}}
                 </mat-card-title>
-                <mat-card-subtitle i18n-title="Author|label for author@@card-author" title="author" class="author">
+                <mat-card-subtitle *ngIf="book.authors" i18n-title="Author|label for author@@card-author" [title]="book.authors" class="author">
                     <mat-icon class="icon" aria-label="author">person</mat-icon>
-                    <span>
-                        <!-- <span *ngFor="let author of book.authors; let i = index"> -->
-                        <!-- {{(i > 0) ? '- ' : ''}}{{author}}  -->
-                        Author1, Author2, Author3
+                    <span *ngFor="let author of book.authors; let i = index">
+                        {{(i > 0) ? '- ' : ''}}{{author}}
                     </span>
                 </mat-card-subtitle>
-                <mat-card-subtitle i18n-title="Editor|label for editor button@@card-editor" title="editor" class="editor">
+                <mat-card-subtitle *ngIf="book.publisher" i18n-title="Editor|label for editor button@@card-editor" [title]="book.publisher"
+                    class="editor">
                     <mat-icon class="icon" aria-label="editor">home</mat-icon>
-                    <!-- {{book.publisher}} -->
-                    <span>Publisher</span>
+                    <span>{{book.publisher}}</span>
+                    <!-- <span>Publisher</span> -->
                 </mat-card-subtitle>
             </div>
             <div fxFlex="45px" class="options button-row">

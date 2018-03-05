@@ -35,30 +35,18 @@ export class ApiService {
       .catch((err) => {
         return Observable.throw(err);
       });
-    // return this.http.get(url)
-    //   .toPromise()
-    //   .then(response => response.json().items as Book[])
-    //   .catch(this.handleError);
   }
 
   public get(id: string): Observable<Book> {
     const url = `${this.api_url}/${id}`;
     return this.http.get(url)
-      .map(response => response.json().items
+      .map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
+      .map(response => response.items
         .map(item => new Book(item))
-        .filter(item => item.id !== null));
+        .filter(item => item.id !== null))
+      .catch((err) => {
+        return Observable.throw(err);
+      });
   }
-
-  // private handleError(error: any): Promise<any> {
-  //   console.error('An error occurred', error); // for demo purposes only
-  //   return Promise.reject(error.message || error);
-  // }
-
-  // private handleParam(param: string): string {
-  //   if (isNullOrUndefined(param))
-  //     return;
-  //   else
-  //     return param.replace(/\s{2,}/g, '+');
-  // }
 }
 

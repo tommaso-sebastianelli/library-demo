@@ -2,6 +2,8 @@
 @import '../../../../assets/sass/spacing.scss';
 mat-dialog-content {
   .details {
+    overflow: hidden;
+    text-overflow: ellipsis;
     .avatar {
       display: inline-block; //   background: map-get($candy-app-primary, accent);
       background: lightgray;

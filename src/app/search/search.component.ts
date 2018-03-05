@@ -84,12 +84,17 @@ export class SearchComponent implements OnInit {
         this.books = result;
       },
       e => {
-        this.loading.done();
-        this.error.throw(e);
+        this.loading.done().subscribe(() => {
+          this.error.throw(e).subscribe(() => {
+            this.books = [];
+            this.animations.fab = "inactive";
+          });
+        });
       },
       () => {
-        this.animations.fab = 'active';
-        this.loading.done();
+        this.loading.done().subscribe(() => {
+          this.animations.fab = 'active';
+        });
       }
     );
   }

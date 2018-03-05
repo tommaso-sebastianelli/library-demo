@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 
 import { ApiService } from '../shared/api.service';
 import { LoadingService } from '../shared/loading/loading.service';
+import { ErrorService } from '../shared/error/error.service';
+
 
 import { Animations } from '../app.animations';
 
@@ -40,7 +42,7 @@ export class SearchComponent implements OnInit {
   searchParams: SearchParams;
   animations: any;
 
-  constructor(private api: ApiService, private loading: LoadingService, public searchDialog: MatDialog) {
+  constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog) {
     this.searchParams = new SearchParams();
     this.books = [];
     this.animations = {

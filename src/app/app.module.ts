@@ -33,7 +33,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api.service';
 import { LoadingService } from './shared/loading/loading.service';
-import { ErrorHandlerService } from './shared/error-handler/error-handler.service';
+import { ErrorService } from './shared/error/error.service';
 
 //auth
 import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
@@ -52,7 +52,7 @@ import { LibraryComponent } from './library/library.component';
 import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
 import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
-import { ErrorDialogComponent } from './shared/error-handler/error-dialog/error-dialog.component';
+import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
 
 
 const googleLoginOptions: LoginOpt = {
@@ -120,7 +120,7 @@ export function provideConfig() {
     TokenService,
     ApiService,
     LoadingService,
-    ErrorHandlerService
+    ErrorService
   ],
   entryComponents: [
     SearchDialogComponent,

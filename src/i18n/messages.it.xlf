@@ -74,6 +74,12 @@
         <target>Chiudi</target>
       </trans-unit>
 
+      <!-->ERROR DIALOG<-->
+      <trans-unit id="error-dialog-title" datatype="html">
+        <source>ouch, that's an error!</source>
+        <target>ops, c'è un errore!</target>
+      </trans-unit>
+
       <!-->LOGIN CARD<-->
       <trans-unit id="login-card-title" datatype="html">
         <source>Log In</source>

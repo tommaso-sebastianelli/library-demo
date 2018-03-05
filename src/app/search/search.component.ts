@@ -51,6 +51,9 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    // setTimeout(() => {
+    //   this.getBooks(new PageEvent());
+    // }, 500);
   }
 
   openDialog(): void {
@@ -76,12 +79,18 @@ export class SearchComponent implements OnInit {
       this.searchParams.publisher,
       pagerStatus.pageIndex * pagerStatus.pageSize,
       pagerStatus.pageSize
-    ).subscribe(result => {
-      this.books = result;
-      this.animations.fab = 'active';
-      this.loading.done();
-      this.books = result;
-    }
+    ).subscribe(
+      result => {
+        this.books = result;
+      },
+      e => {
+        this.loading.done();
+        this.error.throw(e);
+      },
+      () => {
+        this.animations.fab = 'active';
+        this.loading.done();
+      }
     );
   }
 }

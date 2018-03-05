@@ -1,0 +1,18 @@
+// @import '../../../../custom-theme.scss';
+@import '../../../../assets/sass/spacing.scss';
+mat-dialog-content {
+  .details {
+    .avatar {
+      display: inline-block; //   background: map-get($candy-app-primary, accent);
+      background: lightgray;
+      height: auto;
+      padding: 5px;
+      margin-right: $xs;
+      border-radius: 100%;
+    }
+  }
+}
+
+mat-dialog-actions {
+  float: right;
+}

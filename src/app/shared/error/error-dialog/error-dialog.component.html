@@ -1,6 +1,13 @@
-<div matDialogTitle i18n="error dialog title@@error-dialog-title" class="mat-body-1">ouch! that's an error!</div>
+<div matDialogTitle i18n="error dialog title@@error-dialog-title" class="mat-body-1">Ouch, that's an error!</div>
 <mat-dialog-content class="m-b-sm">
-
+  <div>
+    <p class="details mat-body-1">
+      <span class="avatar mat-body-2">
+        400
+      </span>
+      {{data}}
+    </p>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button">{{'close' | uppercase}}</button>

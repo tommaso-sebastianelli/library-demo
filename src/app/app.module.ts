@@ -86,7 +86,8 @@ export function provideConfig() {
     LibraryComponent,
     GoogleSignUpButtonComponent,
     LoadingDialogComponent,
-    LogoutDialogComponent
+    LogoutDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     RouterModule.forRoot(

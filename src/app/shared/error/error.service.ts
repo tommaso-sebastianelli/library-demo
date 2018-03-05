@@ -4,8 +4,10 @@ import { MatDialogModule, MatDialog, MatDialogRef, MatDialogConfig } from '@angu
 import { ErrorDialogComponent } from "../error/error-dialog/error-dialog.component";
 
 class DIALOG_CONFIG extends MatDialogConfig {
-  constructor() {
+  constructor(e: Error) {
     super();
+    this.data = e;
+    this.width = "450px";
     // this.disableClose = true;
   }
 }
@@ -17,6 +19,7 @@ export class ErrorService {
   constructor(private dialog: MatDialog) { }
 
   public throw(e: Error) {
-    this.dialogRef = this.dialog.open(ErrorDialogComponent, new DIALOG_CONFIG());
+    let config = new DIALOG_CONFIG(e);
+    this.dialogRef = this.dialog.open(ErrorDialogComponent, config);
   };
 }

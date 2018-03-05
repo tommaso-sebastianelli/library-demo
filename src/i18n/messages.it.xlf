@@ -76,8 +76,8 @@
 
       <!-->ERROR DIALOG<-->
       <trans-unit id="error-dialog-title" datatype="html">
-        <source>ouch, that's an error!</source>
-        <target>ops, c'è un errore!</target>
+        <source>Ouch, that's an error!</source>
+        <target>Ops, c'è un errore!</target>
       </trans-unit>
 
       <!-->LOGIN CARD<-->

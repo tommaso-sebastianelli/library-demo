@@ -17,7 +17,7 @@ export class ApiService {
 
   }
   public list(title?: string, author?: string, publisher?: string, offset?: number, limit?: number): Observable<Book[]> {
-    let url = `${this.api_url}?q=`;
+    let url = `${this.api_url}?xq=`;
     if (title)
       url = url.concat(`+intitle:{${title}}`);
     if (author)
@@ -27,10 +27,14 @@ export class ApiService {
 
     url = url.concat(`&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&orderBy=relevance&projection=lite`);
     return this.http.get(url)
-      .map(response => (response.json().items) ? response.json().items : [])
+      .map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
+      .map(response => (response.items) ? response.items : []) //check response
       .map(response => response
         .map(item => new Book(item))
-        .filter(item => item.id !== null));
+        .filter(item => item.id !== null))
+      .catch((err) => {
+        return Observable.throw(err);
+      });
     // return this.http.get(url)
     //   .toPromise()
     //   .then(response => response.json().items as Book[])
@@ -45,10 +49,10 @@ export class ApiService {
         .filter(item => item.id !== null));
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
+  // private handleError(error: any): Promise<any> {
+  //   console.error('An error occurred', error); // for demo purposes only
+  //   return Promise.reject(error.message || error);
+  // }
 
   // private handleParam(param: string): string {
   //   if (isNullOrUndefined(param))

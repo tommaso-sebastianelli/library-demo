@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatPseudoCheckbox, MatCard, MatDialogRef, PageEvent } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/map';
 
 import { ApiService } from '../shared/api.service';
@@ -16,17 +17,19 @@ import { Book } from '../shared/bookshelf/book/book';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { isNullOrUndefined } from 'util';
 
-class SearchParams {
-  title: string;
-  author: string;
-  publisher: string;
-  take: number;
-  offset: number;
+const DEFAULT_QUERY_LIMIT = 25;
+
+class QueryParams {
+  title?: string;
+  author?: string;
+  publisher?: string;
+  take?: number;
+  offset?: number;
   constructor() {
     this.title = "";
     this.author = "";
     this.publisher = "";
-    this.take = 25;//global constant
+    this.take = DEFAULT_QUERY_LIMIT;
     this.offset = 0;
   }
 }
@@ -40,17 +43,15 @@ class SearchParams {
 export class SearchComponent implements OnInit {
   books: Book[];
   dialogRef: MatDialogRef<SearchDialogComponent>;
-  searchParams: SearchParams;
   animations: any;
 
   constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) {
+    private activatedRoute: ActivatedRoute, private router: Router) {
     this.init();
+    //read query params from url
   }
 
   private init(): void {
-    this.searchParams = new SearchParams();
     this.books = [];
     this.animations = {
       fab: ''
@@ -58,47 +59,50 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    // setTimeout(() => {
-    //   this.getBooks(new PageEvent());
-    // }, 500);
-
-    // this.animations.fab = 'active';
-    // setTimeout(() => {
-    //   this.animations.fab = '';
-    // }, 1000);
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: {
-        ...this.activatedRoute.snapshot.queryParams,
-        myParam: 'myNewValue',
-      }
-    });
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        console.log(params);
+        this.getBooks(params);
+      });
   }
 
   openDialog(): void {
     this.dialogRef = this.searchDialog.open(SearchDialogComponent, {
       data: {
         onSearch: (title: string, author: string, publisher: string) => {
-          this.searchParams = new SearchParams();
-          this.searchParams.title = title;
-          this.searchParams.author = author;
-          this.searchParams.publisher = publisher;
           this.dialogRef.close();
-          this.getBooks(new PageEvent());
+          this.updateQueryParams({
+            title: title,
+            author: author,
+            publisher: publisher,
+            take: DEFAULT_QUERY_LIMIT,
+            offset: 0
+          });
         }
       }
     });
   }
 
-  private getBooks = (pagerStatus: PageEvent) => {
+  onPagerChange(pagerStatus: PageEvent): void {
+    this.updateQueryParams({
+      title: this.activatedRoute.snapshot.queryParams["title"],
+      author: this.activatedRoute.snapshot.queryParams["author"],
+      publisher: this.activatedRoute.snapshot.queryParams["publisher"],
+      take: pagerStatus.pageSize,
+      offset: pagerStatus.pageIndex * pagerStatus.pageSize
+    });
+  }
+
+  private updateQueryParams(params: QueryParams): void {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: params
+    });
+  }
+
+  private getBooks = (params: QueryParams) => {
     this.loading.wait();
-    this.api.list(
-      this.searchParams.title,
-      this.searchParams.author,
-      this.searchParams.publisher,
-      pagerStatus.pageIndex * pagerStatus.pageSize,
-      pagerStatus.pageSize
-    ).subscribe(
+    this.api.list(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
       result => {
         this.books = result;
       },

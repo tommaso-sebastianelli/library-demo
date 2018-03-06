@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatPseudoCheckbox, MatCard, MatDialogRef, PageEvent } from '@angular/material';
 
@@ -61,9 +61,17 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams
       .subscribe(params => {
-        console.log(params);
-        this.getBooks(params);
+        if (params.title || params.author || params.publisher) {
+          console.log(params);
+          this.getBooks(params);
+        } else {
+          this.init();
+        }
       });
+  }
+
+  ngAfterContentInit() {
+
   }
 
   openDialog(): void {
@@ -85,9 +93,9 @@ export class SearchComponent implements OnInit {
 
   onPagerChange(pagerStatus: PageEvent): void {
     this.updateQueryParams({
-      title: this.activatedRoute.snapshot.queryParams["title"],
-      author: this.activatedRoute.snapshot.queryParams["author"],
-      publisher: this.activatedRoute.snapshot.queryParams["publisher"],
+      title: this.activatedRoute.snapshot.queryParams.title,
+      author: this.activatedRoute.snapshot.queryParams.author,
+      publisher: this.activatedRoute.snapshot.queryParams.publisher,
       take: pagerStatus.pageSize,
       offset: pagerStatus.pageIndex * pagerStatus.pageSize
     });
@@ -105,6 +113,7 @@ export class SearchComponent implements OnInit {
     this.api.list(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
       result => {
         this.books = result;
+        this.animations.fab = (this.books.length) ? 'active' : '';
       },
       e => {
         this.loading.done().subscribe(() => {
@@ -115,7 +124,6 @@ export class SearchComponent implements OnInit {
       },
       () => {
         this.loading.done().subscribe(() => {
-          this.animations.fab = (this.books.length) ? 'active' : '';
           //show no result placeholder
         });
       }

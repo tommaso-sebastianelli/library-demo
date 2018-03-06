@@ -4,6 +4,7 @@ mat-dialog-content {
   .details {
     overflow: hidden;
     text-overflow: ellipsis;
+    color: grey;
     .avatar {
       display: inline-block; //   background: map-get($candy-app-primary, accent);
       background: lightgray;

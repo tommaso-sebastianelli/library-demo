@@ -16,7 +16,14 @@ export const Animations = [
             style({ transform: 'scale(0.5) translateY(50vh) translateX(5vw)', bottom: '*', right: '*', offset: 0.7 }),
             style({ transform: 'scale(1)  translateY(0) translateX(0)', bottom: '10vh', right: '10vw', offset: 1 })
         ])
-        )], { params: { delay: 0 } })
+        ),], { params: { delay: 0 } }),
+        transition('active => *', [animate('125ms {{delay}}ms ease-out', keyframes([
+            style({ transform: 'scale(0.5)', bottom: '10vh', right: '10vw', offset: 0 }),
+            style({ transform: 'scale(0.5) translateY(50vh) translateX(5vw)', bottom: '*', right: '*', offset: 0.3 }),
+            style({ transform: 'scale(0.5) translateY(25vh) translateX(2vw)', bottom: '*', right: '*', offset: 0.7 }),
+            style({ transform: 'scale(1)  translateY(0) translateX(0)', bottom: 'initial', right: 'initial', offset: 1 })
+        ])
+        ),], { params: { delay: 0 } })
     ]),
     trigger('appear', [
         state('void', style({

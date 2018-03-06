@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatPseudoCheckbox, MatCard, MatDialogRef, PageEvent } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
@@ -42,11 +43,17 @@ export class SearchComponent implements OnInit {
   searchParams: SearchParams;
   animations: any;
 
-  constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog) {
+  constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+    this.init();
+  }
+
+  private init(): void {
     this.searchParams = new SearchParams();
     this.books = [];
     this.animations = {
-      fab: 'inactive'
+      fab: ''
     };
   }
 
@@ -54,6 +61,18 @@ export class SearchComponent implements OnInit {
     // setTimeout(() => {
     //   this.getBooks(new PageEvent());
     // }, 500);
+
+    // this.animations.fab = 'active';
+    // setTimeout(() => {
+    //   this.animations.fab = '';
+    // }, 1000);
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        ...this.activatedRoute.snapshot.queryParams,
+        myParam: 'myNewValue',
+      }
+    });
   }
 
   openDialog(): void {
@@ -86,14 +105,14 @@ export class SearchComponent implements OnInit {
       e => {
         this.loading.done().subscribe(() => {
           this.error.throw(e).subscribe(() => {
-            this.books = [];
-            this.animations.fab = "inactive";
+            this.init();
           });
         });
       },
       () => {
         this.loading.done().subscribe(() => {
-          this.animations.fab = 'active';
+          this.animations.fab = (this.books.length) ? 'active' : '';
+          //show no result placeholder
         });
       }
     );

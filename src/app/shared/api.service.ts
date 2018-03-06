@@ -17,7 +17,7 @@ export class ApiService {
 
   }
   public list(title?: string, author?: string, publisher?: string, offset?: number, limit?: number): Observable<Book[]> {
-    let url = `${this.api_url}?xq=`;
+    let url = `${this.api_url}?q=`;
     if (title)
       url = url.concat(`+intitle:{${title}}`);
     if (author)

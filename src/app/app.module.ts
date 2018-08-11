@@ -31,7 +31,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Services
 import { TokenService } from './shared/auth/token.service';
-import { ApiService } from './shared/api.service';
+import { ApiService } from './shared/api/api.service';
 import { LoadingService } from './shared/loading/loading.service';
 import { ErrorService } from './shared/error/error.service';
 
@@ -87,7 +87,7 @@ export function provideConfig() {
     GoogleSignUpButtonComponent,
     LoadingDialogComponent,
     LogoutDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
   ],
   imports: [
     RouterModule.forRoot(

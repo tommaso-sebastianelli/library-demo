@@ -6,7 +6,20 @@ body{
     }
 
     mat-icon{ margin: auto;}
+
+    mat-paginator{
+        border-radius: 10px;
+    }
     
     //fix for centering mat-dialog with custom width
     mat-dialog-container{margin: auto;}
+
+    mat-card{
+        border-radius: 10px !important;
+    }
+    [mat-button]{
+        &[round]{
+            border-radius: 20px !important;
+        }
+    }
 }

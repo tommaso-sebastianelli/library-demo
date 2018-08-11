@@ -1,18 +1,13 @@
 @import '../../assets/sass/spacing.scss';
 
-.search-history{
-    padding: 0 $xs;
-    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
-    label{
-        display: inline-block;
-        margin-right: $xs;
-    }
-    .search-list{
-        display: inline-block;
-        .search{
-            padding: $xs $sm;
+.current-search{
+    mat-chip-list{
+        mat-chip{
+            mat-icon{
+                margin-right: 4px;
+            }        
         }
-    }
+    }   
 }
 .row.fab{
     width: 100%;
@@ -21,6 +16,7 @@
     .fab-search{
         position: fixed;
         z-index: 12;
+        color:white;
         // &.sticky{
         //     bottom: 10vh;
         //     right:10vw;

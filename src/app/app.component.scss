@@ -1,18 +1,18 @@
 @import '../../src/custom-theme.scss';
 @import '../assets/sass/spacing.scss';
 
-
 mat-toolbar{
     position: relative;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     z-index: 4;
+    color:white !important;
     &:first-child{
         width:100%;
     }
     .toolbar-left{
         button{
             &.selected{
-                background: lightgray;
+                //background: lightgray;
             }
         }
         label{
@@ -30,7 +30,7 @@ mat-toolbar{
     }
 }
 mat-sidenav-container{    
-    background: white !important;
+    background: url(../assets/img/geometry2.png);
     position: absolute;
     height: calc(100vh - 64px);
     height: -moz-calc(100vh - 64px);
@@ -95,8 +95,14 @@ mat-sidenav-container{
             .item{
                 width: 100%;
                 text-align: left;
-                padding: $sm;
+                padding: $xs;
                 font-size:20px;
+                border-top-right-radius: 45px;
+                border-bottom-right-radius: 45px;
+                &.active{
+                    background: mat-color($mat-red, 300);;
+                    color: white !important;    
+                }
                 .icon{
                     margin: 0 $xs;
                     vertical-align: middle;
@@ -109,5 +115,6 @@ mat-sidenav-container{
     }
     .content{
         padding: $lg 0;
+        margin: 0 $xs;
     }
 }

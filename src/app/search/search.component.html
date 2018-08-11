@@ -6,10 +6,4 @@
     <mat-icon class="md-24" aria-label="">search</mat-icon>
   </button>
 </div>
-<!-- <div class="search-history m-b-lg">
-    <label i18n="recent searches@@search-history" class="mat-body-1">Recent searches:</label>
-    <mat-chip-list class="search-list">
-        <mat-chip class="search">Papadum</mat-chip>
-    </mat-chip-list>
-</div> -->
 <app-bookshelf *ngIf="books.length" (onPagerChange)="onPagerChange($event)" [books]="books"></app-bookshelf>

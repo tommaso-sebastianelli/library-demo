@@ -3,6 +3,6 @@
   </mat-paginator>
 </div>
 <div class="container" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap *ngIf="books.length">
-  <app-book *ngFor="let book of books; let i = index;" [book]="book" fxFlex="450px" fxFlex.xs="100%" class="m-r-sm m-b-sm"
+  <app-book *ngFor="let book of books; let i = index;" [book]="book" fxFlex="300px" fxFlex.xs="100%" class="m-r-sm m-b-sm"
     [@appear]="{value: ':enter', params:{delay: 225+(50*(i+1))}}"></app-book>
 </div>

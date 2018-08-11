@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialogModule, MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs/Observable';
 
-import { ErrorDialogComponent } from "../error/error-dialog/error-dialog.component";
+import { ErrorDialogComponent } from "./error-dialog/error-dialog.component";
 
 class DIALOG_CONFIG extends MatDialogConfig {
   constructor(e: Error) {

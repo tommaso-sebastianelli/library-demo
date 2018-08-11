@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Book } from './book/book';
-import { Observable } from 'rxjs/Observable';
-import { ObservableMedia } from '@angular/flex-layout';
 import { Animations } from '../../app.animations';
+import { DEFAULT_QUERY_LIMIT } from '../../app.config';
+
 
 @Component({
   selector: 'app-bookshelf',
@@ -24,8 +24,8 @@ export class BookshelfComponent implements OnInit {
 
   ngOnInit() {
     this.length = 100;
-    this.pageSize = 10;
-    this.pageSizeOptions = [5, 10, 25, 100];
+    this.pageSize = DEFAULT_QUERY_LIMIT;
+    this.pageSizeOptions = [5, 10, 25];
   }
 
 

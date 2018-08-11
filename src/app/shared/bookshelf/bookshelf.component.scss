@@ -3,14 +3,17 @@
 
 @import '../../../assets/sass/spacing.scss';
 
+.mat-paginator{
+    background: #eee;
 .paginator{
     margin-bottom: $lg;
+}
 }
 .container{
     @media (max-width: 540px) {        
         app-book{
             margin-right: 0;
-            margin-bottom:1px;
+            margin-bottom:$xs;
         }
     }
 }

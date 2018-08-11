@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
-import { ApiService } from '../shared/api.service';
+import { ApiService } from '../shared/api/api.service';
 import { LoadingService } from '../shared/loading/loading.service';
 import { ErrorService } from '../shared/error/error.service';
 
@@ -16,8 +16,7 @@ import { Animations } from '../app.animations';
 import { Book } from '../shared/bookshelf/book/book';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { isNullOrUndefined } from 'util';
-
-const DEFAULT_QUERY_LIMIT = 25;
+import { DEFAULT_QUERY_LIMIT } from '../app.config';
 
 class QueryParams {
   title?: string;

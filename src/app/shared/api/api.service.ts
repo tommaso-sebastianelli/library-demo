@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/toPromise';
 
-import { Book } from '../shared/bookshelf/book/book';
+import { Book } from '../bookshelf/book/book';
 import { isNullOrUndefined } from 'util';
 
 @Injectable()

@@ -3,48 +3,20 @@
 
 
 mat-card{
-    height: 165px;
-    @extend .p-sm;
-    .image-box{
-        position: relative;
-        min-width:75px;
-        margin: auto;
-        .image-frame{
-            position: relative;
-            padding-top: 90%;
-            width: 90%;
-            border-radius: 100%;
-            overflow: hidden;
-            background: lightgray;
-            margin: auto;
-            .placeholder, .cover{
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-                left: 0;
-                right: 0;
-                opacity: 0.5;
-            }
-        }
+
+    .image-box{        
+        height: 150px;
+        overflow: hidden; 
+        img{
+            height: auto;
+            width:100%;
+            opacity: 0.8;
+        } 
     }
-    .content{
-        @extend .cut-text;
-        .info{
-            @extend .cut-text;
-            padding: 8px 20px;
-            .title,.author,.editor{
-                @extend .cut-text;
-                .icon{
-                    margin-right: 5px;
-                } 
-                span{
-                    vertical-align: super;
-                }
-            }
-        }
-        .options{
-            text-align: right;              
-        }
+    mat-card-coontent{
+        height: 300px;
     }
+mat-icon{
+    vertical-align: text-bottom;
+}
 }

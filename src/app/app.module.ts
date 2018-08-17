@@ -36,8 +36,8 @@ import { LoadingService } from './shared/loading/loading.service';
 import { ErrorService } from './shared/error/error.service';
 
 //auth
-import { SocialLoginModule, AuthServiceConfig } from "../assets/libs/angularx-social-login-master";
-import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from "../assets/libs/angularx-social-login-master";
+import { SocialLoginModule, AuthServiceConfig } from '../assets/libs/angularx-social-login-master';
+import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from '../assets/libs/angularx-social-login-master';
 import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
 // Components
@@ -53,16 +53,17 @@ import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/goog
 import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 
 const googleLoginOptions: LoginOpt = {
   scope: 'https://www.googleapis.com/auth/books'
 };
 
-let config = new AuthServiceConfig([
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com", googleLoginOptions)
+    provider: new GoogleLoginProvider('274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com', googleLoginOptions)
   },
   // {
   //   id: FacebookLoginProvider.PROVIDER_ID,
@@ -88,6 +89,7 @@ export function provideConfig() {
     LoadingDialogComponent,
     LogoutDialogComponent,
     ErrorDialogComponent,
+    FavouriteComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -131,4 +133,4 @@ export function provideConfig() {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { } 
+export class AppModule { }

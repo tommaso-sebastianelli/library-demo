@@ -100,7 +100,7 @@ mat-sidenav-container{
                 border-top-right-radius: 45px;
                 border-bottom-right-radius: 45px;
                 &.active{
-                    background: mat-color($mat-red, 300);;
+                    background: mat-color($mat-red, 200);;
                     color: white !important;    
                 }
                 .icon{
@@ -113,8 +113,10 @@ mat-sidenav-container{
             }
         }
     }
+    
     .content{
         padding: $lg 0;
         margin: 0 $xs;
     }
+    
 }

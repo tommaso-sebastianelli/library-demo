@@ -1,19 +1,17 @@
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import 'rxjs/add/operator/filter';
-import { AuthService } from "../assets/libs/angularx-social-login-master";
-import { /*FacebookLoginProvider,*/ GoogleLoginProvider, SocialUser } from "../assets/libs/angularx-social-login-master";
+import { AuthService } from '../assets/libs/angularx-social-login-master';
+import { SocialUser } from '../assets/libs/angularx-social-login-master';
 import { TokenService } from './shared/auth/token.service';
+import { ApiService } from './shared/api/api.service'
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component } from '@angular/core';
-import { MatDrawer } from '@angular/material';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
+import { IBookshelfList } from './shared/api/ibookshelf-list';
 
 // import { trigger, state, style, animate, transition} from '@angular/animations';
-
-import { appRoutes } from './app.routes';
 
 @Component({
   selector: 'app-root',
@@ -30,13 +28,15 @@ import { appRoutes } from './app.routes';
 })
 export class AppComponent implements OnInit {
   user: SocialUser;
-
+  bookshelves: Observable<IBookshelfList>;
   sideNavMode: string;
 
   @ViewChild('sidenav') sidenav;
   @ViewChild('search') search;
 
-  constructor(public media: ObservableMedia, private authService: AuthService, public tokenService: TokenService, public dialog: MatDialog) {
+  public eventsSubject: Subject<Event> = new Subject<Event>();
+
+  constructor(public media: ObservableMedia, private authService: AuthService, private api: ApiService, protected tokenService: TokenService, public dialog: MatDialog) {
     this.sideNavMode = 'over';
   }
 
@@ -58,20 +58,23 @@ export class AppComponent implements OnInit {
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      console.log("user: " + this.user);
+      console.log('user: ' + JSON.stringify(this.user));
+      // user is authenticated
+      if (user) {
+        return this.api.bookshelfList().do(result => console.log(JSON.stringify(result)));
+      }
     });
-
-    //log purpose only
-    this.tokenService.authClaim.subscribe(anyToken => {
-      console.log("userHasToken: " + anyToken);
-    });
-  };
+  }
 
   openLogoutModal() {
-    let dialogRef = this.dialog.open(LogoutDialogComponent, {
+    const dialogRef = this.dialog.open(LogoutDialogComponent, {
       width: '450px',
       data: this.user
     });
+  }
+
+  onScroll(e: Event) {
+    this.eventsSubject.next(e);
   }
 
   private setSidenavMobile() {

@@ -1,9 +1,9 @@
-<app-placeholder *ngIf="!books.length" icon="search" i18n-title="placeholder title@@search-placeholder-title" title="Find by Keyword"
-  i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle" subtitle="Search by name or author, over millions of books">
+<app-placeholder *ngIf="!(result && result.totalItems)" icon="search" i18n-title="placeholder title@@search-placeholder-title"
+  title="Find by Keyword" i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle" subtitle="Search by name or author, over millions of books">
 </app-placeholder>
 <div class="row fab">
   <button mat-fab color="accent" class="fab-search" (click)="openDialog()" [ngClass]="{'sticky': initView}" [@slamtocorner]="animations.fab">
     <mat-icon class="md-24" aria-label="">search</mat-icon>
   </button>
 </div>
-<app-bookshelf *ngIf="books.length" (onPagerChange)="onPagerChange($event)" [books]="books"></app-bookshelf>
+<app-bookshelf *ngIf="result && result.totalItems" (onPagerChange)="onPagerChange($event)" [data]="result"></app-bookshelf>

@@ -52,14 +52,25 @@
         <mat-icon class="icon" aria-labelledby="search">search</mat-icon>
         <span id="search" i18n="Search|search label for menu link@@search-page-title">Search</span>
       </a>
+      <div class="user-items" *ngIf="tokenService.authClaim | async">
+        <a class="item" mat-button routerLinkActive="active" (click)="sidenav.toggle()">
+          <mat-icon class="icon" aria-labelledby="favorite">favorite_border</mat-icon>
+          <span id="favorite" i18n="Favorite|favorite label for menu link@@favorite-page-title">Favourite</span>
+        </a>
+      </div>
+      <a class="item authenticated-item">
+
+      </a>
     </div>
   </mat-sidenav>
-  <!-- outlet -->
-  <div fxLayout="row">
-    <div fxFlex="3%" fxFlex.sm="8px" fxHide.xs></div>
-    <div fxFlex fxFlex.sm class="content">
-      <router-outlet></router-outlet>
+  <mat-sidenav-content (scroll)="onScroll($event)">
+    <div fxLayout="row">
+      <div fxFlex="3%" fxFlex.sm="8px" fxHide.xs></div>
+      <div fxFlex fxFlex.sm class="content">
+        <router-outlet></router-outlet>
+      </div>
+      <div fxFlex="3%" fxFlex.sm="8px" fxHide.xs></div>
     </div>
-    <div fxFlex="3%" fxFlex.sm="8px" fxHide.xs></div>
-  </div>
+  </mat-sidenav-content>
+  <!-- outlet -->
 </mat-sidenav-container>

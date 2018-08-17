@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { MatDialogModule, MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs/Observable';
 
-import { ErrorDialogComponent } from "./error-dialog/error-dialog.component";
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
-class DIALOG_CONFIG extends MatDialogConfig {
+class DialogConfig extends MatDialogConfig {
   constructor(e: Error) {
     super();
     this.data = e;
-    this.width = "450px";
+    this.width = '450px';
     // this.disableClose = true;
   }
 }
@@ -20,8 +20,8 @@ export class ErrorService {
   constructor(private dialog: MatDialog) { }
 
   public throw(e: Error): Observable<any> {
-    let config = new DIALOG_CONFIG(e);
+    const config = new DialogConfig(e);
     this.dialogRef = this.dialog.open(ErrorDialogComponent, config);
     return this.dialogRef.afterClosed();
-  };
+  }
 }

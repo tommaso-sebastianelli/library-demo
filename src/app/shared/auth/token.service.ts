@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from "../../../assets/libs/angularx-social-login-master";
+import { AuthService } from '../../../assets/libs/angularx-social-login-master';
 import { Observable } from 'rxjs';
 import { isNullOrUndefined } from 'util';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -7,44 +7,44 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class TokenService {
 
-private USER_ID: string = null;
-public _anyToken :BehaviorSubject<boolean>  = new BehaviorSubject(false);
-  
+  private USER_ID: string = null;
+  private _anyToken: BehaviorSubject<boolean> = new BehaviorSubject(false);
+
   constructor(private authService: AuthService) {
     this.authService.authState.subscribe(user => {
-      if(!isNullOrUndefined(user)){
+      if (!isNullOrUndefined(user)) {
         this.USER_ID = user.id;
-        if(!isNullOrUndefined(user.authToken)){
+        if (!isNullOrUndefined(user.authToken)) {
           // store token in localStorage
-          this.save(user.idToken);
+          this.save(user);
         }
       }
-      else{
+      else {
         this.delete();
       }
-    this.emit();
+      this.emit();
     });
   }
 
-  get authClaim(): Observable<boolean>{
+  get authClaim(): Observable<boolean> {
     return this._anyToken.asObservable();
   }
 
-  save(token: string): void{
-    localStorage.setItem(this.USER_ID, token);
+  save(user: any): void {
+    localStorage.setItem(this.USER_ID, JSON.stringify(user));
     this.emit();
   }
 
-  get(): string{
-    return localStorage.getItem(this.USER_ID);
+  get(): any {
+    return JSON.parse(localStorage.getItem(this.USER_ID));
   }
 
-  delete(): void{
+  delete(): void {
     localStorage.removeItem(this.USER_ID);
     this.emit();
   }
 
-  private emit():void{
+  private emit(): void {
     this._anyToken.next(!isNullOrUndefined(this.get()));
   }
 }

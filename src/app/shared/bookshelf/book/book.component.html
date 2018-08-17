@@ -1,24 +1,19 @@
 <mat-card class="book-card">
-    <!-- <div mat-card-image class="image-box">
-        <img *ngIf="book.thumbnail" class="placeholder" [src]="book.thumbnail" />
-        <img *ngIf="!book.thumbnail" class="placeholder" src="/assets/img/book_placeholder.png" />
-    </div> -->
-    <!-- <img mat-card-image class="cover" aria-labelledby="title" src="" /> -->
     <mat-card-content>
-        <mat-card-title id="title" class="title" [title]="book.title">
-
-            {{book.title}}
+        <mat-card-title id="title" class="title" [title]="data.volumeInfo.title">
+            {{data.volumeInfo.title}}
         </mat-card-title>
-        <mat-card-subtitle *ngIf="book.authors" i18n-title="Author|label for author@@card-author" [title]="book.authors" class="author">
+        <mat-card-subtitle *ngIf="data.volumeInfo.authors" i18n-title="Author|label for author@@card-author" [title]="data.volumeInfo.authors"
+            class="author">
             <mat-icon class="icon" aria-label="author">person</mat-icon>
-            <span *ngFor="let author of book.authors; let i = index">
+            <span *ngFor="let author of data.volumeInfo.authors; let i = index">
                 {{(i > 0) ? '- ' : ''}}{{author}}
             </span>
         </mat-card-subtitle>
-        <mat-card-subtitle *ngIf="book.publisher" i18n-title="Editor|label for editor button@@card-editor" [title]="book.publisher"
+        <mat-card-subtitle *ngIf="data.volumeInfo.publisher" i18n-title="Editor|label for editor button@@card-editor" [title]="data.volumeInfo.publisher"
             class="editor">
             <mat-icon class="icon" aria-label="editor">home</mat-icon>
-            <span>{{book.publisher}}</span>
+            <span>{{data.volumeInfo.publisher}}</span>
         </mat-card-subtitle>
     </mat-card-content>
     <mat-card-actions>

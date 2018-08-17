@@ -3,12 +3,23 @@
 
 @import '../../../assets/sass/spacing.scss';
 
-.mat-paginator{
-    background: #eee;
+
 .paginator{
     margin-bottom: $lg;
+    display: flex;
+    justify-content: center;
+    .mat-paginator{
+        background: #eee;
+        min-width: 100%;
+        z-index: 2;
+    &.sticky{
+        position: fixed;
+        top:70px;
+        //width: auto;   
+    }
+    }
 }
-}
+
 .container{
     @media (max-width: 540px) {        
         app-book{

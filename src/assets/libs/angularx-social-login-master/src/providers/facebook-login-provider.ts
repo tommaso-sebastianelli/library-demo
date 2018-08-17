@@ -9,7 +9,7 @@ export class FacebookLoginProvider extends BaseLoginProvider {
   public static readonly PROVIDER_ID = 'FACEBOOK';
 
   constructor(
-    private clientId: string, private opt: LoginOpt = { scope: 'email,public_profile'}, 
+    private clientId: string, private opt: LoginOpt = { scope: 'email,public_profile'},
     private locale: string = 'en_US'
   ) { super(); }
 
@@ -29,9 +29,9 @@ export class FacebookLoginProvider extends BaseLoginProvider {
 
           FB.getLoginStatus(function (response: any) {
             if (response.status === 'connected') {
-              let authResponse = response.authResponse;
+              const authResponse = response.authResponse;
               FB.api('/me?fields=name,email,picture,first_name,last_name', (fbUser: any) => {
-                let user: SocialUser = new SocialUser();
+                const user: SocialUser = new SocialUser();
 
                 user.id = fbUser.id;
                 user.name = fbUser.name;
@@ -53,9 +53,9 @@ export class FacebookLoginProvider extends BaseLoginProvider {
     return new Promise((resolve, reject) => {
       FB.login((response: any) => {
         if (response.authResponse) {
-          let authResponse = response.authResponse;
+          const authResponse = response.authResponse;
           FB.api('/me?fields=name,email,picture,first_name,last_name', (fbUser: any) => {
-            let user: SocialUser = new SocialUser();
+            const user: SocialUser = new SocialUser();
 
             user.id = fbUser.id;
             user.name = fbUser.name;

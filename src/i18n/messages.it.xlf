@@ -21,10 +21,6 @@
       </trans-unit>
 
         <!-->BOOK CARD<-->
-      <trans-unit id="search-page-title" datatype="html">
-        <source>Search</source>
-        <target>Ricerca</target>
-      </trans-unit>
       <trans-unit id="card-author" datatype="html">
         <source>Author</source>
         <target>Autore</target>
@@ -94,6 +90,15 @@
         <target>Accedi con Google</target>
       </trans-unit>
 
+      <!-->MENU & TITLES <-->
+      <trans-unit id="search-page-title" datatype="html">
+        <source>Search</source>
+        <target>Ricerca</target>
+      </trans-unit>
+      <trans-unit id="favorite-page-title" datatype="html">
+        <source>Favourite</source>
+        <target>Preferiti</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

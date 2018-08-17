@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { Book } from './book';
 
 import { Animations } from '../../../app.animations';
+import { IVolume } from '../../api/ivolume';
 
 @Component({
   selector: 'app-book',
@@ -11,10 +11,10 @@ import { Animations } from '../../../app.animations';
   animations: Animations
 })
 export class BookComponent implements OnInit {
-  @Input() book: Book;
+  @Input() data: IVolume;
   animations: any;
   constructor() {
-    this.animations = {}
+    this.animations = {};
   }
 
   ngOnInit() {

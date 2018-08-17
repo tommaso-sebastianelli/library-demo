@@ -1,8 +1,6 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog, MatPseudoCheckbox, MatCard, MatDialogRef, PageEvent } from '@angular/material';
-
-import { Observable } from 'rxjs/Observable';
+import { MatDialog, MatDialogRef, PageEvent } from '@angular/material';
 
 import 'rxjs/add/operator/map';
 
@@ -13,10 +11,9 @@ import { ErrorService } from '../shared/error/error.service';
 
 import { Animations } from '../app.animations';
 
-import { Book } from '../shared/bookshelf/book/book';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
-import { isNullOrUndefined } from 'util';
 import { DEFAULT_QUERY_LIMIT } from '../app.config';
+import { IVolumeList } from '../shared/api/ivolume-list';
 
 class QueryParams {
   title?: string;
@@ -25,9 +22,9 @@ class QueryParams {
   take?: number;
   offset?: number;
   constructor() {
-    this.title = "";
-    this.author = "";
-    this.publisher = "";
+    this.title = '';
+    this.author = '';
+    this.publisher = '';
     this.take = DEFAULT_QUERY_LIMIT;
     this.offset = 0;
   }
@@ -40,18 +37,18 @@ class QueryParams {
   animations: Animations
 })
 export class SearchComponent implements OnInit {
-  books: Book[];
   dialogRef: MatDialogRef<SearchDialogComponent>;
   animations: any;
+  result: IVolumeList
 
   constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
     private activatedRoute: ActivatedRoute, private router: Router) {
     this.init();
-    //read query params from url
+    // read query params from url
   }
 
   private init(): void {
-    this.books = [];
+    this.result = null;
     this.animations = {
       fab: ''
     };
@@ -67,10 +64,6 @@ export class SearchComponent implements OnInit {
           this.init();
         }
       });
-  }
-
-  ngAfterContentInit() {
-
   }
 
   openDialog(): void {
@@ -109,10 +102,10 @@ export class SearchComponent implements OnInit {
 
   private getBooks = (params: QueryParams) => {
     this.loading.wait();
-    this.api.list(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
+    this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
       result => {
-        this.books = result;
-        this.animations.fab = (this.books.length) ? 'active' : '';
+        this.result = result;
+        this.animations.fab = (this.result.totalItems) ? 'active' : '';
       },
       e => {
         this.loading.done().subscribe(() => {
@@ -123,7 +116,7 @@ export class SearchComponent implements OnInit {
       },
       () => {
         this.loading.done().subscribe(() => {
-          //show no result placeholder
+          // show no result placeholder
         });
       }
     );

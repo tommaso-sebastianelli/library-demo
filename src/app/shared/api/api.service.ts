@@ -6,47 +6,83 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 // import 'rxjs/add/operator/toPromise';
 
-import { Book } from '../bookshelf/book/book';
-import { isNullOrUndefined } from 'util';
+// import { Book } from '../bookshelf/book/book';
+import { TokenService } from '../auth/token.service'
+import { IVolumeList } from './ivolume-list';
+import { IBookshelfList } from './ibookshelf-list';
+import { IVolume } from './ivolume';
+import { IBookshelf } from './ibookshelf';
 
 @Injectable()
 export class ApiService {
-  private readonly api_url = 'https://www.googleapis.com/books/v1/volumes';
+  private readonly api_key = "AIzaSyD3avINA09gFSCeggY4WfIgFh631WGkqVg"
+  private readonly api_url = 'https://www.googleapis.com/books/v1';
+  private readonly paths = {
+    volumes: "/volumes",
+    myLibrary: {
+      bookshelves: "/mylibrary/bookshelves"
+    }
+  }
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private token: TokenService) {
 
   }
-  public list(title?: string, author?: string, publisher?: string, offset?: number, limit?: number): Observable<Book[]> {
-    let url = `${this.api_url}?q=`;
-    if (title)
+
+  public volumeList(title?: string, author?: string, publisher?: string, offset?: number, limit?: number): Observable<IVolumeList> {
+    let url = `${this.api_url}${this.paths.volumes}?q=`;
+    if (title) {
       url = url.concat(`+intitle:{${title}}`);
-    if (author)
+    }
+    if (author) {
       url = url.concat(`+inauthor:{${author}}`);
-    if (publisher)
+    }
+    if (publisher) {
       url = url.concat(`+inpublisher:{${publisher}}`);
-
-    url = url.concat(`&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&orderBy=relevance&projection=lite`);
-    return this.http.get(url)
+    }
+    url = url.concat(`&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&orderBy=relevance&projection=lite&key=${this.api_key}`);
+    return this.http.get(url, {
+      headers: this.getHeaders()
+    })
       .map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-      .map(response => (response.items) ? response.items : []) //check response
-      .map(response => response
-        .map(item => new Book(item))
-        .filter(item => item.id !== null))
+  }
+
+  public volumeGet(id: string): Observable<IVolume> {
+    const url = `${this.api_url}${this.paths.volumes}/${id}?key=${this.api_key}`;
+    return this.http.get(url, {
+      headers: this.getHeaders()
+    })
+      .map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
       .catch((err) => {
         return Observable.throw(err);
       });
   }
 
-  public get(id: string): Observable<Book> {
-    const url = `${this.api_url}/${id}`;
-    return this.http.get(url)
-      .map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-      .map(response => response.items
-        .map(item => new Book(item))
-        .filter(item => item.id !== null))
+  public bookshelfList(): Observable<IBookshelfList> {
+    let url = `${this.api_url}${this.paths.myLibrary.bookshelves}?key=${this.api_key}`;
+    return this.http.get(url, {
+      headers: this.getHeaders()
+    }).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
       .catch((err) => {
         return Observable.throw(err);
       });
+  }
+
+  public bookshelfGet(id: string): Observable<IBookshelf> {
+    let url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${id}?key=${this.api_key}`;
+    return this.http.get(url, {
+      headers: this.getHeaders()
+    }).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
+      .catch((err) => {
+        return Observable.throw(err);
+      });;
+  }
+
+  private getHeaders(): Headers {
+    let headers = new Headers();
+    headers.set('Access-Control-Allow-Origin', 'http://localhost:4200')
+    headers.set('Access-Control-Allow-Headers', "Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method")
+    if (this.token.get()) { headers.set('Authorization', "Bearer " + this.token.get().authToken) }
+    return headers;
   }
 }
 

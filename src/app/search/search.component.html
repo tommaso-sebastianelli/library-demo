@@ -6,4 +6,4 @@
     <mat-icon class="md-24" aria-label="">search</mat-icon>
   </button>
 </div>
-<app-bookshelf *ngIf="result && result.totalItems" (onPagerChange)="onPagerChange($event)" [data]="result"></app-bookshelf>
+<app-volume-showcase *ngIf="result && result.totalItems" (onPagerChange)="onPagerChange($event)" [data]="result"></app-volume-showcase>

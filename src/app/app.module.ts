@@ -34,26 +34,30 @@ import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api/api.service';
 import { LoadingService } from './shared/loading/loading.service';
 import { ErrorService } from './shared/error/error.service';
+import { BookshelvesService } from './shared/bookshelves/bookshelves.service'
 
-//auth
+// Auth
 import { SocialLoginModule, AuthServiceConfig } from '../assets/libs/angularx-social-login-master';
 import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from '../assets/libs/angularx-social-login-master';
 import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
+// Guards
+import { AuthenticatedGuard } from './authenticated.guard'
+
 // Components
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
+import { BookshelfComponent } from './bookshelf/bookshelf.component';
 import { SearchDialogComponent } from './search/search-dialog/search-dialog.component';
-import { BookshelfComponent } from './shared/bookshelf/bookshelf.component';
+import { VolumeShowcaseComponent } from './shared/volume-showcase/volume-showcase.component';
 import { PlaceholderComponent } from './shared/placeholder/placeholder.component';
-import { BookComponent } from './shared/bookshelf/book/book.component';
+import { VolumeComponent } from './shared/volume/volume.component';
 import { LoginComponent } from './shared/login/login.component';
-import { LibraryComponent } from './library/library.component';
 import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/google-sign-up-button.component';
 import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
-import { FavouriteComponent } from './favourite/favourite.component';
+
 
 
 const googleLoginOptions: LoginOpt = {
@@ -80,16 +84,15 @@ export function provideConfig() {
     AppComponent,
     SearchComponent,
     BookshelfComponent,
+    VolumeShowcaseComponent,
     PlaceholderComponent,
-    BookComponent,
+    VolumeComponent,
     SearchDialogComponent,
     LoginComponent,
-    LibraryComponent,
     GoogleSignUpButtonComponent,
     LoadingDialogComponent,
     LogoutDialogComponent,
     ErrorDialogComponent,
-    FavouriteComponent,
   ],
   imports: [
     RouterModule.forRoot(
@@ -123,7 +126,9 @@ export function provideConfig() {
     TokenService,
     ApiService,
     LoadingService,
-    ErrorService
+    ErrorService,
+    AuthenticatedGuard,
+    BookshelvesService
   ],
   entryComponents: [
     SearchDialogComponent,

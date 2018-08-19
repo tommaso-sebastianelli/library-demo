@@ -8,6 +8,7 @@ class DialogConfig extends MatDialogConfig {
   constructor() {
     super();
     this.disableClose = true;
+    this.panelClass = "loading-box"
   }
 }
 

@@ -3,17 +3,16 @@ import { PageEvent } from '@angular/material';
 import { Animations } from '../../app.animations';
 import { DEFAULT_QUERY_LIMIT } from '../../app.config';
 import { AppComponent } from '../../app.component';
-import { IVolume } from '../api/ivolume';
 import { IVolumeList } from '../api/ivolume-list';
 
 
 @Component({
-  selector: 'app-bookshelf',
-  templateUrl: './bookshelf.component.html',
-  styleUrls: ['./bookshelf.component.scss'],
+  selector: 'app-volume-showcase',
+  templateUrl: './volume-showcase.component.html',
+  styleUrls: ['./volume-showcase.component.scss'],
   animations: Animations
 })
-export class BookshelfComponent implements OnInit {
+export class VolumeShowcaseComponent implements OnInit {
   length: number;
   pageSize: number;
   pageSizeOptions: number[];

@@ -5,6 +5,20 @@
     </button>
     <label role="heading" aria-level="1">
       <span i18n="Search|search label for page header@@search-page-title" mat-button routerLink="/search" routerLinkActive="active">Search</span>
+      <span i18n="Favorites|favorites label for page header@@favorites-page-title" mat-button routerLink="/bookshelf/0" routerLinkActive="active">Favorites</span>
+      <span i18n="To Read|to read label for page header@@to-read-page-title" mat-button routerLink="/bookshelf/2" routerLinkActive="active">To
+        read
+      </span>
+      <span i18n="Reading Now|reading now label for page header@@reading-page-title" mat-button routerLink="/bookshelf/3" routerLinkActive="active">Reading
+        now
+      </span>
+      <span i18n="Have Read|have read label for page header@@have-read-page-title" mat-button routerLink="/bookshelf/4" routerLinkActive="active">Have
+        read
+      </span>
+      <span i18n="Recently Viewed|recently viewed label for page header@@recent-page-title" mat-button routerLink="/bookshelf/6"
+        routerLinkActive="active">Recently viewed</span>
+      <span i18n="Books For You|books for you label for page header@@suggestions-page-title" mat-button routerLink="/bookshelf/8"
+        routerLinkActive="active">Books for you</span>
     </label>
   </div>
   <div class="toolbar-right">
@@ -12,8 +26,8 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <!-- sidenav -->
-  <mat-sidenav role="menu" #sidenav [mode]="sideNavMode">
-    <header>
+  <mat-sidenav role="menu" #sidenav [mode]="sideNavMode" fxLayout="column">
+    <header fxFlex="280px">
       <div class="user-info">
         <picture aria-label="profile pic">
           <div class="pic-frame">
@@ -47,15 +61,17 @@
         </ng-template>
       </div>
     </header>
-    <div class="item-container">
-      <a class="item" mat-button routerLink="/search" routerLinkActive="active" (click)="sidenav.toggle()">
+    <div class="item-container" fxFlex>
+      <a class="item" mat-button routerLink="/search" routerLinkActive="active" (click)="onMenuItemClick()">
         <mat-icon class="icon" aria-labelledby="search">search</mat-icon>
         <span id="search" i18n="Search|search label for menu link@@search-page-title">Search</span>
       </a>
+      <!-- Authenticated user bookshelves-->
       <div class="user-items" *ngIf="tokenService.authClaim | async">
-        <a class="item" mat-button routerLinkActive="active" (click)="sidenav.toggle()">
-          <mat-icon class="icon" aria-labelledby="favorite">favorite_border</mat-icon>
-          <span id="favorite" i18n="Favorite|favorite label for menu link@@favorite-page-title">Favourite</span>
+        <a *ngFor="let bookshelf of bookshelves.list" routerLink="/bookshelf/{{bookshelf.id}}" routerLinkActive="active" class="item"
+          (click)="onMenuItemClick()" mat-button>
+          <mat-icon class="icon" aria-labelledby="">{{getBookshelfIcon(bookshelf.id)}}</mat-icon>
+          <span [id]="'bookshelf-' + bookshelf.id">{{bookshelf.title}}</span>
         </a>
       </div>
       <a class="item authenticated-item">

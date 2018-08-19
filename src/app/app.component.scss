@@ -48,7 +48,7 @@ mat-sidenav-container{
             width: 100%;
             border-bottom: solid 1px lightgray;
             text-align: center;
-            padding: $lg 0;
+            padding: $sm 0;
             // button{
             //     float: right;
             // }
@@ -91,6 +91,7 @@ mat-sidenav-container{
             }
         }
         .item-container{
+            overflow-y:auto;
             margin: $md 0;
             .item{
                 width: 100%;

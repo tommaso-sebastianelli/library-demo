@@ -95,9 +95,29 @@
         <source>Search</source>
         <target>Ricerca</target>
       </trans-unit>
-      <trans-unit id="favorite-page-title" datatype="html">
-        <source>Favourite</source>
+      <trans-unit id="favorites-page-title" datatype="html">
+        <source>Favorites</source>
         <target>Preferiti</target>
+      </trans-unit>
+      <trans-unit id="to-read-page-title" datatype="html">
+        <source>To read</source>
+        <target>Da leggere</target>
+      </trans-unit>
+      <trans-unit id="reading-page-title" datatype="html">
+        <source>Reading now</source>
+        <target>In lettura</target>
+      </trans-unit>
+      <trans-unit id="have-read-page-title" datatype="html">
+        <source>Have read</source>
+        <target>Letti</target>
+      </trans-unit>
+      <trans-unit id="recent-page-title" datatype="html">
+        <source>Recently viewed</source>
+        <target>Visualizzati di recente</target>
+      </trans-unit>
+      <trans-unit id="suggestions-page-title" datatype="html">
+        <source>Books for you</source>
+        <target>Libri per te</target>
       </trans-unit>
     </body>
   </file>

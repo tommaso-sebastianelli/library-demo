@@ -1,15 +1,16 @@
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import 'rxjs/add/operator/filter';
 import { AuthService } from '../assets/libs/angularx-social-login-master';
 import { SocialUser } from '../assets/libs/angularx-social-login-master';
 import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api/api.service'
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { OnInit, ViewChild, Component } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { OnInit, ViewChild, Component, ChangeDetectorRef } from '@angular/core';
+import { MatDialog, MatSidenav } from '@angular/material';
 
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
-import { IBookshelfList } from './shared/api/ibookshelf-list';
+import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
+import { Bookshelves } from './shared/bookshelves/bookshelves.enum';
 
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
@@ -28,15 +29,14 @@ import { IBookshelfList } from './shared/api/ibookshelf-list';
 })
 export class AppComponent implements OnInit {
   user: SocialUser;
-  bookshelves: Observable<IBookshelfList>;
   sideNavMode: string;
 
-  @ViewChild('sidenav') sidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
   @ViewChild('search') search;
 
   public eventsSubject: Subject<Event> = new Subject<Event>();
 
-  constructor(public media: ObservableMedia, private authService: AuthService, private api: ApiService, protected tokenService: TokenService, public dialog: MatDialog) {
+  constructor(public media: ObservableMedia, private authService: AuthService, private api: ApiService, protected tokenService: TokenService, public dialog: MatDialog, public bookshelves: BookshelvesService, public changeDetectorRef: ChangeDetectorRef) {
     this.sideNavMode = 'over';
   }
 
@@ -59,9 +59,9 @@ export class AppComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log('user: ' + JSON.stringify(this.user));
-      // user is authenticated
+
       if (user) {
-        return this.api.bookshelfList().do(result => console.log(JSON.stringify(result)));
+        // user is authenticated
       }
     });
   }
@@ -80,10 +80,30 @@ export class AppComponent implements OnInit {
   private setSidenavMobile() {
     this.sidenav.close();
     this.sideNavMode = 'over';
+    this.changeDetectorRef.detectChanges();
   }
 
   private setSidenavDesktop() {
     this.sidenav.open();
     this.sideNavMode = 'side';
+    this.changeDetectorRef.detectChanges();
+  }
+
+  getBookshelfIcon(id: number | string): string {
+    switch (id) {
+      case Bookshelves.Favorites: return 'favorite_border';
+      case Bookshelves.ReadingNow: return 'list';
+      case Bookshelves.ToRead: return 'list';
+      case Bookshelves.HaveRead: return 'list';
+      case Bookshelves.RecentlyViewed: return 'access_time';
+      case Bookshelves.BooksForYou: return 'explore';
+      default: return '';
+    }
+  }
+
+  onMenuItemClick() {
+    if (this.sideNavMode == 'over') {
+      this.sidenav.close();
+    }
   }
 }

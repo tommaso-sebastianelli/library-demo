@@ -14,20 +14,14 @@ import { Animations } from '../app.animations';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { DEFAULT_QUERY_LIMIT } from '../app.config';
 import { IVolumeList } from '../shared/api/ivolume-list';
+import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
 
-class QueryParams {
+interface IQueryParams {
   title?: string;
   author?: string;
   publisher?: string;
   take?: number;
   offset?: number;
-  constructor() {
-    this.title = '';
-    this.author = '';
-    this.publisher = '';
-    this.take = DEFAULT_QUERY_LIMIT;
-    this.offset = 0;
-  }
 }
 
 @Component({
@@ -37,7 +31,7 @@ class QueryParams {
   animations: Animations
 })
 export class SearchComponent implements OnInit {
-  dialogRef: MatDialogRef<SearchDialogComponent>;
+  dialogRef: MatDialogRef<SearchDialogComponent | PlaceholderComponent>;
   animations: any;
   result: IVolumeList
 
@@ -59,7 +53,7 @@ export class SearchComponent implements OnInit {
       .subscribe(params => {
         if (params.title || params.author || params.publisher) {
           console.log(params);
-          this.getBooks(params);
+          this.getVolumes(params);
         } else {
           this.init();
         }
@@ -84,7 +78,7 @@ export class SearchComponent implements OnInit {
   }
 
   onPagerChange(pagerStatus: PageEvent): void {
-    this.updateQueryParams({
+    this.updateQueryParams(<IQueryParams>{
       title: this.activatedRoute.snapshot.queryParams.title,
       author: this.activatedRoute.snapshot.queryParams.author,
       publisher: this.activatedRoute.snapshot.queryParams.publisher,
@@ -93,19 +87,23 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  private updateQueryParams(params: QueryParams): void {
+  private updateQueryParams(params: IQueryParams): void {
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: params
     });
   }
 
-  private getBooks = (params: QueryParams) => {
+  private getVolumes = (params: IQueryParams) => {
     this.loading.wait();
     this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
       result => {
-        this.result = result;
-        this.animations.fab = (this.result.totalItems) ? 'active' : '';
+        if (result.totalItems > 0) {
+          this.result = result;
+          this.animations.fab = (this.result.totalItems) ? 'active' : '';
+        } else {
+          this.showNoResultError();
+        }
       },
       e => {
         this.loading.done().subscribe(() => {
@@ -120,5 +118,13 @@ export class SearchComponent implements OnInit {
         });
       }
     );
+  }
+
+  showNoResultError() {
+    this.dialogRef = this.searchDialog.open(PlaceholderComponent, {
+      data: {
+
+      }
+    });
   }
 }

@@ -77,6 +77,17 @@ export class ApiService {
       });;
   }
 
+  public bookshelfVolumeList(id: string, offset?: number, limit?: number): Observable<IVolumeList> {
+    let url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${id}/volumes`
+    url = url.concat(`?startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&projection=lite&key=${this.api_key}`);
+    return this.http.get(url, {
+      headers: this.getHeaders()
+    }).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
+      .catch((err) => {
+        return Observable.throw(err);
+      });;
+  }
+
   private getHeaders(): Headers {
     let headers = new Headers();
     headers.set('Access-Control-Allow-Origin', 'http://localhost:4200')

@@ -22,4 +22,10 @@ body{
             border-radius: 20px !important;
         }
     }
+    .loading-box{
+        .mat-dialog-container{
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+    }
 }

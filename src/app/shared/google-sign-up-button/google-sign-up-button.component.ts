@@ -17,13 +17,18 @@ export class GoogleSignUpButtonComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-      () => {
-        // nothing to do here
-      },
-      err => {
-        this.tokenService.delete();
-      })
+    try {
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+        () => {
+          // nothing to do here
+        },
+        err => {
+          this.tokenService.delete();
+        })
+    }
+    catch (e) {
+      this.tokenService.delete();
+    }
   }
 
 }

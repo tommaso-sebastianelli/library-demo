@@ -1,5 +1,6 @@
 <app-placeholder *ngIf="!(result && result.totalItems)" icon="search" i18n-title="placeholder title@@search-placeholder-title"
-  title="Find by Keyword" i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle" subtitle="Search by name or author, over millions of books">
+  title="Find a book" i18n-subtitle="placeholder subtitle@@search-placeholder-subtitle" subtitle="Find the perfect book for
+your purposes and discover new ones that interest you">
 </app-placeholder>
 <div class="row fab">
   <button mat-fab color="accent" class="fab-search" (click)="openDialog()" [ngClass]="{'sticky': initView}" [@slamtocorner]="animations.fab">

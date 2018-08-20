@@ -36,12 +36,12 @@
 
       <!-->SEARCH PAGE<-->
       <trans-unit id="search-placeholder-title" datatype="html">
-        <source>Find by keyword</source>
-        <target>Inserisci una parola chiave</target>
+        <source>Find a book</source>
+        <target>Ricerca un libro</target>
       </trans-unit>
       <trans-unit id="search-placeholder-subtitle" datatype="html">
-        <source>Search by name or author, over millions of books</source>
-        <target>Cerca in base a nome o autore, tra milioni di libri</target>
+        <source>Find the perfect book for your purposes and discover new ones that interest you</source>
+        <target>Cerca il libro che ti serve e scoprine di nuovi che fanno al caso tuo</target>
       </trans-unit>
 	  <trans-unit id="no-result-placeholder-title" datatype="html">
         <source>Nothing found!</source>
@@ -80,6 +80,16 @@
       <trans-unit id="search-dialog-close-button" datatype="html">
         <source>Close</source>
         <target>Chiudi</target>
+      </trans-unit>
+
+	  <!-->BOOKSHELF PAGE<-->
+	  <trans-unit id="empty-placeholder-title" datatype="html">
+        <source>Nothing here</source>
+        <target>Quì non c'è nulla</target>
+      </trans-unit>
+	  <trans-unit id="empty-placeholder-subtitle" datatype="html">
+        <source>Add a volume to this bookshelf and It will be visible here</source>
+        <target>Aggiungi un elemento a questo scaffale e sarà visibile qui</target>
       </trans-unit>
 
       <!-->ERROR DIALOG<-->

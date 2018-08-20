@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SocialUser } from '../../../assets/libs/angularx-social-login-master';
 import { AuthService } from '../../../assets/libs/angularx-social-login-master';
 import { Router } from '../../../../node_modules/@angular/router';
+import { ROUTER_HOMEPAGE } from '../../app.config';
 
 @Component({
 	selector: 'app-logout-dialog',
@@ -21,7 +22,7 @@ export class LogoutDialogComponent implements OnInit {
 	private logout(a: any): void {
 		this.authService.revokeAuth().then(() => {
 			this.dialogRef.close();
-			this.router.navigateByUrl('/search');
+			this.router.navigateByUrl(ROUTER_HOMEPAGE);
 		});
 	}
 }

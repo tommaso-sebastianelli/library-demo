@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { TokenService } from './shared/auth/token.service';
+import { ROUTER_HOMEPAGE } from './app.config';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
@@ -16,7 +17,7 @@ export class AuthenticatedGuard implements CanActivate {
 			if (isAuthenticated) {
 				return true;
 			}
-			this.router.navigateByUrl('/search');
+			this.router.navigateByUrl(ROUTER_HOMEPAGE);
 			return false;
 		});
 	}

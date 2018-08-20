@@ -35,14 +35,6 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 				this.id = parseInt(s[1].path, 10);
 				// console.log(s[0].parameters);
 
-				// EMPTY LIST TEST
-				// this.result = {
-				// 	items: [],
-				// 	kind: '',
-				// 	totalItems: 0
-				// };
-				// return;
-
 				this.token.authClaim.subscribe(
 					isAuthenticated => {
 						if (isAuthenticated) {

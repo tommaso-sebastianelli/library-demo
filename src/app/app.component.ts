@@ -91,18 +91,6 @@ export class AppComponent implements OnInit {
 		this.changeDetectorRef.detectChanges();
 	}
 
-	getBookshelfIcon(id: number | string): string {
-		switch (id) {
-			case Bookshelves.Favorites: return 'favorite_border';
-			case Bookshelves.ReadingNow: return 'list';
-			case Bookshelves.ToRead: return 'list';
-			case Bookshelves.HaveRead: return 'list';
-			case Bookshelves.RecentlyViewed: return 'access_time';
-			case Bookshelves.BooksForYou: return 'explore';
-			default: return '';
-		}
-	}
-
 	onMenuItemClick() {
 		if (this.sideNavMode === 'over') {
 			this.sidenav.close();

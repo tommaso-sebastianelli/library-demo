@@ -7,6 +7,7 @@ import { IVolumeList } from '../shared/api/ivolume-list';
 import { TokenService } from '../shared/auth/token.service';
 import { Subscription } from 'rxjs/Subscription';
 import { PageEvent } from '@angular/material/paginator';
+import { BookshelvesService } from '../shared/bookshelves/bookshelves.service';
 
 interface IQueryParams extends Object {
 	take?: number;
@@ -24,7 +25,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 	id: string;
 
 	constructor(private router: Router, private activatedRoute: ActivatedRoute, private api: ApiService, private loading: LoadingService,
-		private error: ErrorService, private token: TokenService) {
+		private error: ErrorService, private token: TokenService, public bookshelves: BookshelvesService) {
 		this.routerSub = this.router.events
 			.filter((event) => event instanceof NavigationEnd)
 			.subscribe((result: any) => {
@@ -33,6 +34,15 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 				const s: UrlSegment[] = g.segments;
 				this.id = s[1].path;
 				// console.log(s[0].parameters);
+
+				// EMPTY LIST TEST 
+				// this.result = {
+				// 	items: [],
+				// 	kind: '',
+				// 	totalItems: 0
+				// };
+				// return;
+
 				this.token.authClaim.subscribe(
 					isAuthenticated => {
 						if (isAuthenticated) {

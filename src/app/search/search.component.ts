@@ -37,7 +37,8 @@ export class SearchComponent implements OnInit {
 	result: IVolumeList;
 
 	constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
-		private activatedRoute: ActivatedRoute, private router: Router, public noResultDialog: MatDialog, private changeDetectorRef: ChangeDetectorRef) {
+		private activatedRoute: ActivatedRoute, private router: Router, public noResultDialog: MatDialog,
+		private changeDetectorRef: ChangeDetectorRef) {
 		this.init();
 		// read query params from url
 	}
@@ -96,6 +97,7 @@ export class SearchComponent implements OnInit {
 	}
 
 	private getVolumes = (params: IQueryParams) => {
+		// FIXME: loading service creates a 'ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked.'
 		setTimeout(() => {
 			this.loading.wait();
 			this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(

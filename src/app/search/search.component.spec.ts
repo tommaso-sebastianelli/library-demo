@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
 
 import { SearchComponent } from './search.component';
 import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
-import { BookshelfComponent } from '../shared/bookshelf/bookshelf.component';
-
-import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@angular/material';
-
+import { VolumeShowcaseComponent } from '../shared/volume-showcase/volume-showcase.component';
+import { VolumeComponent } from '../shared/volume/volume.component';
+import { MatDialogModule, MatInputModule, MatIconModule, MatPaginatorModule, MatMenuModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
+import { ApiService } from '../shared/api/api.service';
+import { TokenService } from '../shared/auth/token.service';
+import { AuthService, AuthServiceConfig } from '../../assets/libs/angularx-social-login-master';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SearchComponent', () => {
@@ -26,14 +25,23 @@ describe('SearchComponent', () => {
 				MatInputModule,
 				MatIconModule,
 				HttpModule,
-				NoopAnimationsModule
+				MatPaginatorModule,
+				NoopAnimationsModule,
+				MatMenuModule
 			],
 			declarations: [
 				SearchComponent,
 				PlaceholderComponent,
-				BookshelfComponent
+				VolumeShowcaseComponent,
+				VolumeComponent
 			],
 			providers: [
+				ApiService,
+				TokenService,
+				{
+					provide: AuthService,
+					useValue: AuthServiceConfig
+				}
 			]
 		})
 			.compileComponents();
@@ -42,39 +50,11 @@ describe('SearchComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(SearchComponent);
 		component = fixture.componentInstance;
-		component.activeView = 0;
-		fixture.detectChanges();
-		searchInput = fixture.debugElement.query(By.css('input'));
+		component.result = null;
 		fixture.detectChanges();
 	});
 
 	it('should be created', () => {
 		expect(component).toBeTruthy();
 	});
-
-	// it('should trigger search on input enter', () => {
-	//   expect(searchInput).toBeTruthy();
-	//   searchInput.nativeElement.value = 'test';
-	//   searchInput.triggerEventHandler('keydown', null);
-	//   fixture.detectChanges();
-	//   expect(component.loading).toBeTruthy;
-	// });
-
-	// it('should switch to result view', () => {
-	//   component.switchResults();
-	//   fixture.detectChanges();
-	//   resultView = fixture.debugElement.query(By.css('.results'));
-	//   searchView = fixture.debugElement.query(By.css('.placeholder'));
-	//   expect(searchView).toBeFalsy();
-	//   expect(resultView).toBeTruthy();
-	// });
-
-	// it('should switch to search view', () => {
-	//   component.switchSearch();
-	//   fixture.detectChanges();
-	//   resultView = fixture.debugElement.query(By.css('.results'));
-	//   searchView = fixture.debugElement.query(By.css('.placeholder'));
-	//   expect(resultView).toBeFalsy();
-	//   expect(searchView).toBeTruthy();
-	// });
 });

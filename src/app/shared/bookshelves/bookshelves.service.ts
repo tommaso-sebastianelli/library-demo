@@ -47,4 +47,16 @@ export class BookshelvesService {
 		return this.$bookshelves;
 	}
 
+	getIcon(id: number | string): string {
+		switch (id) {
+			case Bookshelves.Favorites: return 'favorite_border';
+			case Bookshelves.ReadingNow: return 'list';
+			case Bookshelves.ToRead: return 'list';
+			case Bookshelves.HaveRead: return 'list';
+			case Bookshelves.RecentlyViewed: return 'access_time';
+			case Bookshelves.BooksForYou: return 'explore';
+			default: return '';
+		}
+	}
+
 }

@@ -57,6 +57,7 @@ import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/goog
 import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-dialog.component';
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
+import { NoResultDialogComponent } from './search/no-result-dialog/no-result-dialog.component';
 
 
 
@@ -93,6 +94,7 @@ export function provideConfig() {
 		LoadingDialogComponent,
 		LogoutDialogComponent,
 		ErrorDialogComponent,
+		NoResultDialogComponent,
 	],
 	imports: [
 		RouterModule.forRoot(
@@ -134,7 +136,8 @@ export function provideConfig() {
 		SearchDialogComponent,
 		LoadingDialogComponent,
 		LogoutDialogComponent,
-		ErrorDialogComponent
+		ErrorDialogComponent,
+		NoResultDialogComponent
 	],
 	bootstrap: [AppComponent]
 })

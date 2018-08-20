@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, PageEvent } from '@angular/material';
 
@@ -14,7 +14,7 @@ import { Animations } from '../app.animations';
 import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { DEFAULT_QUERY_LIMIT } from '../app.config';
 import { IVolumeList } from '../shared/api/ivolume-list';
-import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
+import { NoResultDialogComponent } from './no-result-dialog/no-result-dialog.component';
 
 interface IQueryParams {
 	title?: string;
@@ -31,12 +31,13 @@ interface IQueryParams {
 	animations: Animations
 })
 export class SearchComponent implements OnInit {
-	dialogRef: MatDialogRef<SearchDialogComponent | PlaceholderComponent>;
+	searchDialogRef: MatDialogRef<SearchDialogComponent>;
+	noResultDialogRef: MatDialogRef<NoResultDialogComponent>;
 	animations: any;
 	result: IVolumeList;
 
 	constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
-		private activatedRoute: ActivatedRoute, private router: Router) {
+		private activatedRoute: ActivatedRoute, private router: Router, public noResultDialog: MatDialog, private changeDetectorRef: ChangeDetectorRef) {
 		this.init();
 		// read query params from url
 	}
@@ -61,10 +62,10 @@ export class SearchComponent implements OnInit {
 	}
 
 	openDialog(): void {
-		this.dialogRef = this.searchDialog.open(SearchDialogComponent, {
+		this.searchDialogRef = this.searchDialog.open(SearchDialogComponent, {
 			data: {
 				onSearch: (title: string, author: string, publisher: string) => {
-					this.dialogRef.close();
+					this.searchDialogRef.close();
 					this.updateQueryParams({
 						title: title,
 						author: author,
@@ -95,36 +96,35 @@ export class SearchComponent implements OnInit {
 	}
 
 	private getVolumes = (params: IQueryParams) => {
-		this.loading.wait();
-		this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
-			result => {
-				if (result.totalItems > 0) {
-					this.result = result;
-					this.animations.fab = (this.result.totalItems) ? 'active' : '';
-				} else {
-					this.showNoResultError();
-				}
-			},
-			e => {
-				this.loading.done().subscribe(() => {
-					this.error.throw(e).subscribe(() => {
-						this.init();
+		setTimeout(() => {
+			this.loading.wait();
+			this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
+				result => {
+					if (result.totalItems > 0) {
+						this.result = result;
+						this.animations.fab = (this.result.totalItems) ? 'active' : '';
+					} else {
+						this.showNoResultError();
+					}
+				},
+				e => {
+					this.loading.done().subscribe(() => {
+						this.error.throw(e).subscribe(() => {
+							this.init();
+						});
 					});
-				});
-			},
-			() => {
-				this.loading.done().subscribe(() => {
-					// show no result placeholder
-				});
-			}
-		);
+				},
+				() => {
+					this.loading.done().subscribe(() => {
+						// show no result placeholder
+					});
+				}
+			);
+		}, 0);
+
 	}
 
 	showNoResultError() {
-		this.dialogRef = this.searchDialog.open(PlaceholderComponent, {
-			data: {
-
-			}
-		});
+		//this.noResultDialogRef = this.noResultDialog.open(NoResultDialogComponent);
 	}
 }

@@ -23,7 +23,7 @@ export class LoadingService {
 		return this.dialogRef.afterOpen();
 	}
 	public done(): Observable<any> {
-		this.dialog.closeAll(); // FIXME: dialogRef.close() should be used, but somehow it's not working
+		this.dialogRef.close();
 		return this.dialogRef.afterClosed();
 	}
 

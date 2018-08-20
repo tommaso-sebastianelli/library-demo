@@ -1,6 +1,5 @@
 import { Component, ViewChild, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { PageEvent } from '@angular/material';
 
 @Component({
 	selector: 'app-search-dialog',
@@ -12,6 +11,7 @@ export class SearchDialogComponent implements OnInit {
 	constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
 	ngOnInit() {
+
 	}
 
 }

@@ -39,6 +39,14 @@
         <source>Search by name or author, over millions of books</source>
         <target>Cerca in base a nome o autore, tra milioni di libri</target>
       </trans-unit>
+	  <trans-unit id="no-result-placeholder-title" datatype="html">
+        <source>Nothing found</source>
+        <target>Nessun risultato</target>
+      </trans-unit>
+	  <trans-unit id="no-result-placeholder-subtitle" datatype="html">
+        <source>Try extending you search, using less keywords or filters</source>
+        <target>Prova a estendere la ricerca, utilizzando meno filtri</target>
+      </trans-unit>
       <trans-unit id="search-dialog-title" datatypng e="html">
         <source>Search</source>
         <target>Ricerca</target>

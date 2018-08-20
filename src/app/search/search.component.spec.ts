@@ -12,9 +12,6 @@ import { MatDialogModule, MatInputModule, MatIconModule, MatCardModule } from '@
 import { HttpModule } from '@angular/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { Book } from '../shared/bookshelf/book/book';
-
-
 describe('SearchComponent', () => {
 	let component: SearchComponent;
 	let fixture: ComponentFixture<SearchComponent>;

@@ -32,10 +32,10 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 				const tree: UrlTree = this.router.parseUrl(result.url);
 				const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
 				const s: UrlSegment[] = g.segments;
-				this.id = parseInt(s[1].path);
+				this.id = parseInt(s[1].path, 10);
 				// console.log(s[0].parameters);
 
-				// EMPTY LIST TEST 
+				// EMPTY LIST TEST
 				// this.result = {
 				// 	items: [],
 				// 	kind: '',

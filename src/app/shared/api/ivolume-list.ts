@@ -1,7 +1,7 @@
-import { IVolume } from "./ivolume";
+import { IVolume } from './ivolume';
 
 export interface IVolumeList {
-    kind: string;
-    totalItems: number;
-    items: Array<IVolume>;
+	kind: string;
+	totalItems: number;
+	items: Array<IVolume>;
 }

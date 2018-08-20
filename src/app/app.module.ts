@@ -34,7 +34,7 @@ import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api/api.service';
 import { LoadingService } from './shared/loading/loading.service';
 import { ErrorService } from './shared/error/error.service';
-import { BookshelvesService } from './shared/bookshelves/bookshelves.service'
+import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
 
 // Auth
 import { SocialLoginModule, AuthServiceConfig } from '../assets/libs/angularx-social-login-master';
@@ -42,7 +42,7 @@ import { GoogleLoginProvider/*, FacebookLoginProvider*/ } from '../assets/libs/a
 import { LoginOpt } from '../assets/libs/angularx-social-login-master/src/auth.service';
 
 // Guards
-import { AuthenticatedGuard } from './authenticated.guard'
+import { AuthenticatedGuard } from './authenticated.guard';
 
 // Components
 import { AppComponent } from './app.component';
@@ -61,81 +61,81 @@ import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.c
 
 
 const googleLoginOptions: LoginOpt = {
-  scope: 'https://www.googleapis.com/auth/books'
+	scope: 'https://www.googleapis.com/auth/books'
 };
 
 const config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com', googleLoginOptions)
-  },
-  // {
-  //   id: FacebookLoginProvider.PROVIDER_ID,
-  //   provider: new FacebookLoginProvider("Facebook-App-Id")
-  // }
+	{
+		id: GoogleLoginProvider.PROVIDER_ID,
+		provider: new GoogleLoginProvider('274325245304-gagtjb0isocg10bchtnh1qek3et0133f.apps.googleusercontent.com', googleLoginOptions)
+	},
+	// {
+	//   id: FacebookLoginProvider.PROVIDER_ID,
+	//   provider: new FacebookLoginProvider("Facebook-App-Id")
+	// }
 ]);
 
 export function provideConfig() {
-  return config;
+	return config;
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    BookshelfComponent,
-    VolumeShowcaseComponent,
-    PlaceholderComponent,
-    VolumeComponent,
-    SearchDialogComponent,
-    LoginComponent,
-    GoogleSignUpButtonComponent,
-    LoadingDialogComponent,
-    LogoutDialogComponent,
-    ErrorDialogComponent,
-  ],
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- debugging purposes only
-    ),
-    BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
-    MatSliderModule,
-    MatChipsModule,
-    HttpModule,
-    MatPaginatorModule,
-    MatMenuModule,
-    FormsModule,
-    SocialLoginModule
-  ],
-  providers: [{
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  },
-    TokenService,
-    ApiService,
-    LoadingService,
-    ErrorService,
-    AuthenticatedGuard,
-    BookshelvesService
-  ],
-  entryComponents: [
-    SearchDialogComponent,
-    LoadingDialogComponent,
-    LogoutDialogComponent,
-    ErrorDialogComponent
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		SearchComponent,
+		BookshelfComponent,
+		VolumeShowcaseComponent,
+		PlaceholderComponent,
+		VolumeComponent,
+		SearchDialogComponent,
+		LoginComponent,
+		GoogleSignUpButtonComponent,
+		LoadingDialogComponent,
+		LogoutDialogComponent,
+		ErrorDialogComponent,
+	],
+	imports: [
+		RouterModule.forRoot(
+			appRoutes,
+			{ enableTracing: false } // <-- debugging purposes only
+		),
+		BrowserModule,
+		BrowserAnimationsModule,
+		FlexLayoutModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatIconModule,
+		MatButtonModule,
+		MatInputModule,
+		MatSnackBarModule,
+		MatCardModule,
+		MatProgressSpinnerModule,
+		MatDialogModule,
+		MatSliderModule,
+		MatChipsModule,
+		HttpModule,
+		MatPaginatorModule,
+		MatMenuModule,
+		FormsModule,
+		SocialLoginModule
+	],
+	providers: [{
+		provide: AuthServiceConfig,
+		useFactory: provideConfig
+	},
+		TokenService,
+		ApiService,
+		LoadingService,
+		ErrorService,
+		AuthenticatedGuard,
+		BookshelvesService
+	],
+	entryComponents: [
+		SearchDialogComponent,
+		LoadingDialogComponent,
+		LogoutDialogComponent,
+		ErrorDialogComponent
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

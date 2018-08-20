@@ -1,6 +1,6 @@
-import { IBookshelf } from "./ibookshelf";
+import { IBookshelf } from './ibookshelf';
 
 export interface IBookshelfList {
-    kind: string;
-    items: Array<IBookshelf>;
+	kind: string;
+	items: Array<IBookshelf>;
 }

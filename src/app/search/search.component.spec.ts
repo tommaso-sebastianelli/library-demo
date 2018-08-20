@@ -16,68 +16,68 @@ import { Book } from '../shared/bookshelf/book/book';
 
 
 describe('SearchComponent', () => {
-  let component: SearchComponent;
-  let fixture: ComponentFixture<SearchComponent>;
-  let searchInput: DebugElement;
-  let resultView: DebugElement;
-  let searchView: DebugElement;
+	let component: SearchComponent;
+	let fixture: ComponentFixture<SearchComponent>;
+	//   let searchInput: DebugElement;
+	//   let resultView: DebugElement;
+	//   let searchView: DebugElement;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        MatDialogModule,
-        MatInputModule,
-        MatIconModule,
-        HttpModule,
-        NoopAnimationsModule
-      ],
-      declarations: [
-        SearchComponent,
-        PlaceholderComponent,
-        BookshelfComponent
-      ],
-      providers: [
-      ]
-    })
-      .compileComponents();
-  }));
+	beforeEach(async(() => {
+		TestBed.configureTestingModule({
+			imports: [
+				MatDialogModule,
+				MatInputModule,
+				MatIconModule,
+				HttpModule,
+				NoopAnimationsModule
+			],
+			declarations: [
+				SearchComponent,
+				PlaceholderComponent,
+				BookshelfComponent
+			],
+			providers: [
+			]
+		})
+			.compileComponents();
+	}));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SearchComponent);
-    component = fixture.componentInstance;
-    component.activeView = 0;
-    fixture.detectChanges();
-    searchInput = fixture.debugElement.query(By.css('input'));
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(SearchComponent);
+		component = fixture.componentInstance;
+		component.activeView = 0;
+		fixture.detectChanges();
+		searchInput = fixture.debugElement.query(By.css('input'));
+		fixture.detectChanges();
+	});
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 
-  // it('should trigger search on input enter', () => {
-  //   expect(searchInput).toBeTruthy();
-  //   searchInput.nativeElement.value = 'test';
-  //   searchInput.triggerEventHandler('keydown', null);
-  //   fixture.detectChanges();
-  //   expect(component.loading).toBeTruthy;
-  // });
+	// it('should trigger search on input enter', () => {
+	//   expect(searchInput).toBeTruthy();
+	//   searchInput.nativeElement.value = 'test';
+	//   searchInput.triggerEventHandler('keydown', null);
+	//   fixture.detectChanges();
+	//   expect(component.loading).toBeTruthy;
+	// });
 
-  // it('should switch to result view', () => {
-  //   component.switchResults();
-  //   fixture.detectChanges();
-  //   resultView = fixture.debugElement.query(By.css('.results'));
-  //   searchView = fixture.debugElement.query(By.css('.placeholder'));
-  //   expect(searchView).toBeFalsy();
-  //   expect(resultView).toBeTruthy();
-  // });
+	// it('should switch to result view', () => {
+	//   component.switchResults();
+	//   fixture.detectChanges();
+	//   resultView = fixture.debugElement.query(By.css('.results'));
+	//   searchView = fixture.debugElement.query(By.css('.placeholder'));
+	//   expect(searchView).toBeFalsy();
+	//   expect(resultView).toBeTruthy();
+	// });
 
-  // it('should switch to search view', () => {
-  //   component.switchSearch();
-  //   fixture.detectChanges();
-  //   resultView = fixture.debugElement.query(By.css('.results'));
-  //   searchView = fixture.debugElement.query(By.css('.placeholder'));
-  //   expect(resultView).toBeFalsy();
-  //   expect(searchView).toBeTruthy();
-  // });
+	// it('should switch to search view', () => {
+	//   component.switchSearch();
+	//   fixture.detectChanges();
+	//   resultView = fixture.debugElement.query(By.css('.results'));
+	//   searchView = fixture.debugElement.query(By.css('.placeholder'));
+	//   expect(resultView).toBeFalsy();
+	//   expect(searchView).toBeTruthy();
+	// });
 });

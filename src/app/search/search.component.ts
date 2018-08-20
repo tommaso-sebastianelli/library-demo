@@ -17,114 +17,114 @@ import { IVolumeList } from '../shared/api/ivolume-list';
 import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
 
 interface IQueryParams {
-  title?: string;
-  author?: string;
-  publisher?: string;
-  take?: number;
-  offset?: number;
+	title?: string;
+	author?: string;
+	publisher?: string;
+	take?: number;
+	offset?: number;
 }
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  animations: Animations
+	selector: 'app-search',
+	templateUrl: './search.component.html',
+	styleUrls: ['./search.component.scss'],
+	animations: Animations
 })
 export class SearchComponent implements OnInit {
-  dialogRef: MatDialogRef<SearchDialogComponent | PlaceholderComponent>;
-  animations: any;
-  result: IVolumeList
+	dialogRef: MatDialogRef<SearchDialogComponent | PlaceholderComponent>;
+	animations: any;
+	result: IVolumeList;
 
-  constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
-    private activatedRoute: ActivatedRoute, private router: Router) {
-    this.init();
-    // read query params from url
-  }
+	constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
+		private activatedRoute: ActivatedRoute, private router: Router) {
+		this.init();
+		// read query params from url
+	}
 
-  private init(): void {
-    this.result = null;
-    this.animations = {
-      fab: ''
-    };
-  }
+	private init(): void {
+		this.result = null;
+		this.animations = {
+			fab: ''
+		};
+	}
 
-  ngOnInit() {
-    this.activatedRoute.queryParams
-      .subscribe(params => {
-        if (params.title || params.author || params.publisher) {
-          console.log(params);
-          this.getVolumes(params);
-        } else {
-          this.init();
-        }
-      });
-  }
+	ngOnInit() {
+		this.activatedRoute.queryParams
+			.subscribe(params => {
+				if (params.title || params.author || params.publisher) {
+					console.log(params);
+					this.getVolumes(params);
+				} else {
+					this.init();
+				}
+			});
+	}
 
-  openDialog(): void {
-    this.dialogRef = this.searchDialog.open(SearchDialogComponent, {
-      data: {
-        onSearch: (title: string, author: string, publisher: string) => {
-          this.dialogRef.close();
-          this.updateQueryParams({
-            title: title,
-            author: author,
-            publisher: publisher,
-            take: DEFAULT_QUERY_LIMIT,
-            offset: 0
-          });
-        }
-      }
-    });
-  }
+	openDialog(): void {
+		this.dialogRef = this.searchDialog.open(SearchDialogComponent, {
+			data: {
+				onSearch: (title: string, author: string, publisher: string) => {
+					this.dialogRef.close();
+					this.updateQueryParams({
+						title: title,
+						author: author,
+						publisher: publisher,
+						take: DEFAULT_QUERY_LIMIT,
+						offset: 0
+					});
+				}
+			}
+		});
+	}
 
-  onPagerChange(pagerStatus: PageEvent): void {
-    this.updateQueryParams(<IQueryParams>{
-      title: this.activatedRoute.snapshot.queryParams.title,
-      author: this.activatedRoute.snapshot.queryParams.author,
-      publisher: this.activatedRoute.snapshot.queryParams.publisher,
-      take: pagerStatus.pageSize,
-      offset: pagerStatus.pageIndex * pagerStatus.pageSize
-    });
-  }
+	onPagerChange(pagerStatus: PageEvent): void {
+		this.updateQueryParams(<IQueryParams>{
+			title: this.activatedRoute.snapshot.queryParams.title,
+			author: this.activatedRoute.snapshot.queryParams.author,
+			publisher: this.activatedRoute.snapshot.queryParams.publisher,
+			take: pagerStatus.pageSize,
+			offset: pagerStatus.pageIndex * pagerStatus.pageSize
+		});
+	}
 
-  private updateQueryParams(params: IQueryParams): void {
-    this.router.navigate([], {
-      relativeTo: this.activatedRoute,
-      queryParams: params
-    });
-  }
+	private updateQueryParams(params: IQueryParams): void {
+		this.router.navigate([], {
+			relativeTo: this.activatedRoute,
+			queryParams: params
+		});
+	}
 
-  private getVolumes = (params: IQueryParams) => {
-    this.loading.wait();
-    this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
-      result => {
-        if (result.totalItems > 0) {
-          this.result = result;
-          this.animations.fab = (this.result.totalItems) ? 'active' : '';
-        } else {
-          this.showNoResultError();
-        }
-      },
-      e => {
-        this.loading.done().subscribe(() => {
-          this.error.throw(e).subscribe(() => {
-            this.init();
-          });
-        });
-      },
-      () => {
-        this.loading.done().subscribe(() => {
-          // show no result placeholder
-        });
-      }
-    );
-  }
+	private getVolumes = (params: IQueryParams) => {
+		this.loading.wait();
+		this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
+			result => {
+				if (result.totalItems > 0) {
+					this.result = result;
+					this.animations.fab = (this.result.totalItems) ? 'active' : '';
+				} else {
+					this.showNoResultError();
+				}
+			},
+			e => {
+				this.loading.done().subscribe(() => {
+					this.error.throw(e).subscribe(() => {
+						this.init();
+					});
+				});
+			},
+			() => {
+				this.loading.done().subscribe(() => {
+					// show no result placeholder
+				});
+			}
+		);
+	}
 
-  showNoResultError() {
-    this.dialogRef = this.searchDialog.open(PlaceholderComponent, {
-      data: {
+	showNoResultError() {
+		this.dialogRef = this.searchDialog.open(PlaceholderComponent, {
+			data: {
 
-      }
-    });
-  }
+			}
+		});
+	}
 }

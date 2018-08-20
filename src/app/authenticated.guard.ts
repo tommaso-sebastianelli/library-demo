@@ -5,13 +5,13 @@ import { TokenService } from './shared/auth/token.service';
 
 @Injectable()
 export class AuthenticatedGuard implements CanActivate {
-  constructor(private token: TokenService) {
+	constructor(private token: TokenService) {
 
-  }
+	}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.token.authClaim
-  }
+	canActivate(
+		next: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+		return this.token.authClaim;
+	}
 }

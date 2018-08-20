@@ -22,7 +22,7 @@ interface IQueryParams extends Object {
 export class BookshelfComponent implements OnInit, OnDestroy {
 	result: IVolumeList;
 	routerSub: Subscription;
-	id: string;
+	id: number;
 
 	constructor(private router: Router, private activatedRoute: ActivatedRoute, private api: ApiService, private loading: LoadingService,
 		private error: ErrorService, private token: TokenService, public bookshelves: BookshelvesService) {
@@ -32,7 +32,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 				const tree: UrlTree = this.router.parseUrl(result.url);
 				const g: UrlSegmentGroup = tree.root.children[PRIMARY_OUTLET];
 				const s: UrlSegment[] = g.segments;
-				this.id = s[1].path;
+				this.id = parseInt(s[1].path);
 				// console.log(s[0].parameters);
 
 				// EMPTY LIST TEST 

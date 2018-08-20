@@ -47,7 +47,7 @@ export class BookshelvesService {
 		return this.$bookshelves;
 	}
 
-	getIcon(id: number | string): string {
+	getIcon(id: number): string {
 		switch (id) {
 			case Bookshelves.Favorites: return 'favorite_border';
 			case Bookshelves.ReadingNow: return 'list';

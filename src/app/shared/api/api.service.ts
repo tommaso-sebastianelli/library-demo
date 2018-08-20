@@ -78,7 +78,7 @@ export class ApiService {
 			});
 	}
 
-	public bookshelfVolumeList(id: string, offset?: number, limit?: number): Observable<IVolumeList> {
+	public bookshelfVolumeList(id: number, offset?: number, limit?: number): Observable<IVolumeList> {
 		let url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${id}/volumes`;
 		url = url.concat(`?startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&projection=lite&key=${this.api_key}`);
 		return this.http.get(url, {

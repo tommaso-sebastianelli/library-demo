@@ -1,3 +1,12 @@
-<app-placeholder icon="sentiment_dissatisfied" i18n-title="placeholder title@@no-result-placeholder-title" title="Nothing found"
-  i18n-subtitle="placeholder subtitle@@no-result-placeholder-subtitle" subtitle="Try extending you search, using less keywords or filters">
-</app-placeholder>
+<div matDialogTitle i18n="no-result@@no-result-placeholder-title" class="mat-body-1">Nothing found!</div>
+<mat-dialog-content class="m-b-sm">
+  <div>
+    <p class="details mat-body-1" i18n="no-result-placeholder@@no-result-placeholder-subtitle">
+      <!-- <span class="avatar mat-body-2">400</span> -->
+      Try extending you search, using less keywords or filters
+    </p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button matDialogClose i18n-title="ok@@ok" title="editor">OK</button>
+</mat-dialog-actions>

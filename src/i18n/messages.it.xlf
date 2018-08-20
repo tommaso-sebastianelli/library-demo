@@ -3,6 +3,10 @@
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
     <!-->GENERALS<-->
+	<trans-unit id="ok" datatype="html">
+        <source>OK</source>
+        <target>Va bene</target>
+      </trans-unit>
       <trans-unit id="generic-cancel" datatype="html">
         <source>CANCEL</source>
         <target>ANNULLA</target>
@@ -40,8 +44,8 @@
         <target>Cerca in base a nome o autore, tra milioni di libri</target>
       </trans-unit>
 	  <trans-unit id="no-result-placeholder-title" datatype="html">
-        <source>Nothing found</source>
-        <target>Nessun risultato</target>
+        <source>Nothing found!</source>
+        <target>Nessun risultato!</target>
       </trans-unit>
 	  <trans-unit id="no-result-placeholder-subtitle" datatype="html">
         <source>Try extending you search, using less keywords or filters</source>

@@ -125,6 +125,7 @@ export class SearchComponent implements OnInit {
 	}
 
 	showNoResultError() {
-		//this.noResultDialogRef = this.noResultDialog.open(NoResultDialogComponent);
+		this.init();
+		this.noResultDialogRef = this.noResultDialog.open(NoResultDialogComponent);
 	}
 }

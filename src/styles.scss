@@ -1,31 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    margin: 0;
-    .m-n{
-        margin: 0 !important;
-    }
 
-    mat-icon{ margin: auto;}
-
-    mat-paginator{
-        border-radius: 10px;
+body {
+  margin: 0;
+  .m-n {
+    margin: 0 !important;
+  }
+  mat-icon {
+    margin: auto;
+  }
+  mat-paginator {
+    border-radius: 10px;
+  } //fix for centering mat-dialog with custom width
+  mat-dialog-container {
+    margin: auto;
+  }
+  mat-card,
+  mat-dialog-container {
+    border-radius: 10px !important;
+  }
+  [mat-button] {
+    &[round] {
+      border-radius: 20px !important;
     }
-    
-    //fix for centering mat-dialog with custom width
-    mat-dialog-container{margin: auto;}
-
-    mat-card{
-        border-radius: 10px !important;
+  }
+  .loading-box {
+    .mat-dialog-container {
+      background: transparent !important;
+      box-shadow: none !important;
     }
-    [mat-button]{
-        &[round]{
-            border-radius: 20px !important;
-        }
-    }
-    .loading-box{
-        .mat-dialog-container{
-            background: transparent !important;
-            box-shadow: none !important;
-        }
-    }
+  }
 }

@@ -1,6 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, tick, ComponentFixture, fakeAsync } from '@angular/core/testing';
 import { async as _async } from "rxjs/scheduler/async";
 import { of } from 'rxjs/observable/of';
+import { By } from '@angular/platform-browser';
 
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
@@ -22,8 +23,11 @@ import { AuthService, AuthServiceConfig } from '../assets/libs/angularx-social-l
 import { ApiService } from './shared/api/api.service';
 import { TokenService } from './shared/auth/token.service';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
+import { Observable } from '../../node_modules/rxjs/Observable';
 
 describe('AppComponent', () => {
+	let component: AppComponent;
+	let fixture: ComponentFixture<AppComponent>;
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [RouterModule.forRoot(
@@ -51,27 +55,63 @@ describe('AppComponent', () => {
 			],
 			providers: [
 				{ provide: APP_BASE_HREF, useValue: '/' },
-				{ provide: AuthService, useValue: AuthServiceConfig },
+				{ provide: AuthService, useValue: AuthServiceStub },
 				{ provide: TokenService, useValue: TokenServiceStub },
-				BookshelvesService,
+				{ provide: ObservableMedia, useValue: ObservableMediaStub },
 				ApiService,
-				ObservableMedia
+				BookshelvesService
 			]
-		}).compileComponents();
+		}).compileComponents().then(() => {
+			fixture = TestBed.createComponent(AppComponent);
+			component = fixture.componentInstance;
+		});
 	}));
 
-	const TokenServiceStub = {
+	let TokenServiceStub = {
+		isAuthenticated: false,
 		get authClaim() {
-			const isAuthenticated: boolean = false;
-			return of(isAuthenticated, _async);
+			return of(this.isAuthenticated, _async);
+		}
+	};
+
+	let ObservableMediaStub = {
+		asObservable() {
+			return of({ mqAlias: 'md' });
+		},
+		isActive(val: String) {
+			return true;
+		}
+	};
+
+	let AuthServiceStub = {
+		get authState(): Observable<any> {
+			return of({});
 		}
 	};
 
 	it('should create the app', async(() => {
-		const fixture = TestBed.createComponent(AppComponent);
-		const app = fixture.debugElement.componentInstance;
-		expect(app).toBeTruthy();
+		expect(component).toBeTruthy();
 	}));
 
+	it('should not render authenticated-only bookshelves', fakeAsync(() => {
+		tick(100);
+		fixture.detectChanges();
+		const list = fixture.debugElement.query(By.css('.user-items'));
+		tick();
+		fixture.detectChanges();
+		expect(list).toBeFalsy();
+	}));
+
+
+	it('should render authenticated-only bookshelves', fakeAsync(async () => {
+		TokenServiceStub.isAuthenticated = true;
+		tick(100);
+		await fixture.whenStable();
+		fixture.detectChanges();
+		const list = fixture.debugElement.query(By.css('.user-items'));
+		tick();
+		fixture.detectChanges();
+		expect(list).toBeTruthy();
+	}));
 
 });

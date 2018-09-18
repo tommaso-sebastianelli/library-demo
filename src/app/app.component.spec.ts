@@ -19,9 +19,10 @@ import { GoogleSignUpButtonComponent } from './shared/google-sign-up-button/goog
 import { VolumeShowcaseComponent } from './shared/volume-showcase/volume-showcase.component';
 import { VolumeComponent } from './shared/volume/volume.component';
 
-import { AuthService, AuthServiceConfig } from '../assets/libs/angularx-social-login-master';
+import { AuthService } from '../assets/libs/angularx-social-login-master';
 import { ApiService } from './shared/api/api.service';
 import { TokenService } from './shared/auth/token.service';
+import { TokenServiceStub } from './shared/auth/token.stub';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
 import { Observable } from '../../node_modules/rxjs/Observable';
 
@@ -67,13 +68,6 @@ describe('AppComponent', () => {
 		});
 	}));
 
-	let TokenServiceStub = {
-		isAuthenticated: false,
-		get authClaim() {
-			return of(this.isAuthenticated, _async);
-		}
-	};
-
 	let ObservableMediaStub = {
 		asObservable() {
 			return of({ mqAlias: 'md' });
@@ -89,29 +83,29 @@ describe('AppComponent', () => {
 		}
 	};
 
-	it('should create the app', async(() => {
+	it('should create the app', fakeAsync(() => {
 		expect(component).toBeTruthy();
 	}));
 
-	it('should not render authenticated-only bookshelves', fakeAsync(() => {
-		tick(100);
-		fixture.detectChanges();
-		const list = fixture.debugElement.query(By.css('.user-items'));
+	it('should render authenticated-only bookshelves', fakeAsync(() => {
+		component.ngOnInit();
 		tick();
-		fixture.detectChanges();
-		expect(list).toBeFalsy();
-	}));
-
-
-	it('should render authenticated-only bookshelves', fakeAsync(async () => {
-		TokenServiceStub.isAuthenticated = true;
-		tick(100);
-		await fixture.whenStable();
 		fixture.detectChanges();
 		const list = fixture.debugElement.query(By.css('.user-items'));
 		tick();
 		fixture.detectChanges();
 		expect(list).toBeTruthy();
+	}));
+
+	it('should toggle the sidebar', fakeAsync(() => {
+		component.ngOnInit();
+		tick();
+		fixture.detectChanges();
+		let initialSideNavStatus = component.sidenav.opened;
+		component.sidenav.toggle();
+		tick();
+		fixture.detectChanges();
+		expect(component.sidenav.opened).not.toEqual(initialSideNavStatus);
 	}));
 
 });

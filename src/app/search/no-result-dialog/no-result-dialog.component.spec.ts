@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NoResultDialogComponent } from './no-result-dialog.component';
 
 describe('NoResultDialogComponent', () => {
@@ -8,7 +8,16 @@ describe('NoResultDialogComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [NoResultDialogComponent]
+			imports: [
+				MatDialogModule
+			],
+			declarations: [
+				NoResultDialogComponent
+			],
+			providers: [
+				{ provide: MatDialogRef, useValue: {} },
+				{ provide: MAT_DIALOG_DATA, useValue: [] },
+			]
 		})
 			.compileComponents();
 	}));

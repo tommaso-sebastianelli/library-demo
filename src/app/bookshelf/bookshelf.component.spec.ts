@@ -1,6 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookshelfComponent } from './bookshelf.component';
+import { VolumeShowcaseComponent } from '../shared/volume-showcase/volume-showcase.component';
+import { BookshelvesService } from '../shared/bookshelves/bookshelves.service';
+import { BookshelvesServiceStub } from '../shared/bookshelves/bookshelves.stub';
+import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
+import { MatPaginatorModule, MatCardModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { VolumeComponent } from '../shared/volume/volume.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ApiService } from '../shared/api/api.service';
+import { ApiServiceStub } from '../shared/api/api.stub';
+import { LoadingService } from '../shared/loading/loading.service';
+import { ErrorService } from '../shared/error/error.service';
+import { TokenService } from '../shared/auth/token.service';
+import { TokenServiceStub } from '../shared/auth/token.stub';
+
+
 
 describe('BookshelfComponent', () => {
 	let component: BookshelfComponent;
@@ -8,7 +23,35 @@ describe('BookshelfComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [BookshelfComponent]
+			imports: [
+				MatPaginatorModule,
+				MatCardModule,
+				MatMenuModule,
+				MatDialogModule,
+				RouterTestingModule
+			],
+			declarations: [
+				BookshelfComponent,
+				VolumeShowcaseComponent,
+				VolumeComponent,
+				PlaceholderComponent
+			],
+			providers: [
+				{
+					provide: BookshelvesService,
+					useValue: BookshelvesServiceStub
+				},
+				{
+					provide: ApiService,
+					useValue: ApiServiceStub
+				},
+				LoadingService,
+				ErrorService,
+				{
+					provide: TokenService,
+					useValue: TokenServiceStub
+				}
+			]
 		})
 			.compileComponents();
 	}));

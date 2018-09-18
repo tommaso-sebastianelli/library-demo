@@ -10,6 +10,10 @@ import { ApiService } from '../shared/api/api.service';
 import { TokenService } from '../shared/auth/token.service';
 import { AuthService, AuthServiceConfig } from '../../assets/libs/angularx-social-login-master';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TokenServiceStub } from '../shared/auth/token.stub';
+import { LoadingService } from '../shared/loading/loading.service';
+import { ErrorService } from '../shared/error/error.service';
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('SearchComponent', () => {
 	let component: SearchComponent;
@@ -27,7 +31,8 @@ describe('SearchComponent', () => {
 				HttpModule,
 				MatPaginatorModule,
 				NoopAnimationsModule,
-				MatMenuModule
+				MatMenuModule,
+				RouterTestingModule
 			],
 			declarations: [
 				SearchComponent,
@@ -41,7 +46,13 @@ describe('SearchComponent', () => {
 				{
 					provide: AuthService,
 					useValue: AuthServiceConfig
-				}
+				},
+				{
+					provide: TokenService,
+					useValue: TokenServiceStub
+				},
+				LoadingService,
+				ErrorService
 			]
 		})
 			.compileComponents();

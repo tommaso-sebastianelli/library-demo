@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatIconModule } from '@angular/material';
 import { PlaceholderComponent } from './placeholder.component';
 
 describe('PlaceholderComponent', () => {
@@ -8,6 +9,7 @@ describe('PlaceholderComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
+			imports: [MatIconModule],
 			declarations: [PlaceholderComponent]
 		})
 			.compileComponents();

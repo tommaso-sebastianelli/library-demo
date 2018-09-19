@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GoogleSignUpButtonComponent } from './google-sign-up-button.component';
+import { AuthService, AuthServiceConfig } from '../../../assets/libs/angularx-social-login-master';
+import { TokenService } from '../auth/token.service';
+import { TokenServiceStub } from '../auth/token.stub';
 
 describe('GoogleSignUpButtonComponent', () => {
 	let component: GoogleSignUpButtonComponent;
@@ -8,7 +11,18 @@ describe('GoogleSignUpButtonComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [GoogleSignUpButtonComponent]
+			imports: [],
+			declarations: [GoogleSignUpButtonComponent],
+			providers: [
+				{
+					provide: TokenService,
+					useValue: TokenServiceStub
+				},
+				{
+					provide: AuthService,
+					useValue: AuthServiceConfig
+				}
+			]
 		})
 			.compileComponents();
 	}));

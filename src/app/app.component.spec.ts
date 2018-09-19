@@ -25,6 +25,7 @@ import { TokenService } from './shared/auth/token.service';
 import { TokenServiceStub } from './shared/auth/token.stub';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
 import { Observable } from '../../node_modules/rxjs/Observable';
+import { ObservableMediaStub } from './app.observableMedia.stub';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -67,15 +68,6 @@ describe('AppComponent', () => {
 			component = fixture.componentInstance;
 		});
 	}));
-
-	let ObservableMediaStub = {
-		asObservable() {
-			return of({ mqAlias: 'md' });
-		},
-		isActive(val: String) {
-			return true;
-		}
-	};
 
 	let AuthServiceStub = {
 		get authState(): Observable<any> {

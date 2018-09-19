@@ -1,15 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatCardModule } from '@angular/material';
 import { LoginComponent } from './login.component';
+import { GoogleSignUpButtonComponent } from '../google-sign-up-button/google-sign-up-button.component';
+import { TokenService } from '../auth/token.service';
+import { TokenServiceStub } from '../auth/token.stub';
+import { AuthService, AuthServiceConfig } from '../../../assets/libs/angularx-social-login-master';
 
 describe('LoginComponent', () => {
 	let component: LoginComponent;
 	let fixture: ComponentFixture<LoginComponent>;
 
 	beforeEach(async(() => {
-		TestBed.configureTestingModule({
-			declarations: [LoginComponent]
-		})
+		TestBed.configureTestingModule(
+			{
+				imports: [MatCardModule],
+				declarations: [
+					LoginComponent,
+					GoogleSignUpButtonComponent
+				],
+				providers: [
+					{
+						provide: TokenService,
+						useValue: TokenServiceStub
+					},
+					{
+						provide: AuthService,
+						useValue: AuthServiceConfig
+					}
+				]
+			}
+		)
 			.compileComponents();
 	}));
 

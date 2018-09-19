@@ -16,9 +16,9 @@ import { IBookshelf } from './ibookshelf';
 
 @Injectable()
 export class ApiService {
-	private readonly api_key = 'AIzaSyD3avINA09gFSCeggY4WfIgFh631WGkqVg';
-	private readonly api_url = 'https://www.googleapis.com/books/v1';
-	private readonly paths = {
+	public readonly api_key = 'AIzaSyD3avINA09gFSCeggY4WfIgFh631WGkqVg';
+	public readonly api_url = 'https://www.googleapis.com/books/v1';
+	public readonly paths = {
 		volumes: '/volumes',
 		myLibrary: {
 			bookshelves: '/mylibrary/bookshelves'

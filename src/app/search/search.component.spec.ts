@@ -4,7 +4,7 @@ import { SearchComponent } from './search.component';
 import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
 import { VolumeShowcaseComponent } from '../shared/volume-showcase/volume-showcase.component';
 import { VolumeComponent } from '../shared/volume/volume.component';
-import { MatDialogModule, MatInputModule, MatIconModule, MatPaginatorModule, MatMenuModule } from '@angular/material';
+import { MatDialogModule, MatInputModule, MatIconModule, MatPaginatorModule, MatMenuModule, PageEvent } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { ApiService } from '../shared/api/api.service';
 import { TokenService } from '../shared/auth/token.service';
@@ -14,6 +14,14 @@ import { TokenServiceStub } from '../shared/auth/token.stub';
 import { LoadingService } from '../shared/loading/loading.service';
 import { ErrorService } from '../shared/error/error.service';
 import { RouterTestingModule } from '@angular/router/testing'
+import { By } from '@angular/platform-browser';
+import { VolumeListStub } from '../shared/volume-showcase/volume-list.stub';
+import { AppComponent } from '../app.component';
+import { ObservableMedia } from '@angular/flex-layout';
+import { ObservableMediaStub } from '../app.observableMedia.stub';
+import { BookshelvesService } from '../shared/bookshelves/bookshelves.service';
+import { BookshelvesServiceStub } from '../shared/bookshelves/bookshelves.stub';
+import { ChangeDetectorRef } from '@angular/core';
 
 describe('SearchComponent', () => {
 	let component: SearchComponent;
@@ -52,8 +60,18 @@ describe('SearchComponent', () => {
 					useValue: TokenServiceStub
 				},
 				LoadingService,
-				ErrorService
-			]
+				ErrorService,
+				AppComponent,
+				{
+					provide: ObservableMedia,
+					useValue: ObservableMediaStub
+				},
+				{
+					provide: BookshelvesService,
+					useValue: BookshelvesServiceStub
+				},
+				ChangeDetectorRef
+			],
 		})
 			.compileComponents();
 	}));
@@ -61,11 +79,24 @@ describe('SearchComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(SearchComponent);
 		component = fixture.componentInstance;
-		component.result = null;
 		fixture.detectChanges();
 	});
 
 	it('should be created', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should render volume-showcase component', () => {
+		component.result = VolumeListStub;
+		fixture.detectChanges();
+		let volumeShowcaseComponent = fixture.debugElement.query(By.css('app-volume-showcase'));
+		expect(volumeShowcaseComponent).toBeTruthy();
+	});
+
+	it('should render placeholder component', () => {
+		component.result = { kind: "test", totalItems: 0, items: [] };
+		fixture.detectChanges();
+		let placeholderComponent = fixture.debugElement.query(By.css('app-placeholder'));
+		expect(placeholderComponent).toBeTruthy();
 	});
 });

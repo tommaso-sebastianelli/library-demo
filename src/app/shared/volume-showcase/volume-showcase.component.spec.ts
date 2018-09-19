@@ -19,6 +19,7 @@ import { BookshelvesService } from '../bookshelves/bookshelves.service';
 import { BookshelvesServiceStub } from '../bookshelves/bookshelves.stub';
 import { ChangeDetectorRef } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { VolumeListStub } from './volume-list.stub';
 
 describe('VolumeShowcaseComponent', () => {
 	let component: VolumeShowcaseComponent;
@@ -68,36 +69,7 @@ describe('VolumeShowcaseComponent', () => {
 			.compileComponents().then(() => {
 				fixture = TestBed.createComponent(VolumeShowcaseComponent);
 				component = fixture.componentInstance;
-				component.data = {
-					totalItems: 1,
-					items: [
-						{
-							kind: "",
-							etag: "",
-							id: "",
-							selfLink: "",
-							volumeInfo: {
-								authors: [],
-								averageRating: 0,
-								canonicalVolumeLink: "",
-								categories: [],
-								description: "",
-								imageLinks: null,
-								infoLink: "",
-								language: "",
-								maturityRating: "",
-								pageCount: 0,
-								previewLink: "",
-								printType: "",
-								publishedDate: "",
-								publisher: "",
-								ratingsCount: 0,
-								title: ""
-							}
-						}
-					],
-					kind: "test"
-				};
+				component.data = VolumeListStub;
 				fixture.detectChanges();
 			});
 	}));

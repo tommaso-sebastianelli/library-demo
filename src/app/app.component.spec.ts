@@ -97,6 +97,7 @@ describe('AppComponent', () => {
 		component.sidenav.toggle();
 		tick();
 		fixture.detectChanges();
+		tick();
 		expect(component.sidenav.opened).not.toEqual(initialSideNavStatus);
 	}));
 

@@ -1,7 +1,7 @@
 import { IVolume } from "../api/ivolume";
 
 export const VolumeStub: IVolume = {
-	kind: "book",
+	kind: "volume",
 	etag: "",
 	id: "0",
 	selfLink: "",

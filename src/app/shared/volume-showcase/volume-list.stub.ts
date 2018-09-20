@@ -6,5 +6,5 @@ export const VolumeListStub: IVolumeList = {
 	items: [
 		VolumeStub
 	],
-	kind: "test"
+	kind: "volume-list"
 };

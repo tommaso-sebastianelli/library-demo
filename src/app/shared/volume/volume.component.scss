@@ -2,21 +2,32 @@
 @import '../../../assets/sass/spacing.scss';
 
 
-mat-card{
+mat-card {
 
-    .image-box{        
-        height: 150px;
-        overflow: hidden; 
-        img{
-            height: auto;
-            width:100%;
-            opacity: 0.8;
-        } 
+  .image-box {
+    height: 150px;
+    overflow: hidden;
+
+    img {
+      height: auto;
+      width: 100%;
+      opacity: 0.8;
     }
-    mat-card-coontent{
-        height: 300px;
+  }
+
+  mat-card-coontent {
+    height: 300px;
+  }
+
+  mat-card-actions {
+    text-align: right;
+
+    mat-icon {
+      margin-top: $xs;
     }
-mat-icon{
+  }
+
+  mat-icon {
     vertical-align: text-bottom;
-}
+  }
 }

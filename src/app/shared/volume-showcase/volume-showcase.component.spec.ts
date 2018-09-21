@@ -20,6 +20,7 @@ import { BookshelvesServiceStub } from '../bookshelves/bookshelves.stub';
 import { ChangeDetectorRef } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { VolumeListStub } from './volume-list.stub';
+import { By } from '@angular/platform-browser';
 
 describe('VolumeShowcaseComponent', () => {
 	let component: VolumeShowcaseComponent;
@@ -75,13 +76,42 @@ describe('VolumeShowcaseComponent', () => {
 	}));
 
 	beforeEach(fakeAsync(() => {
-		// fixture = TestBed.createComponent(VolumeShowcaseComponent);
-		// component = fixture.componentInstance;
 		fixture.detectChanges();
 	}));
 
 	it('should be created', () => {
 		fixture.detectChanges();
 		expect(component).toBeTruthy();
+	});
+
+	it('should not render any volume', () => {
+		component.data = {
+			totalItems: 0,
+			items: [],
+			kind: 'test'
+		};
+		fixture.detectChanges();
+		let volumes = fixture.debugElement.queryAll(By.css('app-volume'));
+		expect(volumes.length).toEqual(0);
+	});
+
+	it('should render a volume', () => {
+		fixture.detectChanges();
+		let volumes = fixture.debugElement.queryAll(By.css('app-volume'));
+		expect(volumes.length).toEqual(1);
+	});
+
+	it('should not render the paginator', () => {
+		component.pageSize = component.data.totalItems;
+		fixture.detectChanges();
+		let paginator = fixture.debugElement.query(By.css('mat-paginator'));
+		expect(paginator).toBeFalsy();
+	});
+
+	it('should render the paginator', () => {
+		component.pageSize = component.data.totalItems - 1;
+		fixture.detectChanges();
+		let paginator = fixture.debugElement.query(By.css('mat-paginator'));
+		expect(paginator).toBeTruthy();
 	});
 });

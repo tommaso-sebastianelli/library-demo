@@ -6,7 +6,7 @@ export const VolumeStub: IVolume = {
 	id: "0",
 	selfLink: "",
 	volumeInfo: {
-		authors: [],
+		authors: ['dummy-author-1', 'dummy-author-2'],
 		averageRating: 0,
 		canonicalVolumeLink: "",
 		categories: [],
@@ -19,7 +19,7 @@ export const VolumeStub: IVolume = {
 		previewLink: "",
 		printType: "",
 		publishedDate: "",
-		publisher: "",
+		publisher: "dummy-publisher",
 		ratingsCount: 0,
 		title: "test"
 	}

@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatIconModule } from '@angular/material';
 import { PlaceholderComponent } from './placeholder.component';
+import { By } from '@angular/platform-browser';
 
 describe('PlaceholderComponent', () => {
 	let component: PlaceholderComponent;
@@ -18,10 +19,22 @@ describe('PlaceholderComponent', () => {
 	beforeEach(() => {
 		fixture = TestBed.createComponent(PlaceholderComponent);
 		component = fixture.componentInstance;
+		component.title = 'dummy-title';
+		component.subtitle = 'dummy-subtitle';
+		component.icon = 'dummy-icon';
 		fixture.detectChanges();
 	});
 
 	it('should be created', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should render the input data on dom', () => {
+		let titleElement: HTMLElement = fixture.debugElement.query(By.css('.title')).nativeElement;
+		let subtitleElement: HTMLElement = fixture.debugElement.query(By.css('.subtitle')).nativeElement;
+		let iconElement: HTMLElement = fixture.debugElement.query(By.css('.icon')).nativeElement;
+		expect(titleElement.textContent).toMatch('dummy-title');
+		expect(subtitleElement.textContent).toMatch('dummy-subtitle');
+		expect(iconElement.textContent).toMatch('dummy-icon');
 	});
 });

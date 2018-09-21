@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ErrorDialogComponent } from './error-dialog.component';
+import { By } from '@angular/platform-browser';
 
 describe('ErrorDialogComponent', () => {
 	let component: ErrorDialogComponent;
@@ -15,7 +16,7 @@ describe('ErrorDialogComponent', () => {
 			declarations: [ErrorDialogComponent],
 			providers: [
 				{ provide: MatDialogRef, useValue: {} },
-				{ provide: MAT_DIALOG_DATA, useValue: [] },
+				{ provide: MAT_DIALOG_DATA, useValue: 'dummy error string' },
 			]
 		})
 			.compileComponents();
@@ -29,5 +30,11 @@ describe('ErrorDialogComponent', () => {
 
 	it('should be created', () => {
 		expect(component).toBeTruthy();
+	});
+
+	it('should render a error message', () => {
+		fixture.detectChanges();
+		let detailBox: HTMLElement = fixture.debugElement.query(By.css('.details')).nativeElement;
+		expect(detailBox.textContent).toMatch('dummy error string');
 	});
 });

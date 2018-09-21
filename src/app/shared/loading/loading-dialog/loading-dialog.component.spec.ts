@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadingDialogComponent } from './loading-dialog.component';
+import { MatSpinner } from '@angular/material';
+import { Platform } from '@angular/cdk/platform';
 
 describe('LoadingDialogComponent', () => {
 	let component: LoadingDialogComponent;
@@ -8,7 +10,13 @@ describe('LoadingDialogComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [LoadingDialogComponent]
+			declarations: [
+				LoadingDialogComponent,
+				MatSpinner
+			],
+			providers: [
+				Platform
+			]
 		})
 			.compileComponents();
 	}));
@@ -19,7 +27,7 @@ describe('LoadingDialogComponent', () => {
 		fixture.detectChanges();
 	});
 
-	// it('should be created', () => {
-	// 	expect(component).toBeTruthy();
-	// });
+	it('should be created', () => {
+		expect(component).toBeTruthy();
+	});
 });

@@ -2,6 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ErrorService } from './error.service';
+import { Observable } from 'rxjs/Observable';
 
 describe('ErrorService', () => {
 	beforeEach(() => {

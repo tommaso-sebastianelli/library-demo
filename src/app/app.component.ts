@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 	public eventsSubject: Subject<Event> = new Subject<Event>();
 
 	constructor(public media: ObservableMedia, private authService: AuthService, private api: ApiService,
-		protected tokenService: TokenService, public dialog: MatDialog, public bookshelves: BookshelvesService,
+		public tokenService: TokenService, public dialog: MatDialog, public bookshelves: BookshelvesService,
 		public changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
 		this.sideNavMode = 'over';
 	}

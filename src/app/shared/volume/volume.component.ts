@@ -16,7 +16,7 @@ export class VolumeComponent implements OnInit {
 	@Input() data: IVolume;
 	@Input() volumeActions: VolumeAction[];
 	animations: any;
-	constructor(protected tokenService: TokenService) {
+	constructor(public tokenService: TokenService) {
 		this.animations = {};
 	}
 

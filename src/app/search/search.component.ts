@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
 
 	constructor(private api: ApiService, private loading: LoadingService, private error: ErrorService, public searchDialog: MatDialog,
 		private activatedRoute: ActivatedRoute, private router: Router, public noResultDialog: MatDialog,
-		private changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
+		private snackBar: MatSnackBar) {
 		this.init();
 		// read query params from url
 

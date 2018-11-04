@@ -1,6 +1,6 @@
 // animations for the application
 
-import { trigger, state, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 export const Animations = [
 	trigger('slamtocorner', [

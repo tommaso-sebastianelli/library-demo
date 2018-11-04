@@ -19,7 +19,7 @@ export class LogoutDialogComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	private logout(a: any): void {
+	logout(a: any): void {
 		this.authService.revokeAuth().then(() => {
 			this.dialogRef.close();
 			this.router.navigateByUrl(ROUTER_HOMEPAGE);

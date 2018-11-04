@@ -1,5 +1,5 @@
 import { TestBed, async, tick, ComponentFixture, fakeAsync } from '@angular/core/testing';
-import { async as _async } from "rxjs/scheduler/async";
+import { async as _async } from 'rxjs/scheduler/async';
 import { of } from 'rxjs/observable/of';
 import { By } from '@angular/platform-browser';
 
@@ -7,7 +7,10 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { ObservableMedia } from '@angular/flex-layout';
-import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatPaginatorModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import {
+	MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatPaginatorModule,
+	MatMenuModule, MatDialogModule, MatSnackBar
+} from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { appRoutes } from './app.routes';
@@ -60,6 +63,7 @@ describe('AppComponent', () => {
 				{ provide: AuthService, useValue: AuthServiceStub },
 				{ provide: TokenService, useValue: TokenServiceStub },
 				{ provide: ObservableMedia, useValue: ObservableMediaStub },
+				MatSnackBar,
 				ApiService,
 				BookshelvesService
 			]
@@ -69,7 +73,7 @@ describe('AppComponent', () => {
 		});
 	}));
 
-	let AuthServiceStub = {
+	const AuthServiceStub = {
 		get authState(): Observable<any> {
 			return of({});
 		}
@@ -93,7 +97,7 @@ describe('AppComponent', () => {
 		component.ngOnInit();
 		tick();
 		fixture.detectChanges();
-		let initialSideNavStatus = component.sidenav.opened;
+		const initialSideNavStatus = component.sidenav.opened;
 		component.sidenav.toggle();
 		tick();
 		fixture.detectChanges();

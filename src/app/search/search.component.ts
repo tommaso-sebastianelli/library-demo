@@ -49,62 +49,62 @@ export class SearchComponent implements OnInit {
 
 		this.actions = [
 			{
-				name: "Favorites",
-				translateId: "favorites-page-title",
-				icon: "favorite_border",
+				name: 'Favorites',
+				translateId: 'favorites-page-title',
+				icon: 'favorite_border',
 				callback: (data: IVolume) => {
 					this.api.volumeAdd(data.id, Bookshelves.Favorites).subscribe(
 						success => {
 							this.showSnackBarSuccess(data);
 						},
-						error => {
+						fail => {
 							this.showSnackBarFail();
 						});
 				}
 			},
 			{
-				name: "To Read",
-				translateId: "to-read-page-title",
-				icon: "list",
+				name: 'To Read',
+				translateId: 'to-read-page-title',
+				icon: 'list',
 				callback: (data: IVolume) => {
 					this.api.volumeAdd(data.id, Bookshelves.ToRead).subscribe(
 						success => {
 							this.showSnackBarSuccess(data);
 						},
-						error => {
+						fail => {
 							this.showSnackBarFail();
 						});
 				}
 			},
 			{
-				name: "Reading",
-				translateId: "reading-page-title",
-				icon: "list",
+				name: 'Reading',
+				translateId: 'reading-page-title',
+				icon: 'list',
 				callback: (data: IVolume) => {
 					this.api.volumeAdd(data.id, Bookshelves.ReadingNow).subscribe(
 						success => {
 							this.showSnackBarSuccess(data);
 						},
-						error => {
+						fail => {
 							this.showSnackBarFail();
 						});
 				}
 			},
 			{
-				name: "Have read",
-				translateId: "have-read-page-title",
-				icon: "list",
+				name: 'Have read',
+				translateId: 'have-read-page-title',
+				icon: 'list',
 				callback: (data: IVolume) => {
 					this.api.volumeAdd(data.id, Bookshelves.HaveRead).subscribe(
 						success => {
 							this.showSnackBarSuccess(data);
 						},
-						error => {
+						fail => {
 							this.showSnackBarFail();
 						});
 				}
 			}
-		]
+		];
 	}
 
 	private init(): void {
@@ -199,7 +199,7 @@ export class SearchComponent implements OnInit {
 		this.snackBar.openFromComponent(SnackbarComponent, {
 			duration: 5000,
 			data: {
-				messageId: "snack-volume-save",
+				messageId: 'snack-volume-save',
 				undo: () => {
 					this.api.volumeRemove(data.id, Bookshelves.Favorites).subscribe(
 						() => this.snackBar.dismiss(),
@@ -213,7 +213,7 @@ export class SearchComponent implements OnInit {
 		this.snackBar.openFromComponent(SnackbarComponent, {
 			duration: 5000,
 			data: {
-				messageId: "snack-error"
+				messageId: 'snack-error'
 			}
 		});
 	}

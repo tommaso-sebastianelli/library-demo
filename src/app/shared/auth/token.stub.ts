@@ -1,4 +1,4 @@
-import { async as _async } from "rxjs/scheduler/async";
+import { async as _async } from 'rxjs/scheduler/async';
 import { of } from 'rxjs/observable/of';
 
 export let TokenServiceStub = {

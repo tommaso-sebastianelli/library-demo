@@ -34,7 +34,7 @@ describe('ErrorDialogComponent', () => {
 
 	it('should render a error message', () => {
 		fixture.detectChanges();
-		let detailBox: HTMLElement = fixture.debugElement.query(By.css('.details')).nativeElement;
+		const detailBox: HTMLElement = fixture.debugElement.query(By.css('.details')).nativeElement;
 		expect(detailBox.textContent).toMatch('dummy error string');
 	});
 });

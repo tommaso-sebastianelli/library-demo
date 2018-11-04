@@ -62,9 +62,9 @@ export class ApiService {
 
 	public volumeAdd(volumeId: string, bookShelfId: number) {
 		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${bookShelfId}/addVolume?volumeId=${volumeId}&key=${this.api_key}`;
-		let headers = this.getHeaders();
-		headers.set("Content-Type", "application/json");
-		//headers.set("Content-Length", "CONTENT_LENGTH");
+		const headers = this.getHeaders();
+		headers.set('Content-Type', 'application/json');
+		// headers.set("Content-Length", "CONTENT_LENGTH");
 		return this.http.post(url, {}, {
 			headers: headers
 		})
@@ -76,16 +76,16 @@ export class ApiService {
 
 	public volumeRemove(volumeId: string, bookshelfId: number) {
 		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${bookshelfId}/removeVolume?volumeId=${volumeId}&key=${this.api_key}`;
-		let headers = this.getHeaders();
-		headers.set("Content-Type", "application/json");
-		//headers.set("Content-Length", "CONTENT_LENGTH");
+		const headers = this.getHeaders();
+		headers.set('Content-Type', 'application/json');
+		// headers.set("Content-Length", "CONTENT_LENGTH");
 		return this.http.post(url, {}, {
 			headers: headers
 		})
 			.map(response => (response.ok) ? response.statusText : Observable.throw(response.json().error))
 			.catch((err) => {
 				return Observable.throw(err);
-			})
+			});
 
 	}
 

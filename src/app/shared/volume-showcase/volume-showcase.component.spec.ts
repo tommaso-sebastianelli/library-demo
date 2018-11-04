@@ -1,13 +1,16 @@
 import { ComponentFixture, TestBed, fakeAsync, async } from '@angular/core/testing';
 
-import { async as _async } from "rxjs/scheduler/async";
+import { async as _async } from 'rxjs/scheduler/async';
 
-import { MatPaginatorModule, MatCardModule, MatMenuModule, MatSidenavModule, MatDialogModule, MatPaginator } from '@angular/material';
+import {
+	MatPaginatorModule, MatCardModule, MatMenuModule, MatSidenavModule, MatDialogModule,
+	MatPaginator, MatSnackBar
+} from '@angular/material';
 import { VolumeShowcaseComponent } from './volume-showcase.component';
 import { VolumeComponent } from '../volume/volume.component';
 import { AppComponent } from '../../app.component';
 import { GoogleSignUpButtonComponent } from '../google-sign-up-button/google-sign-up-button.component';
-import { RouterTestingModule } from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 import { ObservableMedia } from '@angular/flex-layout';
 import { ObservableMediaStub } from '../../app.observableMedia.stub';
 import { TokenService } from '../auth/token.service';
@@ -63,7 +66,8 @@ describe('VolumeShowcaseComponent', () => {
 						provide: BookshelvesService,
 						useValue: BookshelvesServiceStub
 					},
-					ChangeDetectorRef
+					ChangeDetectorRef,
+					MatSnackBar
 				]
 			}
 		)
@@ -91,27 +95,27 @@ describe('VolumeShowcaseComponent', () => {
 			kind: 'test'
 		};
 		fixture.detectChanges();
-		let volumes = fixture.debugElement.queryAll(By.css('app-volume'));
+		const volumes = fixture.debugElement.queryAll(By.css('app-volume'));
 		expect(volumes.length).toEqual(0);
 	});
 
 	it('should render a volume', () => {
 		fixture.detectChanges();
-		let volumes = fixture.debugElement.queryAll(By.css('app-volume'));
+		const volumes = fixture.debugElement.queryAll(By.css('app-volume'));
 		expect(volumes.length).toEqual(1);
 	});
 
 	it('should not render the paginator', () => {
 		component.pageSize = component.data.totalItems;
 		fixture.detectChanges();
-		let paginator = fixture.debugElement.query(By.css('mat-paginator'));
+		const paginator = fixture.debugElement.query(By.css('mat-paginator'));
 		expect(paginator).toBeFalsy();
 	});
 
 	it('should render the paginator', () => {
 		component.pageSize = component.data.totalItems - 1;
 		fixture.detectChanges();
-		let paginator = fixture.debugElement.query(By.css('mat-paginator'));
+		const paginator = fixture.debugElement.query(By.css('mat-paginator'));
 		expect(paginator).toBeTruthy();
 	});
 });

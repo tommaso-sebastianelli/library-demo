@@ -6,7 +6,7 @@ import { VolumeShowcaseComponent } from '../shared/volume-showcase/volume-showca
 import { BookshelvesService } from '../shared/bookshelves/bookshelves.service';
 import { BookshelvesServiceStub } from '../shared/bookshelves/bookshelves.stub';
 import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
-import { MatPaginatorModule, MatCardModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { MatPaginatorModule, MatCardModule, MatMenuModule, MatDialogModule, MatSnackBar } from '@angular/material';
 import { VolumeComponent } from '../shared/volume/volume.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApiService } from '../shared/api/api.service';
@@ -71,7 +71,8 @@ describe('BookshelfComponent', () => {
 					provide: AuthService,
 					useValue: AuthServiceConfig
 				},
-				ChangeDetectorRef
+				ChangeDetectorRef,
+				MatSnackBar
 			]
 		})
 			.compileComponents();
@@ -89,14 +90,14 @@ describe('BookshelfComponent', () => {
 	});
 
 	it('should render volume-showcase component', () => {
-		let volumeShowcaseComponent = fixture.debugElement.query(By.css('app-volume-showcase'));
+		const volumeShowcaseComponent = fixture.debugElement.query(By.css('app-volume-showcase'));
 		expect(volumeShowcaseComponent).toBeTruthy();
 	});
 
 	it('should render placeholder component', () => {
-		component.result = { kind: "test", totalItems: 0, items: [] };
+		component.result = { kind: 'test', totalItems: 0, items: [] };
 		fixture.detectChanges();
-		let placeholderComponent = fixture.debugElement.query(By.css('app-placeholder'));
+		const placeholderComponent = fixture.debugElement.query(By.css('app-placeholder'));
 		expect(placeholderComponent).toBeTruthy();
 	});
 });

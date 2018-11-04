@@ -30,9 +30,9 @@ describe('PlaceholderComponent', () => {
 	});
 
 	it('should render the input data on dom', () => {
-		let titleElement: HTMLElement = fixture.debugElement.query(By.css('.title')).nativeElement;
-		let subtitleElement: HTMLElement = fixture.debugElement.query(By.css('.subtitle')).nativeElement;
-		let iconElement: HTMLElement = fixture.debugElement.query(By.css('.icon')).nativeElement;
+		const titleElement: HTMLElement = fixture.debugElement.query(By.css('.title')).nativeElement;
+		const subtitleElement: HTMLElement = fixture.debugElement.query(By.css('.subtitle')).nativeElement;
+		const iconElement: HTMLElement = fixture.debugElement.query(By.css('.icon')).nativeElement;
 		expect(titleElement.textContent).toMatch('dummy-title');
 		expect(subtitleElement.textContent).toMatch('dummy-subtitle');
 		expect(iconElement.textContent).toMatch('dummy-icon');

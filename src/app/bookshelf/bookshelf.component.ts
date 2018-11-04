@@ -80,21 +80,21 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 
 		this.actions = [
 			{
-				name: "Remove",
-				translateId: "bookshelf-remove",
-				icon: "delete_outline",
+				name: 'Remove',
+				translateId: 'bookshelf-remove',
+				icon: 'delete_outline',
 				callback: (data: IVolume) => {
 					this.api.volumeRemove(data.id, this.id).subscribe(
 						success => {
 							this.showSnackBarSuccess(data);
 							this.renderer.setAttribute(document.getElementById(data.id), 'hidden', null);
 						},
-						error => {
+						fail => {
 							this.showSnackBarFail();
 						});
 				}
 			}
-		]
+		];
 	}
 
 	ngOnInit() {
@@ -128,7 +128,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 		this.snackBar.openFromComponent(SnackbarComponent, {
 			duration: 5000,
 			data: {
-				messageId: "snack-volume-remove",
+				messageId: 'snack-volume-remove',
 				undo: () => {
 					this.api.volumeAdd(data.id, this.id).subscribe(
 						() => {
@@ -145,7 +145,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 		this.snackBar.openFromComponent(SnackbarComponent, {
 			duration: 5000,
 			data: {
-				messageId: "snack-error"
+				messageId: 'snack-error'
 			}
 		});
 	}

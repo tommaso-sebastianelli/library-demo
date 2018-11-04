@@ -41,9 +41,9 @@ describe('VolumeComponent', () => {
 	});
 
 	it('should render DOM data', () => {
-		let title = fixture.debugElement.query(By.css('mat-card-title'));
-		let authors = fixture.debugElement.queryAll(By.css('.author span'));
-		let editor = fixture.debugElement.query(By.css('.editor span'));
+		const title = fixture.debugElement.query(By.css('mat-card-title'));
+		const authors = fixture.debugElement.queryAll(By.css('.author span'));
+		const editor = fixture.debugElement.query(By.css('.editor span'));
 		expect(title.nativeElement.textContent).toMatch('test');
 		expect(authors.length).toEqual(2);
 		expect(authors[0].nativeElement.textContent).toMatch('dummy-author-1');

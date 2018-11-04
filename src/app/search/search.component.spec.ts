@@ -4,7 +4,10 @@ import { SearchComponent } from './search.component';
 import { PlaceholderComponent } from '../shared/placeholder/placeholder.component';
 import { VolumeShowcaseComponent } from '../shared/volume-showcase/volume-showcase.component';
 import { VolumeComponent } from '../shared/volume/volume.component';
-import { MatDialogModule, MatInputModule, MatIconModule, MatPaginatorModule, MatMenuModule, PageEvent } from '@angular/material';
+import {
+	MatDialogModule, MatInputModule, MatIconModule, MatPaginatorModule, MatMenuModule,
+	MatSnackBar
+} from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { ApiService } from '../shared/api/api.service';
 import { TokenService } from '../shared/auth/token.service';
@@ -13,7 +16,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenServiceStub } from '../shared/auth/token.stub';
 import { LoadingService } from '../shared/loading/loading.service';
 import { ErrorService } from '../shared/error/error.service';
-import { RouterTestingModule } from '@angular/router/testing'
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { VolumeListStub } from '../shared/volume-showcase/volume-list.stub';
 import { AppComponent } from '../app.component';
@@ -70,7 +73,8 @@ describe('SearchComponent', () => {
 					provide: BookshelvesService,
 					useValue: BookshelvesServiceStub
 				},
-				ChangeDetectorRef
+				ChangeDetectorRef,
+				MatSnackBar
 			],
 		})
 			.compileComponents();
@@ -89,14 +93,14 @@ describe('SearchComponent', () => {
 	it('should render volume-showcase component', () => {
 		component.result = VolumeListStub;
 		fixture.detectChanges();
-		let volumeShowcaseComponent = fixture.debugElement.query(By.css('app-volume-showcase'));
+		const volumeShowcaseComponent = fixture.debugElement.query(By.css('app-volume-showcase'));
 		expect(volumeShowcaseComponent).toBeTruthy();
 	});
 
 	it('should render placeholder component', () => {
-		component.result = { kind: "test", totalItems: 0, items: [] };
+		component.result = { kind: 'test', totalItems: 0, items: [] };
 		fixture.detectChanges();
-		let placeholderComponent = fixture.debugElement.query(By.css('app-placeholder'));
+		const placeholderComponent = fixture.debugElement.query(By.css('app-placeholder'));
 		expect(placeholderComponent).toBeTruthy();
 	});
 });

@@ -13,7 +13,7 @@ describe('SearchDialogComponent', () => {
 	let titleInput: HTMLInputElement;
 	let authorInput: HTMLInputElement;
 	let publisherInput: HTMLInputElement;
-	let searchButton: HTMLButtonElement
+	let searchButton: HTMLButtonElement;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
@@ -60,11 +60,11 @@ describe('SearchDialogComponent', () => {
 	});
 
 	it('should have enabled search button', () => {
-		titleInput.value = "aaa";
+		titleInput.value = 'aaa';
 		titleInput.dispatchEvent(new Event('input'));
-		authorInput.value = "aaa";
+		authorInput.value = 'aaa';
 		authorInput.dispatchEvent(new Event('input'));
-		publisherInput.value = "aaa";
+		publisherInput.value = 'aaa';
 		publisherInput.dispatchEvent(new Event('input'));
 		fixture.detectChanges();
 		fixture.whenStable().then(() => {

@@ -48,7 +48,7 @@ describe('ApiService', () => {
 		expect(service).toBeTruthy();
 	});
 
-	it('should return a volume object', inject([ApiService, MockBackend], (service: ApiService, mockBackend) => {
+	it('should return a volume object', inject([ApiService, MockBackend], (api: ApiService, mockBackend) => {
 		const response = VolumeStub;
 
 		mockBackend.connections.subscribe((connection) => {
@@ -59,13 +59,13 @@ describe('ApiService', () => {
 
 
 		const bookId = 'yH35dGtd';
-		service.volumeGet(bookId).subscribe((data: IVolume) => {
+		api.volumeGet(bookId).subscribe((data: IVolume) => {
 			expect(data.kind).toMatch('volume');
 			expect(data.volumeInfo.title).toMatch('test');
 		});
 	}));
 
-	it('should return a volume list object', inject([ApiService, MockBackend], (service: ApiService, mockBackend) => {
+	it('should return a volume list object', inject([ApiService, MockBackend], (api: ApiService, mockBackend) => {
 		const response = VolumeListStub;
 
 		mockBackend.connections.subscribe((connection) => {
@@ -74,14 +74,14 @@ describe('ApiService', () => {
 			})));
 		});
 
-		service.volumeList("test").subscribe((data: IVolumeList) => {
+		api.volumeList('test').subscribe((data: IVolumeList) => {
 			expect(data.kind).toMatch('volume-list');
 			expect(data.items.length).toEqual(1);
 			expect(data.items[0].volumeInfo.title).toMatch('test');
 		});
 	}));
 
-	it('should return a bookshelf object', inject([ApiService, MockBackend], (service: ApiService, mockBackend) => {
+	it('should return a bookshelf object', inject([ApiService, MockBackend], (api: ApiService, mockBackend) => {
 		const response = <IBookshelf>{
 			id: 12345,
 			title: 'test',
@@ -93,15 +93,15 @@ describe('ApiService', () => {
 				body: JSON.stringify(response)
 			})));
 		});
-		let id = 'yH556TgdhY';
-		service.bookshelfGet(id).subscribe((data: IBookshelf) => {
+		const id = 'yH556TgdhY';
+		api.bookshelfGet(id).subscribe((data: IBookshelf) => {
 			expect(data.kind).toMatch('bookshelf');
 			expect(data.id).toEqual(12345);
 			expect(data.title).toMatch('test');
 		});
 	}));
 
-	it('should return a bookshelf list object', inject([ApiService, MockBackend], (service: ApiService, mockBackend) => {
+	it('should return a bookshelf list object', inject([ApiService, MockBackend], (api: ApiService, mockBackend) => {
 		const response = <IBookshelfList>{
 			kind: 'bookshelf-list',
 			items: [{
@@ -116,14 +116,14 @@ describe('ApiService', () => {
 				body: JSON.stringify(response)
 			})));
 		});
-		service.bookshelfList().subscribe((data: IBookshelfList) => {
+		api.bookshelfList().subscribe((data: IBookshelfList) => {
 			expect(data.kind).toMatch('bookshelf-list');
 			expect(data.items.length).toEqual(1);
 			expect(data.items[0].title).toMatch('test');
 		});
 	}));
 
-	it('should return a bookshelf volume list object', inject([ApiService, MockBackend], (service: ApiService, mockBackend) => {
+	it('should return a bookshelf volume list object', inject([ApiService, MockBackend], (api: ApiService, mockBackend) => {
 		const response = VolumeListStub;
 
 		mockBackend.connections.subscribe((connection) => {
@@ -132,8 +132,8 @@ describe('ApiService', () => {
 			})));
 		});
 
-		let id = 12345;
-		service.bookshelfVolumeList(id).subscribe((data: IVolumeList) => {
+		const id = 12345;
+		api.bookshelfVolumeList(id).subscribe((data: IVolumeList) => {
 			expect(data.kind).toMatch('volume-list');
 			expect(data.items.length).toEqual(1);
 			expect(data.items[0].volumeInfo.title).toMatch('test');

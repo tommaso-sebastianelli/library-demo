@@ -20,7 +20,7 @@ describe('LoadingService', () => {
 									afterOpen: () => of({}),
 									afterClose: () => of({}),
 									close: () => { }
-								}
+								};
 							}
 						}
 					}

@@ -34,8 +34,8 @@ describe('TokenService', () => {
 	}));
 
 	it('should emit a boolean after saving', inject([TokenService], (service: TokenService) => {
-		expect(service.get()).toBeUndefined;
-		let user_data = {
+		expect(service.get()).toBeUndefined();
+		const user_data = {
 			name: 'test',
 			token: 'xxxxx'
 		};
@@ -46,7 +46,7 @@ describe('TokenService', () => {
 	}));
 
 	it('should emit a boolean after deleting', inject([TokenService], (service: TokenService) => {
-		expect(service.get()).toBeUndefined;
+		expect(service.get()).toBeUndefined();
 		service.delete();
 		service.authClaim.subscribe(res => {
 			expect(res).toBeTruthy();

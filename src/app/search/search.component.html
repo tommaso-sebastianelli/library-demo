@@ -8,4 +8,5 @@ your purposes and discover new ones that interest you">
     <mat-icon class="md-24" aria-label="">search</mat-icon>
   </button>
 </div>
-<app-volume-showcase *ngIf="result && result.totalItems" (onPagerChange)="onPagerChange($event)" [data]="result"></app-volume-showcase>
+<app-volume-showcase *ngIf="result && result.totalItems" (onPagerChange)="onPagerChange($event)" [data]="result"
+  [volumeActions]="actions"></app-volume-showcase>

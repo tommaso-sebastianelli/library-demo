@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, async } from '@angular/core/testing';
 
 import { async as _async } from "rxjs/scheduler/async";
 
@@ -26,7 +26,7 @@ describe('VolumeShowcaseComponent', () => {
 	let component: VolumeShowcaseComponent;
 	let fixture: ComponentFixture<VolumeShowcaseComponent>;
 
-	beforeEach(fakeAsync(() => {
+	beforeEach(async(() => {
 		TestBed.configureTestingModule(
 			{
 				imports: [

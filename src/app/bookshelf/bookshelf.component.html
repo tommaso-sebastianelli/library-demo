@@ -1,4 +1,4 @@
-<app-volume-showcase *ngIf="result" (onPagerChange)="onPagerChange($event)" [data]="result"></app-volume-showcase>
+<app-volume-showcase *ngIf="result" (onPagerChange)="onPagerChange($event)" [data]="result" [volumeActions]="actions"></app-volume-showcase>
 <app-placeholder *ngIf="result && result.totalItems == 0" [icon]="bookshelves.getIcon(id)" i18n-title="placeholder title@@empty-placeholder-title"
   title="Nothing here" i18n-subtitle="placeholder subtitle@@empty-placeholder-subtitle" subtitle="Add a volume to this bookshelf
 and It will be visible here">

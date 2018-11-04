@@ -4,6 +4,7 @@ import { Animations } from '../../app.animations';
 import { DEFAULT_QUERY_LIMIT } from '../../app.config';
 import { AppComponent } from '../../app.component';
 import { IVolumeList } from '../api/ivolume-list';
+import { VolumeAction } from '../volume/volume-action';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class VolumeShowcaseComponent implements OnInit, AfterContentInit {
 	scrolling: boolean;
 
 	@Input() data: IVolumeList;
+	@Input() volumeActions: VolumeAction[];
 
 	@Output()
 	onPagerChange: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();

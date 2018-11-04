@@ -16,7 +16,7 @@ import { IBookshelf } from './ibookshelf';
 
 @Injectable()
 export class ApiService {
-	public readonly api_key = 'AIzaSyD3avINA09gFSCeggY4WfIgFh631WGkqVg';
+	public readonly api_key = 'AIzaSyCqQI6tSCDIYfINviVM5_8rbr5M2_Lg574';
 	public readonly api_url = 'https://www.googleapis.com/books/v1';
 	public readonly paths = {
 		volumes: '/volumes',
@@ -56,6 +56,36 @@ export class ApiService {
 			.catch((err) => {
 				return Observable.throw(err);
 			});
+	}
+
+
+	public volumeAdd(volumeId: string, bookShelfId: number) {
+		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${bookShelfId}/addVolume?volumeId=${volumeId}&key=${this.api_key}`;
+		let headers = this.getHeaders();
+		headers.set("Content-Type", "application/json");
+		//headers.set("Content-Length", "CONTENT_LENGTH");
+		return this.http.post(url, {}, {
+			headers: headers
+		})
+			.map(response => (response.ok) ? response.statusText : Observable.throw(response.json().error))
+			.catch((err) => {
+				return Observable.throw(err);
+			});
+	}
+
+	public volumeRemove(volumeId: string, bookshelfId: number) {
+		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${bookshelfId}/removeVolume?volumeId=${volumeId}&key=${this.api_key}`;
+		let headers = this.getHeaders();
+		headers.set("Content-Type", "application/json");
+		//headers.set("Content-Length", "CONTENT_LENGTH");
+		return this.http.post(url, {}, {
+			headers: headers
+		})
+			.map(response => (response.ok) ? response.statusText : Observable.throw(response.json().error))
+			.catch((err) => {
+				return Observable.throw(err);
+			})
+
 	}
 
 	public bookshelfList(): Observable<IBookshelfList> {

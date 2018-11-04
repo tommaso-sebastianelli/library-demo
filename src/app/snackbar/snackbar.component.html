@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="(undo) ? 80 : 100" class="message mat-body-1">
+    <span *ngIf="messageId == 'snack-volume-save'" i18n="@@snack-volume-save">Volume Saved!</span>
+    <span *ngIf="messageId == 'snack-volume-remove'" i18n="@@snack-volume-remove">Volume Removed!</span>
+    <span *ngIf="messageId == 'snack-error'" i18n="@@snack-error">An error occurred!!</span>
+  </div>
+  <button fxFlex="20" *ngIf="undo" (click)="undo()" mat-button i18n="Undo action@@snack-undo" class="undo-action">
+    UNDO
+  </button>
+</div>

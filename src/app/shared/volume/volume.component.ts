@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Animations } from '../../app.animations';
 import { IVolume } from '../api/ivolume';
+import { TokenService } from '../auth/token.service';
+import { BookshelvesService } from '../bookshelves/bookshelves.service';
+import { VolumeAction } from './volume-action';
 
 @Component({
 	selector: 'app-volume',
@@ -11,8 +14,9 @@ import { IVolume } from '../api/ivolume';
 })
 export class VolumeComponent implements OnInit {
 	@Input() data: IVolume;
+	@Input() volumeActions: VolumeAction[];
 	animations: any;
-	constructor() {
+	constructor(protected tokenService: TokenService) {
 		this.animations = {};
 	}
 
@@ -20,4 +24,7 @@ export class VolumeComponent implements OnInit {
 
 	}
 
+	isFavourite(id: number): boolean {
+		return false;
+	}
 }

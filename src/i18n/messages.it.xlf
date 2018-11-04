@@ -141,6 +141,28 @@
         <source>Books for you</source>
         <target>Libri per te</target>
       </trans-unit>
+      <trans-unit id="bookshelf-remove" datatype="html">
+        <source>Remove</source>
+        <target>Rimuovi</target>
+      </trans-unit>
+
+      <!-->SNACKBAR MESSAGES <-->
+      <trans-unit id="snack-undo" datatype="html">
+        <source>UNDO</source>
+        <target>ANNULLA</target>
+      </trans-unit>
+      <trans-unit id="snack-volume-save" datatype="html">
+        <source>Volume Saved!</source>
+        <target>Volume Salvato!</target>
+      </trans-unit>
+      <trans-unit id="snack-volume-remove" datatype="html">
+        <source>Volume Removed!</source>
+        <target>Volume Rimosso!</target>
+      </trans-unit>
+      <trans-unit id="snack-error" datatype="html">
+        <source>Something went wrong!</source>
+        <target>Qualcosa è andato storto!</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

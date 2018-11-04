@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 
 // Angular Router
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 
 // Angular Material
@@ -58,7 +58,7 @@ import { LoadingDialogComponent } from './shared/loading/loading-dialog/loading-
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
 import { NoResultDialogComponent } from './search/no-result-dialog/no-result-dialog.component';
-
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 
 const googleLoginOptions: LoginOpt = {
@@ -95,6 +95,7 @@ export function provideConfig() {
 		LogoutDialogComponent,
 		ErrorDialogComponent,
 		NoResultDialogComponent,
+		SnackbarComponent
 	],
 	imports: [
 		RouterModule.forRoot(
@@ -137,7 +138,8 @@ export function provideConfig() {
 		LoadingDialogComponent,
 		LogoutDialogComponent,
 		ErrorDialogComponent,
-		NoResultDialogComponent
+		NoResultDialogComponent,
+		SnackbarComponent
 	],
 	bootstrap: [AppComponent]
 })

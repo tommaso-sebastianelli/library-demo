@@ -21,6 +21,7 @@ mat-card {
 
   mat-card-actions {
     text-align: right;
+    margin-bottom: 0 !important;
 
     mat-icon {
       margin-top: $xs;

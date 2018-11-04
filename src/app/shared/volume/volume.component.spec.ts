@@ -4,6 +4,9 @@ import { MatPaginatorModule, MatCardModule, MatMenuModule, MatSidenavModule, Mat
 import { VolumeComponent } from './volume.component';
 import { VolumeStub } from './volume.stub';
 import { By } from '@angular/platform-browser';
+import { TokenService } from '../auth/token.service';
+import { TokenServiceStub } from '../auth/token.stub';
+import { BookshelvesService } from '../bookshelves/bookshelves.service';
 
 describe('VolumeComponent', () => {
 	let component: VolumeComponent;
@@ -16,7 +19,9 @@ describe('VolumeComponent', () => {
 					MatCardModule,
 					MatMenuModule
 				],
-				declarations: [VolumeComponent]
+				declarations: [VolumeComponent],
+				providers: [
+					{ provide: TokenService, useValue: TokenServiceStub }]
 			}
 		)
 			.compileComponents().then(() => {

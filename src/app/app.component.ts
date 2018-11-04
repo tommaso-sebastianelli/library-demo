@@ -6,11 +6,10 @@ import { TokenService } from './shared/auth/token.service';
 import { ApiService } from './shared/api/api.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { OnInit, ViewChild, Component, ChangeDetectorRef } from '@angular/core';
-import { MatDialog, MatSidenav } from '@angular/material';
+import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
-import { Bookshelves } from './shared/bookshelves/bookshelves.enum';
 
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
@@ -38,7 +37,7 @@ export class AppComponent implements OnInit {
 
 	constructor(public media: ObservableMedia, private authService: AuthService, private api: ApiService,
 		protected tokenService: TokenService, public dialog: MatDialog, public bookshelves: BookshelvesService,
-		public changeDetectorRef: ChangeDetectorRef) {
+		public changeDetectorRef: ChangeDetectorRef, private snackBar: MatSnackBar) {
 		this.sideNavMode = 'over';
 	}
 

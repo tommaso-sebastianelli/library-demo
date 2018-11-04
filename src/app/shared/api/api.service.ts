@@ -13,10 +13,11 @@ import { IVolumeList } from './ivolume-list';
 import { IBookshelfList } from './ibookshelf-list';
 import { IVolume } from './ivolume';
 import { IBookshelf } from './ibookshelf';
+import { API_KEY } from './api.key';
 
 @Injectable()
 export class ApiService {
-	public readonly api_key = 'AIzaSyCqQI6tSCDIYfINviVM5_8rbr5M2_Lg574';
+	public readonly api_key = API_KEY;
 	public readonly api_url = 'https://www.googleapis.com/books/v1';
 	public readonly paths = {
 		volumes: '/volumes',

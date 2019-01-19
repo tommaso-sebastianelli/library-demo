@@ -4,7 +4,7 @@
     <span *ngIf="messageId == 'snack-volume-remove'" i18n="@@snack-volume-remove">Volume Removed!</span>
     <span *ngIf="messageId == 'snack-error'" i18n="@@snack-error">An error occurred!!</span>
   </div>
-  <button fxFlex="20" *ngIf="undo" (click)="undo()" mat-button i18n="Undo action@@snack-undo" class="undo-action">
+  <button aria-label="undo" fxFlex="20" *ngIf="undo" (click)="undo()" mat-button i18n="Undo action@@snack-undo" class="undo-action">
     UNDO
   </button>
 </div>

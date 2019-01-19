@@ -4,13 +4,18 @@
       <mat-icon>menu</mat-icon>
     </button>
     <label role="heading" aria-level="1">
-      <span i18n="Search|search label for page header@@search-page-title" mat-button routerLink="/search" routerLinkActive="active">Search</span>
-      <span i18n="Favorites|favorites label for page header@@favorites-page-title" mat-button routerLink="/bookshelf/0" routerLinkActive="active">Favorites</span>
-      <span i18n="To Read|to read label for page header@@to-read-page-title" mat-button routerLink="/bookshelf/2" routerLinkActive="active">To read
+      <span i18n="Search|search label for page header@@search-page-title" mat-button routerLink="/search"
+        routerLinkActive="active">Search</span>
+      <span i18n="Favorites|favorites label for page header@@favorites-page-title" mat-button routerLink="/bookshelf/0"
+        routerLinkActive="active">Favorites</span>
+      <span i18n="To Read|to read label for page header@@to-read-page-title" mat-button routerLink="/bookshelf/2"
+        routerLinkActive="active">To read
       </span>
-      <span i18n="Reading Now|reading now label for page header@@reading-page-title" mat-button routerLink="/bookshelf/3" routerLinkActive="active">Reading now
+      <span i18n="Reading Now|reading now label for page header@@reading-page-title" mat-button routerLink="/bookshelf/3"
+        routerLinkActive="active">Reading now
       </span>
-      <span i18n="Have Read|have read label for page header@@have-read-page-title" mat-button routerLink="/bookshelf/4" routerLinkActive="active">Have read
+      <span i18n="Have Read|have read label for page header@@have-read-page-title" mat-button routerLink="/bookshelf/4"
+        routerLinkActive="active">Have read
       </span>
       <span i18n="Recently Viewed|recently viewed label for page header@@recent-page-title" mat-button routerLink="/bookshelf/6"
         routerLinkActive="active">Recently viewed</span>
@@ -49,9 +54,10 @@
         <!-- <button mat-raised-button color="primary" i18n="log in@@sign-in">Sign In</button> -->
         <!-- <button mat-raised-button i18n="log out@@sign-out">Sign Out</button> -->
         <div *ngIf="tokenService.authClaim | async else signout">
-          <button mat-button color="accent" i18n="signout button@@signout" (click)="openLogoutModal()">
+          <button aria-label="logout" mat-button color="accent" i18n="signout button@@signout" (click)="openLogoutModal()">
             <mat-icon>exit_to_app</mat-icon>
-            Sign out</button>
+            Sign out
+          </button>
         </div>
         <ng-template #signout>
           <app-google-sign-up-button></app-google-sign-up-button>
@@ -65,8 +71,8 @@
       </a>
       <!-- Authenticated user bookshelves-->
       <div class="user-items" *ngIf="tokenService.authClaim | async">
-        <a *ngFor="let bookshelf of bookshelves.list" routerLink="/bookshelf/{{bookshelf.id}}" routerLinkActive="active" class="item"
-          (click)="onMenuItemClick()" mat-button>
+        <a *ngFor="let bookshelf of bookshelves.list" routerLink="/bookshelf/{{bookshelf.id}}" routerLinkActive="active"
+          class="item" (click)="onMenuItemClick()" mat-button>
           <mat-icon class="icon" aria-labelledby="">{{bookshelves.getIcon(bookshelf.id)}}</mat-icon>
           <span [id]="'bookshelf-' + bookshelf.id">{{bookshelf.title}}</span>
         </a>

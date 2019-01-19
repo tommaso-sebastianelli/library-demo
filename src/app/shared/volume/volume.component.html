@@ -21,8 +21,9 @@
             <mat-icon class="md-24" aria-label="Example icon-button with a heart icon">favorite_border</mat-icon>
         </button> -->
         <mat-menu #bookMenu="matMenu" xPosition="before">
-            <button *ngFor="let a of volumeActions" mat-menu-item i18n="@@{{a.translateId}}" (click)="a.callback(data)">
-                <mat-icon class="icon" aria-labelledby="">{{a.icon}}</mat-icon>{{a.name}}
+            <button aria-label="action" *ngFor="let a of volumeActions" mat-menu-item i18n="@@{{a.translateId}}"
+                (click)="a.callback(data)">
+                <mat-icon class="icon">{{a.icon}}</mat-icon>{{a.name}}
             </button>
             <!-- <button mat-menu-item i18n="To Read@@to-read-page-title">
                 <mat-icon class="icon" aria-labelledby="">list</mat-icon> To Read
@@ -34,7 +35,7 @@
                 <mat-icon class="icon" aria-labelledby="">list</mat-icon> Have Read
             </button> -->
         </mat-menu>
-        <button mat-icon-button [matMenuTriggerFor]="bookMenu">
+        <button aria-label="volume options" mat-icon-button [matMenuTriggerFor]="bookMenu">
             <mat-icon class="md-24" aria-label="icon button that open options menu">more_vert</mat-icon>
         </button>
     </mat-card-actions>

@@ -163,6 +163,16 @@
         <source>Something went wrong!</source>
         <target>Qualcosa è andato storto!</target>
       </trans-unit>
+
+      <!-->Volume Detail<-->
+      <trans-unit id="volume-rating" datatype="html">
+        <source>Users Rating</source>
+        <target>Valutazione degli utenti</target>
+      </trans-unit>
+      <trans-unit id="buy" datatype="html">
+        <source>Buy</source>
+        <target>Acquista</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

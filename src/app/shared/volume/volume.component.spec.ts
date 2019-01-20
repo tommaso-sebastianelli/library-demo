@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MatPaginatorModule, MatCardModule, MatMenuModule, MatSidenavModule, MatDialogModule, MatPaginator } from '@angular/material';
+import { HttpModule } from '@angular/http'
+import { MatDialogModule, MatCardModule, MatMenuModule, MatSidenavModule, MatPaginator } from '@angular/material';
 import { VolumeComponent } from './volume.component';
 import { VolumeStub } from './volume.stub';
 import { By } from '@angular/platform-browser';
 import { TokenService } from '../auth/token.service';
 import { TokenServiceStub } from '../auth/token.stub';
-import { BookshelvesService } from '../bookshelves/bookshelves.service';
+import { ApiService } from '../api/api.service'
 
 describe('VolumeComponent', () => {
 	let component: VolumeComponent;
@@ -16,12 +16,17 @@ describe('VolumeComponent', () => {
 		TestBed.configureTestingModule(
 			{
 				imports: [
+					HttpModule,
 					MatCardModule,
-					MatMenuModule
+					MatMenuModule,
+					MatDialogModule
 				],
 				declarations: [VolumeComponent],
 				providers: [
-					{ provide: TokenService, useValue: TokenServiceStub }]
+					{ provide: TokenService, useValue: TokenServiceStub },
+					ApiService,
+
+				]
 			}
 		)
 			.compileComponents().then(() => {
@@ -48,5 +53,9 @@ describe('VolumeComponent', () => {
 		expect(authors.length).toEqual(2);
 		expect(authors[0].nativeElement.textContent).toMatch('dummy-author-1');
 		expect(editor.nativeElement.textContent).toMatch('dummy-publisher');
+	});
+
+	it('should open detail modal', () => {
+		// TODO
 	});
 });

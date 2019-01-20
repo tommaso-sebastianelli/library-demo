@@ -1,0 +1,41 @@
+<mat-dialog-content class="m-b-sm">
+  <div *ngIf="data.volumeInfo.imageLinks && data.volumeInfo.imageLinks.thumbnail" fxLayout="row" fxLayout.xs="column"
+    class="volume-detail-header">
+    <div class="image-container" fxFlex="30" fxLayout="row" fxLayoutAlign="center">
+      <img [src]="data.volumeInfo.imageLinks.thumbnail">
+    </div>
+    <div class="info-container" fxFlex="70">
+      <div class="title mat-headline">{{data.volumeInfo.title}}</div>
+      <div *ngIf="data.volumeInfo.authors && data.volumeInfo.authors.length > 0" class="authors mat-subheading-2">
+        <span class="m-r-xs" *ngFor="let author of data.volumeInfo.authors">{{author}}</span>
+      </div>
+      <div *ngIf="data.volumeInfo.publisher" class="publisher mat-subheading-2">{{data.volumeInfo.publisher}}</div>
+      <mat-chip-list *ngIf="data.volumeInfo.averageRating">
+        <mat-chip i18n-title="title for volume rating@@volume-rating" title="rating" class="rating mat-caption">
+          <mat-icon aria-labelledby="rating" aria-hidden="false" class="icon">star_rate</mat-icon>
+          {{data.volumeInfo.averageRating}}/5
+        </mat-chip>
+        <span hidden id="rating" i18n="label for rating@@volume-rating">rating</span>
+      </mat-chip-list>
+    </div>
+  </div>
+  <div fxLayout="row" class="info-detail-container">
+    <div class="mat-caption" fxFlex="100" [innerHTML]="data.volumeInfo.description">
+    </div>
+  </div>
+  <!-- <div fxLayout="row" class="info-detail-container">
+    <mat-chip>Papadum</mat-chip>
+    <mat-chip>Naan</mat-chip>
+  </div> -->
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button aria-label="buy" i18n="@buy" mat-button class="purchase">
+    <a [href]="data.saleInfo.buyLink" target="_blank">
+      <mat-icon class="icon">shop</mat-icon>
+      {{'buy'| uppercase}}
+    </a>
+  </button>
+  <button aria-label="close" mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button"
+    title="">{{'close'| uppercase}}</button>
+</mat-dialog-actions>

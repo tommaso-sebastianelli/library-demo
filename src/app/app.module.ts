@@ -59,6 +59,7 @@ import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.comp
 import { ErrorDialogComponent } from './shared/error/error-dialog/error-dialog.component';
 import { NoResultDialogComponent } from './search/no-result-dialog/no-result-dialog.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { VolumeDetailComponent } from './shared/volume-detail/volume-detail.component';
 
 
 const googleLoginOptions: LoginOpt = {
@@ -95,7 +96,8 @@ export function provideConfig() {
 		LogoutDialogComponent,
 		ErrorDialogComponent,
 		NoResultDialogComponent,
-		SnackbarComponent
+		SnackbarComponent,
+		VolumeDetailComponent
 	],
 	imports: [
 		RouterModule.forRoot(
@@ -139,7 +141,8 @@ export function provideConfig() {
 		LogoutDialogComponent,
 		ErrorDialogComponent,
 		NoResultDialogComponent,
-		SnackbarComponent
+		SnackbarComponent,
+		VolumeDetailComponent
 	],
 	bootstrap: [AppComponent]
 })

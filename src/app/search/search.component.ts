@@ -124,6 +124,14 @@ export class SearchComponent implements OnInit {
 					this.init();
 				}
 			});
+
+		// test
+		// setTimeout(() => {
+		// 	this.searchDialog.open(VolumeDetailComponent, {
+		// 		data: { data: VolumeStub },
+		// 		width: '450px'
+		// 	});
+		// }, 500);
 	}
 
 	openDialog(): void {

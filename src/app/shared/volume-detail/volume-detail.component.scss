@@ -1,0 +1,48 @@
+@import '../../../assets/sass/spacing.scss';
+
+mat-dialog-content{
+.image-container, .info-container, .info-detail-container{
+    padding: $xs;
+};
+.volume-detail-header{
+    .image-container{
+        position: relative;
+        img{            
+            height: 170px;
+            width: auto;
+        }
+    }
+    .info-container{
+        margin-left: $xs;
+        .authors,.publisher{
+            opacity: 0.54;
+        }
+    .rating{
+        height: 15px;
+        
+        .icon{
+            font-size: 18px;
+            line-height: 0.8;
+        }
+    }
+}
+}
+
+.info-detail-container{
+    margin-top: $xs;
+}
+}
+mat-dialog-actions{
+    button{
+        .icon{
+            font-size: 18px;
+            vertical-align: inherit;
+        }
+        &.purchase{
+            a{
+            color: initial;
+            text-decoration-line: none;
+            }
+        }
+    }
+}

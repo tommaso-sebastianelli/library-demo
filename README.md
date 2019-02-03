@@ -1,5 +1,7 @@
 # Project info
 
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_14.png" width="192">
+
 Angular books is a single page application for browsing books using Google books API.
 
 It has been developed trying to keep in mind the requirements for accesibility, multi-platform compatibility, material design guidelines and internationalization support. 
@@ -8,7 +10,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 
 ## Some screenshots
 
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_2.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_3.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_4.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_5.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_6.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_7.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_8.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_9.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_10.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_11.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_12.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_13.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_14.png" width="192">
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_2.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_4.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_5.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_9.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_10.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_11.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_12.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_13.png" width="192">
 
 
 ## Live Demo

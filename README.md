@@ -1,10 +1,13 @@
 # LibraryDemo
 
+Angular books is a single page application for browsing books using Google books API.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
-## Development server
+[live demo](https://tommaso-sebastianelli.github.io/angular-books/search)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Dev server
+
+Run `ng serve --open`
 
 ## Code scaffolding
 
@@ -18,10 +21,15 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## GitHub Deploy
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+The project uses [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages) to deploy the web app on github /doc page.
+Run `ng build --prod --aot --base-href https://[yourgithubpagename].github.io/angular-books/` 
+
+and then
+
+`ngh -no-silent` to publish the application
+
 
 ## Further help
 

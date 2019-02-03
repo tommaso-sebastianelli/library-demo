@@ -6,7 +6,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 
 ## Some screenshots
 
-![Alt text](https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png)
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="48">
 
 ## Live Demo
 

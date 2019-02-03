@@ -42,14 +42,20 @@ export class ApiService {
 			url = url.concat(`+inpublisher:{${publisher}}`);
 		}
 		url = url.concat(`&startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}` +
-			`&orderBy=relevance&projection=lite&key=${this.api_key}`);
+			`&orderBy=relevance&projection=lite`);
+		if (this.api_key) {
+			url = url.concat("&key=" + this.api_key);
+		}
 		return this.http.get(url, {
 			headers: this.getHeaders()
 		}).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json());
 	}
 
 	public volumeGet(id: string): Observable<IVolume> {
-		const url = `${this.api_url}${this.paths.volumes}/${id}?key=${this.api_key}`;
+		let url = `${this.api_url}${this.paths.volumes}/${id}`;
+		if (this.api_key) {
+			url = url.concat("&key=" + this.api_key);
+		}
 		return this.http.get(url, {
 			headers: this.getHeaders()
 		})
@@ -122,7 +128,7 @@ export class ApiService {
 
 	private getHeaders(): Headers {
 		const headers = new Headers();
-		headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
+		// headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
 		headers.set('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Access-Control-Allow-Origin, Access-Control-Request-Method');
 		if (this.token.get()) { headers.set('Authorization', 'Bearer ' + this.token.get().authToken); }
 		return headers;

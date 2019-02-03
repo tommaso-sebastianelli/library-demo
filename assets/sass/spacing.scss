@@ -1,0 +1,215 @@
+$xs : 8px;
+$sm : 16px;
+$md : 24px;
+$lg : 40px;
+$xl : 72px;
+
+.m-xs{
+    margin:$xs;
+}
+.m-sm{
+    margin:$sm;
+}
+.m-md{
+    margin:$md;
+}
+.m-lg{
+    margin:$lg;
+}
+.m-xl{
+    margin:$xl;
+}
+
+.m-h-xs{
+    margin-left: $xs;
+    margin-right: $xs;
+}
+.m-v-xs{
+    margin-top: $xs;
+    margin-bottom: $xs;
+}
+
+.m-h-sm{
+    margin-left: $sm;
+    margin-right: $sm;
+}
+.m-v-sm{
+    margin-top: $sm;
+    margin-bottom: $sm;
+}
+
+.m-h-md{
+    margin-left: $md;
+    margin-right: $md;
+}
+.m-v-md{
+    margin-top: $md;
+    margin-bottom: $md;    
+}
+
+.m-h-lg{
+    margin-left: $lg;
+    margin-right: $lg;   
+}
+.m-v-lg{
+    margin-top: $lg;
+    margin-bottom: $lg;         
+}
+
+.m-h-xl{
+    margin-left: $xl;
+    margin-right: $xl;        
+}
+.m-v-xl{
+    margin-top: $xl;
+    margin-bottom: $xl;             
+}
+
+.m-l-xs{
+    margin-left:$xs;
+}
+.m-l-sm{
+    margin-left:$sm;
+}
+.m-l-md{
+    margin-left:$md;
+}
+.m-l-lg{
+    margin-left:$lg;
+}
+.m-l-xl{
+    margin-left:$xl;
+}
+
+.m-t-xs{
+    margin-top:$xs;
+} 
+.m-t-sm{
+    margin-top:$sm;
+}
+.m-t-md{
+    margin-top:$md;
+}
+.m-t-lg{
+    margin-top:$lg;
+}
+
+.m-t-xl{
+    margin-top:$xl;
+}
+
+.m-r-xs{
+    margin-right:$xs;
+}
+.m-r-sm{
+    margin-right:$sm;
+}
+.m-r-md{
+    margin-right:$md;
+}
+.m-r-lg{
+    margin-right:$lg;
+}
+.m-r-xl{
+    margin-right:$xl;
+}
+
+.m-b-xs{
+    margin-bottom:$xs;
+}
+.m-b-sm{
+    margin-bottom:$sm;
+}
+.m-b-md{
+    margin-bottom:$md;
+}
+.m-b-lg{
+    margin-bottom:$lg;
+}
+.m-b-xl{
+    margin-bottom:$lg;
+}
+
+.p-xs{
+    padding:$xs;
+}
+.p-sm{
+    padding:$sm;
+}
+.p-md{
+    padding:$md;
+}
+.p-lg{
+    padding:$lg;
+}
+.p-xl{
+    padding:$xl;
+}
+
+.p-l-xs{
+    padding-left:$xs;
+}
+.p-l-sm{
+    padding-left:$sm;
+}
+.p-l-md{
+    padding-left:$md;
+}
+.p-l-lg{
+    padding-left:$lg;
+}
+.p-l-xl{
+    padding-left:$xl;
+}
+
+.p-t-xs{
+    padding-top:$xs;
+}
+.p-t-sm{
+    padding-top:$sm;
+}
+.p-t-md{
+    padding-top:$md;
+}
+.p-t-lg{
+    padding-top:$lg;
+}
+
+.p-t-xl{
+    padding-top:$xl;
+}
+
+.p-r-xs{
+    padding-right:$xs;
+}
+.p-r-sm{
+    padding-right:$sm;
+}
+.p-r-md{
+    padding-right:$md;
+}
+.p-r-lg{
+    padding-right:$lg;
+}
+.p-r-xl{
+    padding-right:$xl;
+}
+
+.p-b-xs{
+    padding-bottom:$xs;
+}
+.p-b-sm{
+    padding-bottom:$sm;
+}
+.p-b-md{
+    padding-bottom:$md;
+}
+.p-b-lg{
+    padding-bottom:$lg;
+}
+.p-b-xl{
+    padding-bottom:$lg;
+}
+
+
+

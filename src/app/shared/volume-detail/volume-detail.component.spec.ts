@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatIconModule, MatChipsModule } from '@angular/material';
+import { MatIconModule, MatChipsModule, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material';
 
 import { VolumeDetailComponent } from './volume-detail.component';
+import { VolumeStub } from '../volume/volume.stub';
 
 describe('VolumeDetailComponent', () => {
   let component: VolumeDetailComponent;
@@ -11,9 +12,15 @@ describe('VolumeDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MatIconModule,
-        MatChipsModule
+        MatChipsModule,
+        MatDialogModule
       ],
-      declarations: [VolumeDetailComponent]
+      declarations: [VolumeDetailComponent],
+      providers: [
+        //{ provide: MatDialogRef, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: VolumeStub }
+      ]
     })
       .compileComponents();
   }));

@@ -3,6 +3,10 @@ export interface IVolume {
 	id: string;
 	etag: string;
 	selfLink: string;
+	saleInfo: {
+		buyLink: string,
+		saleability: string
+	}
 	volumeInfo: {
 		title: string;
 		authors: Array<String>;

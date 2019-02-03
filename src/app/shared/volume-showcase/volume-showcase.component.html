@@ -5,6 +5,6 @@
 </div>
 <div class="container" fxLayout="row" fxLayoutAlign="center" fxLayoutWrap *ngIf="data.totalItems">
   <app-volume *ngFor="let volume of data.items; let i = index;" [id]="volume.id" [data]="volume" fxFlex="300px"
-    fxFlex.xs="100%" class="m-r-sm m-b-sm" [@appear]="{value: ':enter', params:{delay: 225+(50*(i+1))}}"
+    fxFlex.xs="100%" class="m-l-xs m-r-xs m-b-sm" [@appear]="{value: ':enter', params:{delay: 225+(50*(i+1))}}"
     [volumeActions]="volumeActions"></app-volume>
 </div>

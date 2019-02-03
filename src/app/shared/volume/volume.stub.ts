@@ -5,6 +5,10 @@ export const VolumeStub: IVolume = {
 	etag: '',
 	id: '0',
 	selfLink: '',
+	saleInfo: {
+		buyLink: "",
+		saleability: ""
+	},
 	volumeInfo: {
 		authors: ['dummy-author-1', 'dummy-author-2'],
 		averageRating: 0,

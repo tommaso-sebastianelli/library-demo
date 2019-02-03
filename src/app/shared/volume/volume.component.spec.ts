@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 import { MatDialogModule, MatCardModule, MatMenuModule, MatSidenavModule, MatPaginator } from '@angular/material';
 import { VolumeComponent } from './volume.component';
 import { VolumeStub } from './volume.stub';
 import { By } from '@angular/platform-browser';
 import { TokenService } from '../auth/token.service';
 import { TokenServiceStub } from '../auth/token.stub';
-import { ApiService } from '../api/api.service'
+import { ApiService } from '../api/api.service';
 
 describe('VolumeComponent', () => {
 	let component: VolumeComponent;

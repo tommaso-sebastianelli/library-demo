@@ -7,7 +7,6 @@ import { TokenService } from '../auth/token.service';
 import { MatDialog } from '@angular/material';
 import { VolumeAction } from './volume-action';
 import { VolumeDetailComponent } from '../volume-detail/volume-detail.component';
-import { VolumeStub } from './volume.stub';
 
 @Component({
 	selector: 'app-volume',

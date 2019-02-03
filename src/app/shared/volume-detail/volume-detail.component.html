@@ -1,8 +1,7 @@
 <mat-dialog-content class="m-b-sm">
-  <div *ngIf="data.volumeInfo.imageLinks && data.volumeInfo.imageLinks.thumbnail" fxLayout="row" fxLayout.xs="column"
-    class="volume-detail-header">
+  <div fxLayout="row" fxLayout.xs="column" class="volume-detail-header">
     <div class="image-container" fxFlex="30" fxLayout="row" fxLayoutAlign="center">
-      <img [src]="data.volumeInfo.imageLinks.thumbnail">
+      <img *ngIf="(data.volumeInfo && data.volumeInfo.imageLinks)" [src]="data.volumeInfo.imageLinks.thumbnail">
     </div>
     <div class="info-container" fxFlex="70">
       <div class="title mat-headline">{{data.volumeInfo.title}}</div>
@@ -30,7 +29,7 @@
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button aria-label="buy" i18n="@buy" mat-button class="purchase">
+  <button *ngIf="data.saleInfo.saleability != 'NOT_FOR_SALE'" aria-label="buy" i18n="@buy" mat-button class="purchase">
     <a [href]="data.saleInfo.buyLink" target="_blank">
       <mat-icon class="icon">shop</mat-icon>
       {{'buy'| uppercase}}

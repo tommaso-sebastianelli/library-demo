@@ -4,6 +4,7 @@ import { GoogleSignUpButtonComponent } from './google-sign-up-button.component';
 import { AuthService, AuthServiceConfig } from '../../../assets/libs/angularx-social-login-master';
 import { TokenService } from '../auth/token.service';
 import { TokenServiceStub } from '../auth/token.stub';
+import { MatSnackBarModule } from '@angular/material';
 
 describe('GoogleSignUpButtonComponent', () => {
 	let component: GoogleSignUpButtonComponent;
@@ -11,7 +12,9 @@ describe('GoogleSignUpButtonComponent', () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			imports: [],
+			imports: [
+				MatSnackBarModule
+			],
 			declarations: [GoogleSignUpButtonComponent],
 			providers: [
 				{

@@ -8,8 +8,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 
 ## Some screenshots
 
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192" style="margin-right: 4px;">
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_2.png" width="192">
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192" style="margin-right: 4px;"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_2.png" width="192">
 
 
 ## Live Demo

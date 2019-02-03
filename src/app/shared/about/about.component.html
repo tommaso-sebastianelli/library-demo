@@ -1,0 +1,16 @@
+<div mat-dialog-title i18n="title of about card@@about-card-title" class="title">About</div>
+<div mat-dialog-content>
+  <p class="mat-body" i18n="description of login card@@about-card-content">
+    This has been made with angular and angular material by Tommaso Sebastianelli
+  </p>
+  <button mat-button aria-label="github">
+    <a [href]="'https://github.com/tommaso-sebastianelli/angular-books'" target="_blank">
+      <mat-icon class="code">code</mat-icon>
+      GitHub
+    </a>
+  </button>
+</div>
+<div mat-dialog-actions>
+  <button aria-label="close" mat-button matDialogClose i18n-title="search-dialog-close-button@@search-dialog-close-button"
+    title="">{{'close'| uppercase}}</button>
+</div>

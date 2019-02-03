@@ -18,7 +18,7 @@ export class GoogleSignUpButtonComponent implements OnInit {
 	}
 
 	signInWithGoogle(): void {
-		this.snackBar.open("To prevent exposing Google Books api key, Google singnup is disabled", "GOT IT", {
+		this.snackBar.open("To prevent exposing Google Books api key, Google signup is disabled", "GOT IT", {
 			duration: 5000,
 		});
 		// try {

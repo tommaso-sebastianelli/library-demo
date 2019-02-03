@@ -1,0 +1,15 @@
+[mat-dialog-content]{
+    button{
+        a{
+            color: initial;
+            vertical-align: initial;
+            text-decoration: none;
+            mat-icon{
+                vertical-align: middle;
+            }
+        }
+    }
+}
+[mat-dialog-actions]{
+    justify-content: flex-end;
+}

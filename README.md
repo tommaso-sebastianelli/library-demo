@@ -1,12 +1,15 @@
 # Project info
 
 Angular books is a single page application for browsing books using Google books API.
+
 It has been developed trying to keep in mind the requirements for accesibility, multi-platform compatibility, material design guidelines and internationalization support. 
+
 The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.1.
 
 ## Some screenshots
 
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="128">
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192"><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192">
+
 
 ## Live Demo
 

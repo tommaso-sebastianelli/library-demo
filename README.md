@@ -1,6 +1,8 @@
 # Project info
 
+<p align="center">
 <img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_14.png" width="192">
+</p>
 
 Angular books is a single page application for browsing books using Google books API.
 

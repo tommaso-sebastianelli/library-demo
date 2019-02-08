@@ -12,7 +12,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 
 ## Other screenshots
 
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_02_.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_03_.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_04.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_05_.png" width="192"><a>     </a>
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_02.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_03.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_04.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_05.png" width="192"><a>     </a>
 
 
 ## Live Demo

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../assets/libs/angularx-social-login-master';
-import { GoogleLoginProvider, SocialUser } from '../../../assets/libs/angularx-social-login-master';
+//import { GoogleLoginProvider, SocialUser } from '../../../assets/libs/angularx-social-login-master';
 import { TokenService } from '../auth/token.service';
 import { MatSnackBar } from '@angular/material';
 
@@ -18,19 +18,19 @@ export class GoogleSignUpButtonComponent implements OnInit {
 	}
 
 	signInWithGoogle(): void {
-		// this.snackBar.open("To prevent exposing Google Books api key, Google signup is disabled", "GOT IT", {
-		// 	duration: 5000,
-		// });
-		try {
-			this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-				() => {
-					// nothing to do here
-				},
-				err => {
-					this.tokenService.delete();
-				});
-		} catch (e) {
-			this.tokenService.delete();
-		}
+		this.snackBar.open("To prevent exposing Google Books api key, Google signup is disabled", "GOT IT", {
+			duration: 5000,
+		});
+		// try {
+		// 	this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+		// 		() => {
+		// 			// nothing to do here
+		// 		},
+		// 		err => {
+		// 			this.tokenService.delete();
+		// 		});
+		// } catch (e) {
+		// 	this.tokenService.delete();
+		// }
 	}
 }

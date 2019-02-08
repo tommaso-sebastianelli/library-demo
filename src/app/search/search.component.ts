@@ -170,31 +170,34 @@ export class SearchComponent implements OnInit {
 
 	private getVolumes = (params: IQueryParams) => {
 		// FIXME: loading service creates a 'ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked.'
-		setTimeout(() => {
-			this.loading.wait();
-			this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
-				result => {
-					if (result.totalItems > 0) {
-						this.result = result;
-						this.animations.fab = (this.result.totalItems) ? 'active' : '';
-					} else {
-						this.showNoResultError();
-					}
-				},
-				e => {
-					this.loading.done().subscribe(() => {
-						this.error.throw(e).subscribe(() => {
-							this.init();
-						});
-					});
-				},
-				() => {
-					this.loading.done().subscribe(() => {
-						// show no result placeholder
-					});
-				}
-			);
-		}, 0);
+		this.loading.wait().subscribe(
+			() => {
+				setTimeout(() => {
+					this.api.volumeList(params.title, params.author, params.publisher, params.offset, params.take).subscribe(
+						result => {
+							if (result.totalItems > 0) {
+								this.result = result;
+								this.animations.fab = (this.result.totalItems) ? 'active' : '';
+							} else {
+								this.showNoResultError();
+							}
+						},
+						e => {
+							this.loading.done().subscribe(() => {
+								this.error.throw(e).subscribe(() => {
+									this.init();
+								});
+							});
+						},
+						() => {
+							this.loading.done().subscribe(() => {
+								// show no result placeholder
+							});
+						}
+					);
+				}, 0);
+			});
+
 
 	}
 

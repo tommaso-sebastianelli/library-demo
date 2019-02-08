@@ -10,6 +10,7 @@ import { MatDialog, MatSidenav, MatSnackBar } from '@angular/material';
 
 import { LogoutDialogComponent } from './shared/logout-dialog/logout-dialog.component';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
+import { AboutComponent } from './shared/about/about.component';
 
 // import { trigger, state, style, animate, transition} from '@angular/animations';
 
@@ -94,5 +95,11 @@ export class AppComponent implements OnInit {
 		if (this.sideNavMode === 'over') {
 			this.sidenav.close();
 		}
+	}
+
+	showAboutModal() {
+		this.dialog.open(AboutComponent, {
+			width: '450px'
+		});
 	}
 }

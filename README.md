@@ -1,7 +1,7 @@
 # Project info
 
 <p align="center">
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_14.png" width="192">
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_01.png" width="192">
 </p>
 
 Angular books is a single page application for browsing books using Google books API.
@@ -12,7 +12,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 
 ## Other screenshots
 
-<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_1.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_2.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_4.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screenshot_5.png" width="192"><a>     </a>
+<img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_02_.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_03_.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_04.png" width="192"><a>     </a><img src="https://github.com/tommaso-sebastianelli/angular-books/blob/master/screenshots/screen_05_.png" width="192"><a>     </a>
 
 
 ## Live Demo

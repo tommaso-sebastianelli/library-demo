@@ -7,6 +7,7 @@ import { TokenService } from '../auth/token.service';
 import { MatDialog } from '@angular/material';
 import { VolumeAction } from './volume-action';
 import { VolumeDetailComponent } from '../volume-detail/volume-detail.component';
+import { ErrorService } from '../error/error.service';
 
 @Component({
 	selector: 'app-volume',
@@ -18,7 +19,7 @@ export class VolumeComponent implements OnInit {
 	@Input() data: IVolume;
 	@Input() volumeActions: VolumeAction[];
 	animations: any;
-	constructor(public tokenService: TokenService, public detailDialog: MatDialog, public api: ApiService) {
+	constructor(public tokenService: TokenService, public detailDialog: MatDialog, public api: ApiService, public error: ErrorService) {
 		this.animations = {};
 	}
 
@@ -39,6 +40,7 @@ export class VolumeComponent implements OnInit {
 				});
 			},
 			error => {
+				this.error.throw(error);
 				console.error(error);
 			}
 		);

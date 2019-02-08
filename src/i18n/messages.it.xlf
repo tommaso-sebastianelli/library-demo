@@ -173,6 +173,16 @@
         <source>Buy</source>
         <target>Acquista</target>
       </trans-unit>
+
+      <!--About modal-->
+      <trans-unit id="about-card-title" datatype="html">
+        <source>About</source>
+        <target>Informazioni</target>
+      </trans-unit>
+      <trans-unit id="about-card-content" datatype="html">
+        <source>This has been made with angular and angular material by Tommaso Sebastianelli</source>
+        <target>Questa applicazione è stata sviluppata con Angular e Angular Material da Tommaso Sebastianelli</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

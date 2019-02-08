@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
+import { _throw } from 'rxjs/observable/throw';
 // import 'rxjs/add/operator/toPromise';
 
 // import { Book } from '../bookshelf/book/book';
@@ -48,21 +49,18 @@ export class ApiService {
 		}
 		return this.http.get(url, {
 			headers: this.getHeaders()
-		}).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json());
+		}).map(response => (response.json().error) ? _throw(response.json().error) : response.json());
 	}
 
 	public volumeGet(id: string): Observable<IVolume> {
 		let url = `${this.api_url}${this.paths.volumes}/${id}`;
 		if (this.api_key) {
-			url = url.concat("&key=" + this.api_key);
+			url = url.concat("?key=" + this.api_key);
 		}
 		return this.http.get(url, {
 			headers: this.getHeaders()
 		})
-			.map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+			.map(response => (response.json().error) ? _throw(response.json().error) : response.json())
 	}
 
 
@@ -74,10 +72,7 @@ export class ApiService {
 		return this.http.post(url, {}, {
 			headers: headers
 		})
-			.map(response => (response.ok) ? response.statusText : Observable.throw(response.json().error))
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+			.map(response => (response.ok) ? response.statusText : _throw(response.json().error))
 	}
 
 	public volumeRemove(volumeId: string, bookshelfId: number) {
@@ -88,10 +83,7 @@ export class ApiService {
 		return this.http.post(url, {}, {
 			headers: headers
 		})
-			.map(response => (response.ok) ? response.statusText : Observable.throw(response.json().error))
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+			.map(response => (response.ok) ? response.statusText : _throw(response.json().error))
 
 	}
 
@@ -99,20 +91,14 @@ export class ApiService {
 		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}?key=${this.api_key}`;
 		return this.http.get(url, {
 			headers: this.getHeaders()
-		}).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+		}).map(response => (response.json().error) ? _throw(response.json().error) : response.json())
 	}
 
 	public bookshelfGet(id: string): Observable<IBookshelf> {
 		const url = `${this.api_url}${this.paths.myLibrary.bookshelves}/${id}?key=${this.api_key}`;
 		return this.http.get(url, {
 			headers: this.getHeaders()
-		}).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+		}).map(response => (response.json().error) ? _throw(response.json().error) : response.json())
 	}
 
 	public bookshelfVolumeList(id: number, offset?: number, limit?: number): Observable<IVolumeList> {
@@ -120,10 +106,7 @@ export class ApiService {
 		url = url.concat(`?startIndex=${(offset) ? offset : 0}&maxResults=${(limit) ? limit : 10}&projection=lite&key=${this.api_key}`);
 		return this.http.get(url, {
 			headers: this.getHeaders()
-		}).map(response => (response.json().error) ? Observable.throw(response.json().error) : response.json())
-			.catch((err) => {
-				return Observable.throw(err);
-			});
+		}).map(response => (response.json().error) ? _throw(response.json().error) : response.json())
 	}
 
 	private getHeaders(): Headers {

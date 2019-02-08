@@ -1,2 +1,1 @@
-// This has been removed for security reason.
-export const API_KEY = '';
+export const API_KEY = 'AIzaSyBo_Z8K0HOSRAqvGzzE1KPBTDBJ86-n6ds';

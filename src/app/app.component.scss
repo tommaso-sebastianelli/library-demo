@@ -27,6 +27,11 @@ mat-toolbar{
     }
     .toolbar-right{
         margin-left:auto;
+        .about{
+            mat-icon{
+                font-size: 32px;
+            }
+        }
     }
 }
 mat-sidenav-container{    
@@ -101,8 +106,8 @@ mat-sidenav-container{
                 border-top-right-radius: 45px;
                 border-bottom-right-radius: 45px;
                 &.active{
-                    background: mat-color($mat-red, 200);
-                    color: white !important;    
+                    background: #eee;
+                    // color: white !important;    
                 }
                 .icon{
                     margin: 0 $xs;

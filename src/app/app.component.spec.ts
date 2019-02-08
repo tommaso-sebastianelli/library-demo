@@ -29,6 +29,7 @@ import { TokenServiceStub } from './shared/auth/token.stub';
 import { BookshelvesService } from './shared/bookshelves/bookshelves.service';
 import { Observable } from '../../node_modules/rxjs/Observable';
 import { ObservableMediaStub } from './app.observableMedia.stub';
+import { AboutComponent } from './shared/about/about.component';
 
 describe('AppComponent', () => {
 	let component: AppComponent;
@@ -56,7 +57,8 @@ describe('AppComponent', () => {
 				BookshelfComponent,
 				GoogleSignUpButtonComponent,
 				VolumeShowcaseComponent,
-				VolumeComponent
+				VolumeComponent,
+				AboutComponent
 			],
 			providers: [
 				{ provide: APP_BASE_HREF, useValue: '/' },

@@ -1,128 +1,144 @@
 @import '../../src/custom-theme.scss';
 @import '../assets/sass/spacing.scss';
 
-mat-toolbar{
-    position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    z-index: 4;
-    color:white !important;
-    &:first-child{
-        width:100%;
-    }
-    .toolbar-left{
-        button{
-            &.selected{
-                //background: lightgray;
-            }
-        }
-        label{
-            vertical-align: middle;
-        span{
-            display: none;
-            &.active{
-                display: initial;
-            }
-        }
-        }
-    }
-    .toolbar-right{
-        margin-left:auto;
-        .about{
-            mat-icon{
-                font-size: 32px;
-            }
-        }
-    }
-}
-mat-sidenav-container{    
-    background: url(../assets/img/geometry2.png);
-    position: absolute;
-    height: calc(100vh - 64px);
-    height: -moz-calc(100vh - 64px);
-    height: -webkit-calc(100vh - 64px);
+mat-toolbar {
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  z-index: 4;
+  color: white !important;
+
+  &:first-child {
     width: 100%;
-    margin: 0;
-    
-    mat-sidenav{
-        width: 300px;
-        @extend .p-xs;
-        overflow: hidden;
-        border-right: solid 1px lightgray;
-        header{
-            position: relative;
-            width: 100%;
-            border-bottom: solid 1px lightgray;
-            text-align: center;
-            padding: $sm 0;
-            // button{
-            //     float: right;
-            // }
-            .user-info{
-                width: 100%;
-                margin-bottom: $sm;
-                picture{
-                    display: block;
-                    margin-bottom: $sm;
-                    .pic-frame{
-                        position: sticky;
-                        height:95px;
-                        width:95px;
-                        margin: $sm auto;
-                        border-radius: 100%;
-                        overflow: hidden;
-                        background: map-get($mat-grey, 200);
-                        img{
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            height: 100%;
-                            width: 100%;
-                        }
-                        .placeholder{
-                            position: absolute;
-                            top:0;
-                            left:0;
-                            font-size:100px;
-                            opacity: 0.8;
-                        }
-                    }
-                }
-                .firstname{
-                    margin-bottom: $xs;
-                }
-            }
-            .action{
-                text-align: center;
-            }
+  }
+
+  .toolbar-left {
+    label {
+      vertical-align: middle;
+
+      span {
+        display: none;
+
+        &.active {
+          display: initial;
         }
-        .item-container{
-            overflow-y:auto;
-            margin: $md 0;
-            .item{
-                width: 100%;
-                text-align: left;
-                padding: $xs;
-                font-size:20px;
-                border-top-right-radius: 45px;
-                border-bottom-right-radius: 45px;
-                &.active{
-                    background: #eee;
-                    // color: white !important;    
-                }
-                .icon{
-                    margin: 0 $xs;
-                    vertical-align: middle;
-                }
-                span{
-                    vertical-align: initial;
-                }
+      }
+    }
+  }
+
+  .toolbar-right {
+    margin-left: auto;
+
+    .about {
+      mat-icon {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+mat-sidenav-container {
+  background: url(../assets/img/geometry2.png);
+  position: absolute;
+  height: calc(100vh - 64px);
+  height: -moz-calc(100vh - 64px);
+  height: -webkit-calc(100vh - 64px);
+  width: 100%;
+  margin: 0;
+
+  mat-sidenav {
+    width: 300px;
+    @extend .p-xs;
+    overflow: hidden;
+    border-right: solid 1px lightgray;
+
+    header {
+      position: relative;
+      width: 100%;
+      border-bottom: solid 1px lightgray;
+      text-align: center;
+      padding: $sm 0;
+
+      // button{
+      //     float: right;
+      // }
+      .user-info {
+        width: 100%;
+        margin-bottom: $sm;
+
+        picture {
+          display: block;
+          margin-bottom: $sm;
+
+          .pic-frame {
+            position: sticky;
+            height: 95px;
+            width: 95px;
+            margin: $sm auto;
+            border-radius: 100%;
+            overflow: hidden;
+            background: map-get($mat-grey, 200);
+
+            img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
             }
+
+            .placeholder {
+              position: absolute;
+              top: 0;
+              left: 0;
+              font-size: 100px;
+              opacity: 0.8;
+            }
+          }
         }
+
+        .firstname {
+          margin-bottom: $xs;
+        }
+      }
+
+      .action {
+        text-align: center;
+      }
     }
-    
-    .content{
-        padding: $lg 0;
-        margin: 0 $xs;
+
+    .item-container {
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: $md 0;
+
+      .item {
+        width: 100%;
+        text-align: left;
+        padding: $xs;
+        font-size: 20px;
+        border-top-right-radius: 45px;
+        border-bottom-right-radius: 45px;
+
+        &.active {
+          background: #eee;
+          // color: white !important;    
+        }
+
+        .icon {
+          margin: 0 $xs;
+          vertical-align: middle;
+        }
+
+        span {
+          vertical-align: initial;
+        }
+      }
     }
-    
+  }
+
+  .content {
+    padding: $lg 0;
+    margin: 0 $xs;
+  }
+
 }

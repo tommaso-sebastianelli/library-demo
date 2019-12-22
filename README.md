@@ -39,7 +39,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 The project uses [angular-cli-ghpages](https://www.npmjs.com/package/angular-cli-ghpages) to deploy the web app on github /doc page.
 
-Run `ng build --prod --aot --base-href https://[yourgithubpagename].github.io/angular-books/` 
+Run `ng build --prod --aot --base-href https://[yourgithubusername].github.io/angular-books/` 
 
 and then
 
